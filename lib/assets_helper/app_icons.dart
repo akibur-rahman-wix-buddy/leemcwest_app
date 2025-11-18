@@ -40,5 +40,6 @@ class AppIcons {
   static const String back= '$iconsRoute/backIconL.svg';
   static const String forward= '$iconsRoute/forwardIconL.svg';
   static const String iconBack= '$iconsRoute/iconBack.svg';
+  static const String forwardArrow= '$iconsRoute/forwardArrow.svg';
  
 }

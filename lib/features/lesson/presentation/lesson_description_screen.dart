@@ -7,6 +7,9 @@ import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_navigation_appbar.dart';
 import 'package:leemcwest/features/lesson/widget/bullet_text_widget.dart';
 import 'package:leemcwest/features/lesson/widget/lesson_audio_player.dart';
+import 'package:leemcwest/features/lesson/widget/lesson_complete_dialogue.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class LessonDescriptionScreen extends StatefulWidget {
@@ -86,30 +89,43 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
                 name: 'Mark as complete',
                 color: AppColors.c3DC699,
                 borderColor: AppColors.c3DC699,
-                onCallBack: () {},
+                onCallBack: () {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) {
+                      return const LessonCompleteDialogue();
+                    },
+                  );
+                },
                 context: context,
               ),
               UIHelper.verticalSpace(20.h),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 32.w),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  color: AppColors.onboardingButtonColor,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Start Quiz',
-                      style: TextFontStyle.headlinePoppins50014
-                          .copyWith(color: AppColors.cFFFFFF, fontSize: 16.sp),
-                    ),
-                    UIHelper.horizontalSpace(10.w),
-                    Image.asset(
-                      AppImages.quizBook,
-                      width: 20.w,
-                    ),
-                  ],
+              GestureDetector(
+                onTap: () {
+                  NavigationService.navigateTo(Routes.quiz);
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 32.w),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.r),
+                    color: AppColors.onboardingButtonColor,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Start Quiz',
+                        style: TextFontStyle.headlinePoppins50014
+                            .copyWith(color: AppColors.cFFFFFF, fontSize: 16.sp),
+                      ),
+                      UIHelper.horizontalSpace(10.w),
+                      Image.asset(
+                        AppImages.quizBook,
+                        width: 20.w,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               UIHelper.verticalSpace(64.h)

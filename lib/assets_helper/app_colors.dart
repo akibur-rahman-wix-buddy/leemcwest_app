@@ -80,5 +80,11 @@ static const Color c0F1835 = Color(0xFF0F1835);
 static const Color c0A0E1A = Color(0xFF0A0E1A);
 static const Color c20B80C = Color(0xFF20B80C);
 static const Color c3DC699 = Color(0xFF3DC699);
+static const Color c364153 = Color(0xFF364153);
+static const Color c061426 = Color(0xFF061426);
+static const Color cFB2C36 = Color(0xFFFB2C36);
+static const Color cFEF2F2 = Color(0xFFFEF2F2);
+static const Color c05DF72 = Color(0xFF05DF72);
+static const Color cF0FDF4 = Color(0xFFF0FDF4);
 
 }
