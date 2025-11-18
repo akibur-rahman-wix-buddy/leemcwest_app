@@ -101,10 +101,20 @@ class TextFontStyle {
     height: 1.50,
   );
 
+  static var textStyle16w500c6A7282 = GoogleFonts.inter(
+    color: AppColors.c6A7282,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+  );
   static var textStyle14w400c6A7282 = GoogleFonts.inter(
     color: AppColors.c6A7282,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
+  );
+  static var textStyle14w500c6A7282 = GoogleFonts.inter(
+    color: AppColors.c6A7282,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
   );
 
    static var textStyle14w500c0A2340 = GoogleFonts.inter(
@@ -211,6 +221,12 @@ class TextFontStyle {
   static var headlinePoppins40014 = GoogleFonts.poppins(
     color: AppColors.c989BA2,
     fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static var headlineArial40016 = TextStyle(
+    fontFamily: 'Arial',
+    color: AppColors.cFB2C36,
+    fontSize: 16.sp,
     fontWeight: FontWeight.w400,
   );
 }

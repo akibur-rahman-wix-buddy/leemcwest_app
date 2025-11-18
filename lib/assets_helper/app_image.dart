@@ -40,4 +40,9 @@ class AppImages {
   static const String soundOff = '$_basePath/soundOff.png';
   static const String musicBook = '$_basePath/musicBook.png';
   static const String quizBook = '$_basePath/quizBook.png';
+  static const String unselected = '$_basePath/unselectedImg.png';
+  static const String selected = '$_basePath/selectedImage.png';
+  static const String errorAns = '$_basePath/errorAns.png';
+  static const String wrongAns = '$_basePath/wrongAns.png';
+  static const String correctAns = '$_basePath/correctAns.png';
 }

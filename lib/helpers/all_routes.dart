@@ -8,6 +8,7 @@ import 'package:leemcwest/features/authentication/verification/presentation/otp_
 import 'package:leemcwest/features/home/presentation/ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/functional_ear_training_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
+import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
 import 'package:leemcwest/navigation_screen.dart';
 
 
@@ -28,6 +29,7 @@ final class Routes {
   static const String navigation = '/navigation';
   static const String functionalEarTraining = '/functionalEarTraining';
   static const String lessonDescription = '/lessonDescription';
+  static const String quiz = '/quiz';
   
 }
 
@@ -116,6 +118,14 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const LessonDescriptionScreen());
+        }
+      case Routes.quiz:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const QuizScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const QuizScreen());
         }
       
 
