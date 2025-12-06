@@ -6,9 +6,11 @@ import 'package:leemcwest/assets_helper/app_image.dart';
 
 class CustomHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
+  final void Function()? onTap;
    CustomHomeAppbar({
     super.key,
     required this.title,
+    this.onTap
   });
 
   @override
@@ -31,9 +33,12 @@ class CustomHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
               fontSize: 18.sp,
             ),
           ),
-          Image.asset(
-            AppImages.notification,
-            width: 24.w,
+          GestureDetector(
+            onTap: onTap,
+            child: Image.asset(
+              AppImages.notification,
+              width: 24.w,
+            ),
           ),
         ],
       ),

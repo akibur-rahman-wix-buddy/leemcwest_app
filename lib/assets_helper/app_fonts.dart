@@ -106,8 +106,18 @@ class TextFontStyle {
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
   );
+  static var textStyle12w400c64748B = GoogleFonts.inter(
+    color: AppColors.c64748B,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
   static var textStyle14w400c6A7282 = GoogleFonts.inter(
     color: AppColors.c6A7282,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static var textStyle14w400c99A1AF = GoogleFonts.inter(
+    color: AppColors.c99A1AF,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
   );
@@ -117,10 +127,28 @@ class TextFontStyle {
     fontWeight: FontWeight.w500,
   );
 
+  static var textStyle16w500c1E2939 = GoogleFonts.inter(
+    color: AppColors.c1E2939,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+  );
+
    static var textStyle14w500c0A2340 = GoogleFonts.inter(
     color: AppColors.c0A2340,
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
+  );
+
+   static var textStyle16w400c141313 = GoogleFonts.inter(
+    color: AppColors.c141313,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+   static var textStyle16w600c020617 = GoogleFonts.inter(
+    color: AppColors.c020617,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
   );
 
   static var textStyle14w400c333333 = GoogleFonts.poppins(
@@ -164,6 +192,12 @@ class TextFontStyle {
     color: AppColors.cFFFFFF,
     fontSize: 24.sp,
     fontWeight: FontWeight.w500,
+  );
+
+  static var headlineCinzel18w600c141313 = GoogleFonts.cinzel(
+    color: AppColors.c141313,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w600,
   );
 
   static var textStyle14w400c6B6B6B = GoogleFonts.poppins(
@@ -227,6 +261,12 @@ class TextFontStyle {
     fontFamily: 'Arial',
     color: AppColors.cFB2C36,
     fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+  );
+
+  static var headlinePublicSans40012 = GoogleFonts.publicSans(
+    color: AppColors.c6D6D6D,
+    fontSize: 12.sp,
     fontWeight: FontWeight.w400,
   );
 }

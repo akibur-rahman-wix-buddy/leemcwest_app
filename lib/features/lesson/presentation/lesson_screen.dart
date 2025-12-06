@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
+import 'package:leemcwest/common_widgets/custom_title_appbar.dart';
 import 'package:leemcwest/features/lesson/widget/music_exercise_container.dart';
 import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
@@ -19,19 +20,8 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.cF9FAFB,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.cFFFFFF,
-        automaticallyImplyLeading: false,
-        title: Center(
-          child: Text(
-            'Lesson',
-            style: TextFontStyle.headlineCinzel24w700cFFFFFF.copyWith(
-              color: AppColors.onboardingButtonColor,
-              fontSize: 18.sp,
-            ),
-          ),
-        ),
+      appBar: const CustomTitleAppbar(
+        title: 'Lesson',
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),

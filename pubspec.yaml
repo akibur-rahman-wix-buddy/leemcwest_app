@@ -61,7 +61,6 @@ dependencies:
   card_loading: ^0.3.2
   flick_video_player: ^0.9.0
   easy_url_launcher: ^0.0.7
-  device_preview: ^1.2.0
   smooth_page_indicator: ^1.2.1
   package_info_plus: ^8.0.0
   readmore: ^3.0.0

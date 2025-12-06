@@ -4,6 +4,8 @@ import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/common_widgets/custom_home_appbar.dart';
 import 'package:leemcwest/features/home/widget/music_info_container.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,6 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.cFFFFFF,
       appBar: CustomHomeAppbar(
         title: 'Home FHT',
+        onTap: () {
+          NavigationService.navigateTo(Routes.notification);
+        },
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),

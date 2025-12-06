@@ -62,29 +62,37 @@ class AppColors {
   static const Color rightColor = Color(0xFFFE3A8B);
   static const Color addBg = Color(0xFFC2C4C8);
 
-
   /////// Leemcwest
-static const Color onboardingButtonColor = Color(0xFF124074);
-static const Color cC4CDD5 = Color(0xFFC4CDD5);
-static const Color c99A1AF = Color(0xFF99A1AF);
-static const Color c0A2340 = Color(0xFF0A2340);
-static const Color c6A7282 = Color(0xFF6A7282);
-static const Color cF3F4F6 = Color(0xFFF3F4F6);
-static const Color cE5E7EB = Color(0xFFE5E7EB);
-static const Color c4A5565 = Color(0xFF4A5565);
-static const Color c1199F2 = Color(0xFF1199F2);
-static const Color cF21173 = Color(0xFFF21173);
-static const Color cFD9817 = Color(0xFFFD9817);
-static const Color cF9FAFB = Color(0xFFF9FAFB);
-static const Color c0F1835 = Color(0xFF0F1835);
-static const Color c0A0E1A = Color(0xFF0A0E1A);
-static const Color c20B80C = Color(0xFF20B80C);
-static const Color c3DC699 = Color(0xFF3DC699);
-static const Color c364153 = Color(0xFF364153);
-static const Color c061426 = Color(0xFF061426);
-static const Color cFB2C36 = Color(0xFFFB2C36);
-static const Color cFEF2F2 = Color(0xFFFEF2F2);
-static const Color c05DF72 = Color(0xFF05DF72);
-static const Color cF0FDF4 = Color(0xFFF0FDF4);
-
+  static const Color onboardingButtonColor = Color(0xFF124074);
+  static const Color cC4CDD5 = Color(0xFFC4CDD5);
+  static const Color c99A1AF = Color(0xFF99A1AF);
+  static const Color c0A2340 = Color(0xFF0A2340);
+  static const Color c6A7282 = Color(0xFF6A7282);
+  static const Color cF3F4F6 = Color(0xFFF3F4F6);
+  static const Color cE5E7EB = Color(0xFFE5E7EB);
+  static const Color c4A5565 = Color(0xFF4A5565);
+  static const Color c1199F2 = Color(0xFF1199F2);
+  static const Color cF21173 = Color(0xFFF21173);
+  static const Color cFD9817 = Color(0xFFFD9817);
+  static const Color cF9FAFB = Color(0xFFF9FAFB);
+  static const Color c0F1835 = Color(0xFF0F1835);
+  static const Color c0A0E1A = Color(0xFF0A0E1A);
+  static const Color c20B80C = Color(0xFF20B80C);
+  static const Color c3DC699 = Color(0xFF3DC699);
+  static const Color c364153 = Color(0xFF364153);
+  static const Color c061426 = Color(0xFF061426);
+  static const Color cFB2C36 = Color(0xFFFB2C36);
+  static const Color cFEF2F2 = Color(0xFFFEF2F2);
+  static const Color c05DF72 = Color(0xFF05DF72);
+  static const Color cF0FDF4 = Color(0xFFF0FDF4);
+  static const Color c113A6A = Color(0xFF113A6A);
+  static const Color c141313 = Color(0xFF141313);
+  static const Color c6D6D6D = Color(0xFF6D6D6D);
+  static const Color c1E2939 = Color(0xFF1E2939);
+  static const Color cB6BBCF = Color(0xFFB6BBCF);
+  static const Color cE2E8F0 = Color(0xFFE2E8F0);
+  static const Color c134074 = Color(0xFF134074);
+  static const Color c020617 = Color(0xFF020617);
+  static const Color c64748B = Color(0xFF64748B);
+  static const Color c0A1437 = Color(0xFF0A1437);
 }
