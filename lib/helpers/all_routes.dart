@@ -7,8 +7,11 @@ import 'package:leemcwest/features/authentication/sign_up/presentation/sign_up_s
 import 'package:leemcwest/features/authentication/verification/presentation/otp_verification_screen.dart';
 import 'package:leemcwest/features/home/presentation/ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/functional_ear_training_screen.dart';
+import 'package:leemcwest/features/home/presentation/notification_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
+import 'package:leemcwest/features/profile/presentation/faq_screen.dart';
+import 'package:leemcwest/features/profile/presentation/saved_work_screen.dart';
 import 'package:leemcwest/navigation_screen.dart';
 
 
@@ -30,6 +33,9 @@ final class Routes {
   static const String functionalEarTraining = '/functionalEarTraining';
   static const String lessonDescription = '/lessonDescription';
   static const String quiz = '/quiz';
+  static const String savedWork = '/savedWork';
+  static const String notification = '/notification';
+  static const String faq = '/faq';
   
 }
 
@@ -126,6 +132,32 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const QuizScreen());
+        }
+      case Routes.savedWork:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const SavedWorkScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const SavedWorkScreen());
+        }
+
+      case Routes.notification:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const NotificationScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const NotificationScreen());
+        }
+
+      case Routes.faq:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const FaqScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const FaqScreen());
         }
       
 

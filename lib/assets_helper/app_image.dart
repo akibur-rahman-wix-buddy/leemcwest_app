@@ -45,4 +45,5 @@ class AppImages {
   static const String errorAns = '$_basePath/errorAns.png';
   static const String wrongAns = '$_basePath/wrongAns.png';
   static const String correctAns = '$_basePath/correctAns.png';
+  static const String search = '$_basePath/search.png';
 }

@@ -3,6 +3,7 @@ import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/features/home/presentation/home_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_screen.dart';
+import 'package:leemcwest/features/profile/presentation/profile_screen.dart';
 
 
 class NavigationsBarScreen extends StatefulWidget {
@@ -18,7 +19,7 @@ class _NavigationsBarScreenState extends State<NavigationsBarScreen> {
     const HomeScreen(),
     const LessonScreen(),
     const HomeScreen(),
-    const HomeScreen(),
+    const ProfileScreen(),
   ];
 
   @override
