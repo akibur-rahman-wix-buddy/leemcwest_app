@@ -94,14 +94,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 text: 'Notifications',
               ),
               UIHelper.verticalSpace(26.h),
-              const ProfileOptionsWidget(
+              ProfileOptionsWidget(
                 iconPath: Icons.people,
                 text: 'User Guide',
+                onTap: () {
+                  NavigationService.navigateTo(Routes.userGuide);
+                },
               ),
               UIHelper.verticalSpace(26.h),
-              const ProfileOptionsWidget(
+              ProfileOptionsWidget(
                 iconPath: Icons.book,
                 text: 'Glossary',
+                onTap: () {
+                  NavigationService.navigateTo(Routes.glossary);
+                },
               ),
               UIHelper.verticalSpace(26.h),
               ProfileOptionsWidget(
