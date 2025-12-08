@@ -11,7 +11,9 @@ import 'package:leemcwest/features/home/presentation/notification_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
 import 'package:leemcwest/features/profile/presentation/faq_screen.dart';
+import 'package:leemcwest/features/profile/presentation/glossary_screen.dart';
 import 'package:leemcwest/features/profile/presentation/saved_work_screen.dart';
+import 'package:leemcwest/features/profile/presentation/user_guide_screen.dart';
 import 'package:leemcwest/navigation_screen.dart';
 
 
@@ -36,6 +38,8 @@ final class Routes {
   static const String savedWork = '/savedWork';
   static const String notification = '/notification';
   static const String faq = '/faq';
+  static const String userGuide = '/userGuide';
+  static const String glossary = '/glossary';
   
 }
 
@@ -158,6 +162,24 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const FaqScreen());
+        }
+
+      case Routes.userGuide:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const UserGuideScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const UserGuideScreen());
+        }
+
+      case Routes.glossary:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const GlossaryScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const GlossaryScreen());
         }
       
 
