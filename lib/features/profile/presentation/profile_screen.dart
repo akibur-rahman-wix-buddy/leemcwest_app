@@ -89,9 +89,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
               UIHelper.verticalSpace(26.h),
-              const ProfileOptionsWidget(
+              ProfileOptionsWidget(
                 iconPath: Icons.notifications,
                 text: 'Notifications',
+                onTap: () {
+                  NavigationService.navigateTo(Routes.pushNotification);
+                },
               ),
               UIHelper.verticalSpace(26.h),
               ProfileOptionsWidget(
@@ -118,9 +121,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
               UIHelper.verticalSpace(26.h),
-              const ProfileOptionsWidget(
+              ProfileOptionsWidget(
                 iconPath: Icons.account_box_outlined,
                 text: 'About FHT',
+                onTap: () {
+                  NavigationService.navigateTo(Routes.aboutFht);
+                },
               ),
               UIHelper.verticalSpace(26.h),
               const ProfileOptionsWidget(
@@ -128,9 +134,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 text: 'Settings',
               ),
               UIHelper.verticalSpace(26.h),
-              const ProfileOptionsWidget(
+              ProfileOptionsWidget(
                 iconPath: Icons.manage_accounts,
                 text: 'Manage Account',
+                onTap: () {
+                  NavigationService.navigateTo(Routes.manageAccount);
+                },
               ),
               UIHelper.verticalSpace(26.h),
               const ProfileOptionsWidget(

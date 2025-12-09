@@ -269,4 +269,10 @@ class TextFontStyle {
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
   );
+
+  static var headlinePublicSans50018 = GoogleFonts.publicSans(
+    color: AppColors.c081B31,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+  );
 }
