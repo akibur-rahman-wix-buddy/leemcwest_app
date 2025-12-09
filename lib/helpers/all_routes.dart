@@ -10,8 +10,11 @@ import 'package:leemcwest/features/home/presentation/functional_ear_training_scr
 import 'package:leemcwest/features/home/presentation/notification_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
+import 'package:leemcwest/features/profile/presentation/about_fht_screen.dart';
 import 'package:leemcwest/features/profile/presentation/faq_screen.dart';
 import 'package:leemcwest/features/profile/presentation/glossary_screen.dart';
+import 'package:leemcwest/features/profile/presentation/manage_account_screen.dart';
+import 'package:leemcwest/features/profile/presentation/push_notification_screen.dart';
 import 'package:leemcwest/features/profile/presentation/saved_work_screen.dart';
 import 'package:leemcwest/features/profile/presentation/user_guide_screen.dart';
 import 'package:leemcwest/navigation_screen.dart';
@@ -40,6 +43,9 @@ final class Routes {
   static const String faq = '/faq';
   static const String userGuide = '/userGuide';
   static const String glossary = '/glossary';
+  static const String aboutFht = '/aboutFht';
+  static const String pushNotification = '/pushNotification';
+  static const String manageAccount = '/manageAccount';
   
 }
 
@@ -180,6 +186,33 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const GlossaryScreen());
+        }
+
+      case Routes.aboutFht:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const AboutFhtScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const GlossaryScreen());
+        }
+
+      case Routes.pushNotification:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const PushNotificationScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const PushNotificationScreen());
+        }
+
+      case Routes.manageAccount:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const ManageAccountScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const ManageAccountScreen());
         }
       
 
