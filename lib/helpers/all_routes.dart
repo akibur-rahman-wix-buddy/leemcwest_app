@@ -17,6 +17,10 @@ import 'package:leemcwest/features/profile/presentation/manage_account_screen.da
 import 'package:leemcwest/features/profile/presentation/push_notification_screen.dart';
 import 'package:leemcwest/features/profile/presentation/saved_work_screen.dart';
 import 'package:leemcwest/features/profile/presentation/user_guide_screen.dart';
+import 'package:leemcwest/features/support/presentation/contact_support_screen.dart';
+import 'package:leemcwest/features/support/presentation/report_a_bug_screen.dart';
+import 'package:leemcwest/features/support/presentation/suggest_a_feature_screen.dart';
+import 'package:leemcwest/features/support/presentation/support_screen.dart';
 import 'package:leemcwest/navigation_screen.dart';
 
 
@@ -46,6 +50,10 @@ final class Routes {
   static const String aboutFht = '/aboutFht';
   static const String pushNotification = '/pushNotification';
   static const String manageAccount = '/manageAccount';
+  static const String support = '/support';
+  static const String contactSupport = '/contactSupport';
+  static const String reportabug = '/reportabug';
+  static const String suggestafeature = '/suggestafeature';
   
 }
 
@@ -213,6 +221,39 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const ManageAccountScreen());
+        }
+      
+      case Routes.support:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const SupportScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const SupportScreen());
+        }
+      case Routes.contactSupport:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const ContactSupportScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const ContactSupportScreen());
+        }
+      case Routes.reportabug:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const ReportABugScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const ReportABugScreen());
+        }
+      case Routes.suggestafeature:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const SuggestAFeatureScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const SuggestAFeatureScreen());
         }
       
 

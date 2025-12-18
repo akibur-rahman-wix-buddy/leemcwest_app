@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
+import 'package:leemcwest/features/authentication/verification/widget/dialogue_widget.dart';
+import 'package:leemcwest/features/profile/widget/account_control_widget.dart';
 import 'package:leemcwest/features/profile/widget/information_btn.dart';
 import 'package:leemcwest/features/profile/widget/personal_information_widget.dart';
-import 'package:leemcwest/features/profile/widget/subscription_btn.dart';
 import 'package:leemcwest/features/profile/widget/subscription_status_widget.dart';
-import 'package:leemcwest/features/profile/widget/subscription_title_widget.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class ManageAccountScreen extends StatefulWidget {
@@ -81,18 +81,23 @@ class _ManageAccountScreenState extends State<ManageAccountScreen> {
                 onTap: () {},
               ),
               UIHelper.verticalSpace(32.h),
-              Container(
-                padding: EdgeInsets.all(16.sp),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16.r),
-                  color: AppColors.cF3F4F6,
-                ),
-                child: Column(
-                  children: [
-                    
-                  ],
-                ),
+              AccountControlWidget(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const DialogueWidget(),
+                  );
+                },
               ),
+              UIHelper.verticalSpace(32.h),
+              Text(
+                'You can return to your learning progress at any time by reactivating your account using the same email.',
+                style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                  color: AppColors.c4A5565,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              UIHelper.verticalSpace(48.h)
             ],
           ),
         ),

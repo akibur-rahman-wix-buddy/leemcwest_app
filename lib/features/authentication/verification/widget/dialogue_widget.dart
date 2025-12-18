@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
-import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
-import 'package:leemcwest/helpers/all_routes.dart';
-import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class DialogueWidget extends StatelessWidget {
@@ -21,41 +18,52 @@ class DialogueWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
       ),
       child: Padding(
-        padding: EdgeInsets.all(24.sp),
+        padding: EdgeInsets.all(16.sp),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Center(
-              child: Image.asset(
-                AppImages.success,
-                width: 200.w,
+              child: Text(
+                'Are You sure?',
+                style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                  fontSize: 16.sp,
+                  color: AppColors.c101828,
+                ),
               ),
             ),
             UIHelper.verticalSpace(24.h),
             Text(
-              "Account Create Successful",
+              'Are you sure you want to delete your account and all associated data? This action is permanent.”',
               style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w600,
-                color: AppColors.onboardingButtonColor,
-              ),
-              textAlign: TextAlign.center,
-            ),
-            UIHelper.verticalSpace(8.h),
-            Text(
-              'Your account is ready to use. You will be redirected to the form page for further details',
-              style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                color: AppColors.c99A1AF,
+                color: AppColors.c4A5565,
               ),
               textAlign: TextAlign.center,
             ),
             UIHelper.verticalSpace(24.h),
-            CustomButton(
-              name: 'Login Now',
-              onCallBack: (){
-                NavigationService.navigateTo(Routes.signIn);
-              },
-              context: context,
+            Row(
+              children: [
+                Expanded(
+                  child: CustomButton(
+                    name: 'Cancel',
+                    onCallBack: () {
+                      //NavigationService.navigateTo(Routes.signIn);
+                    },
+                    context: context,
+                  ),
+                ),
+                UIHelper.horizontalSpace(4.w),
+                Expanded(
+                  child: CustomButton(
+                    name: 'Delete',
+                    color: AppColors.cE7000B,
+                    borderColor: AppColors.cE7000B,
+                    onCallBack: () {
+                      //NavigationService.navigateTo(Routes.signIn);
+                    },
+                    context: context,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
