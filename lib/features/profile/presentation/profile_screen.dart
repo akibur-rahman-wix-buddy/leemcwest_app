@@ -129,9 +129,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
               UIHelper.verticalSpace(26.h),
-              const ProfileOptionsWidget(
+              ProfileOptionsWidget(
                 iconPath: Icons.settings,
                 text: 'Settings',
+                onTap: () {
+                  NavigationService.navigateTo(Routes.support);
+                },
               ),
               UIHelper.verticalSpace(26.h),
               ProfileOptionsWidget(
