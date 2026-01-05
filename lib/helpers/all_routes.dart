@@ -5,12 +5,15 @@ import 'package:leemcwest/features/authentication/password/presentation/forgot_p
 import 'package:leemcwest/features/authentication/sign_in/presentation/sign_in_screen.dart';
 import 'package:leemcwest/features/authentication/sign_up/presentation/sign_up_screen.dart';
 import 'package:leemcwest/features/authentication/verification/presentation/otp_verification_screen.dart';
+import 'package:leemcwest/features/home/presentation/advanced_insight_screen.dart';
 import 'package:leemcwest/features/home/presentation/ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/functional_ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/notification_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
+import 'package:leemcwest/features/lesson/presentation/lesson_summary_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
 import 'package:leemcwest/features/profile/presentation/about_fht_screen.dart';
+import 'package:leemcwest/features/profile/presentation/edit_profile_screen.dart';
 import 'package:leemcwest/features/profile/presentation/faq_screen.dart';
 import 'package:leemcwest/features/profile/presentation/glossary_screen.dart';
 import 'package:leemcwest/features/profile/presentation/manage_account_screen.dart';
@@ -21,6 +24,7 @@ import 'package:leemcwest/features/support/presentation/contact_support_screen.d
 import 'package:leemcwest/features/support/presentation/report_a_bug_screen.dart';
 import 'package:leemcwest/features/support/presentation/suggest_a_feature_screen.dart';
 import 'package:leemcwest/features/support/presentation/support_screen.dart';
+import 'package:leemcwest/features/support/presentation/terms_use_screen.dart';
 import 'package:leemcwest/navigation_screen.dart';
 
 
@@ -54,6 +58,10 @@ final class Routes {
   static const String contactSupport = '/contactSupport';
   static const String reportabug = '/reportabug';
   static const String suggestafeature = '/suggestafeature';
+  static const String lessonSummary = '/lessonSummary';
+  static const String editProfile = '/editProfile';
+  static const String termsUse = '/termsUse';
+  static const String advancedInsights = '/advancedInsights';
   
 }
 
@@ -254,6 +262,40 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const SuggestAFeatureScreen());
+        }
+      case Routes.lessonSummary:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const LessonSummaryScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const LessonSummaryScreen());
+        }
+      case Routes.editProfile:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const EditProfileScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const EditProfileScreen());
+        }
+
+      case Routes.termsUse:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const TermsUseScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const TermsUseScreen());
+        }
+
+      case Routes.advancedInsights:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const AdvancedInsightScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const AdvancedInsightScreen());
         }
       
 

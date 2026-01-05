@@ -1,9 +1,9 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
-import 'package:leemcwest/helpers/all_routes.dart';
-import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class MusicInfoContainer extends StatelessWidget {
@@ -29,7 +29,7 @@ class MusicInfoContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 162.h,
+      //height: 162.h,
       padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 20.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
@@ -37,6 +37,7 @@ class MusicInfoContainer extends StatelessWidget {
           image: AssetImage(
             imagePath,
           ),
+          fit: BoxFit.cover
         ),
       ),
       child: Column(
@@ -61,9 +62,7 @@ class MusicInfoContainer extends StatelessWidget {
           ),
           UIHelper.verticalSpace(20.h),
           GestureDetector(
-            onTap: () {
-              NavigationService.navigateTo(Routes.functionalEarTraining);
-            },
+            onTap: onTap,
             child: Container(
               padding:
                   EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
