@@ -4,6 +4,7 @@ import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
+import 'package:leemcwest/features/lesson/widget/congratulations_dialogue.dart';
 import 'package:leemcwest/features/lesson/widget/correct_ans_widget.dart';
 import 'package:leemcwest/features/lesson/widget/quiz_option.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
@@ -76,7 +77,13 @@ class AnswerSheetDialogue extends StatelessWidget {
             CustomButton(
               name: 'Next',
               onCallBack: (){
-                NavigationService.goBack;
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) {
+                      return const CongratulationsDialogue();
+                    },
+                  );
               },
               context: context,
             ),

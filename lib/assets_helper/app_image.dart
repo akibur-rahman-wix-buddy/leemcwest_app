@@ -46,4 +46,15 @@ class AppImages {
   static const String wrongAns = '$_basePath/wrongAns.png';
   static const String correctAns = '$_basePath/correctAns.png';
   static const String search = '$_basePath/search.png';
+  static const String homeBackOne = '$_basePath/homeBacOne.png';
+  static const String homeBackTwo = '$_basePath/homeBackgroundTwo.png';
+  static const String homeBackFour = '$_basePath/homeBackFour.png';
+  static const String homeBackFive = '$_basePath/homeBackFive.png';
+  static const String homeBackSix = '$_basePath/homeBackSix.png';
+  static const String homeBackSeven = '$_basePath/homeBackSeven.png';
+  static const String insightBackOne = '$_basePath/insightBackOne.png';
+  static const String insightBackTwo = '$_basePath/insightBackTwo.png';
+  static const String insightBackThree = '$_basePath/insightBackThree.png';
+  static const String insightBackFour = '$_basePath/insightBackFour.png';
+  static const String insightBackFive = '$_basePath/insightBackFive.png';
 }

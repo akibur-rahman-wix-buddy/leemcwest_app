@@ -8,6 +8,8 @@ import 'package:leemcwest/features/profile/widget/account_control_widget.dart';
 import 'package:leemcwest/features/profile/widget/information_btn.dart';
 import 'package:leemcwest/features/profile/widget/personal_information_widget.dart';
 import 'package:leemcwest/features/profile/widget/subscription_status_widget.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class ManageAccountScreen extends StatefulWidget {
@@ -52,7 +54,9 @@ class _ManageAccountScreenState extends State<ManageAccountScreen> {
                     'https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png',
                 name: 'Sarah Johnson',
                 email: 'sarah.johnson@email.com',
-                onTapEdit: () {},
+                onTapEdit: () {
+                  NavigationService.navigateTo(Routes.editProfile);
+                },
                 onTapChangePassword: () {},
               ),
               UIHelper.verticalSpace(32.h),
@@ -78,7 +82,9 @@ class _ManageAccountScreenState extends State<ManageAccountScreen> {
               InformationBtn(
                 icon: Icons.privacy_tip,
                 text: 'Privacy Policy',
-                onTap: () {},
+                onTap: () {
+                  NavigationService.navigateTo(Routes.termsUse);
+                },
               ),
               UIHelper.verticalSpace(32.h),
               AccountControlWidget(
