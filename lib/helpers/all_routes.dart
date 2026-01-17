@@ -6,10 +6,16 @@ import 'package:leemcwest/features/authentication/sign_in/presentation/sign_in_s
 import 'package:leemcwest/features/authentication/sign_up/presentation/sign_up_screen.dart';
 import 'package:leemcwest/features/authentication/verification/presentation/otp_verification_screen.dart';
 import 'package:leemcwest/features/home/presentation/advanced_insight_screen.dart';
+import 'package:leemcwest/features/home/presentation/beginer_ear_training_screen.dart';
+import 'package:leemcwest/features/home/presentation/core_theory_screen.dart';
+import 'package:leemcwest/features/home/presentation/ear_training_level_screen.dart';
 import 'package:leemcwest/features/home/presentation/ear_training_screen.dart';
+import 'package:leemcwest/features/home/presentation/ear_training_theory_screen.dart';
+import 'package:leemcwest/features/home/presentation/ear_training_transition_screen.dart';
 import 'package:leemcwest/features/home/presentation/functional_ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/notification_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
+import 'package:leemcwest/features/lesson/presentation/lesson_fade_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_summary_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
 import 'package:leemcwest/features/profile/presentation/about_fht_screen.dart';
@@ -62,6 +68,12 @@ final class Routes {
   static const String editProfile = '/editProfile';
   static const String termsUse = '/termsUse';
   static const String advancedInsights = '/advancedInsights';
+  static const String earTrainingLevel = '/earTrainingLevel';
+  static const String coreTheory = '/coreTheory';
+  static const String lessonFade = '/lessonFade';
+  static const String beginerEarTraining = '/beginerEarTraining';
+  static const String earTrainingTransition = '/earTrainingTransition';
+  static const String earTrainingTheory = '/earTrainingTheory';
   
 }
 
@@ -296,6 +308,60 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const AdvancedInsightScreen());
+        }
+
+      case Routes.earTrainingLevel:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const EarTrainingLevelScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const EarTrainingLevelScreen());
+        }
+
+      case Routes.coreTheory:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const CoreTheoryScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const CoreTheoryScreen());
+        }
+
+      case Routes.lessonFade:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const LessonFadeScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const LessonFadeScreen());
+        }
+
+      case Routes.beginerEarTraining:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const BeginerEarTrainingScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const BeginerEarTrainingScreen());
+        }
+
+      case Routes.earTrainingTransition:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const EarTrainingTransitionScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const EarTrainingTransitionScreen());
+        }
+
+      case Routes.earTrainingTheory:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const EarTrainingTheoryScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const EarTrainingTheoryScreen());
         }
       
 

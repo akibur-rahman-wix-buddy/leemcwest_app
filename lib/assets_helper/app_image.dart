@@ -46,7 +46,7 @@ class AppImages {
   static const String wrongAns = '$_basePath/wrongAns.png';
   static const String correctAns = '$_basePath/correctAns.png';
   static const String search = '$_basePath/search.png';
-  static const String homeBackOne = '$_basePath/homeBacOne.png';
+  static const String homeBackOne = '$_basePath/homeBackOne.png';
   static const String homeBackTwo = '$_basePath/homeBackgroundTwo.png';
   static const String homeBackFour = '$_basePath/homeBackFour.png';
   static const String homeBackFive = '$_basePath/homeBackFive.png';

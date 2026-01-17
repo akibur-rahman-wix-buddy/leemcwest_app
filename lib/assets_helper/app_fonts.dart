@@ -106,6 +106,12 @@ class TextFontStyle {
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
   );
+
+  static var textStyle16w400c6A7282 = GoogleFonts.inter(
+    color: AppColors.c6A7282,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+  );
   static var textStyle12w400c64748B = GoogleFonts.inter(
     color: AppColors.c64748B,
     fontSize: 12.sp,
@@ -274,5 +280,10 @@ class TextFontStyle {
     color: AppColors.c081B31,
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
+  );
+  static var headlinePublicSans60024 = GoogleFonts.publicSans(
+    color: AppColors.c134074,
+    fontSize: 24.sp,
+    fontWeight: FontWeight.w600,
   );
 }

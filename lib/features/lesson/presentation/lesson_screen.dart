@@ -41,7 +41,7 @@ class _LessonScreenState extends State<LessonScreen> {
               UIHelper.verticalSpace(16.h),
               MusicExerciseContainer(
                 onTapLesson: (){
-                  NavigationService.navigateTo(Routes.lessonDescription);
+                  NavigationService.navigateTo(Routes.lessonFade);
                 },
                 lessonNumber: 1,
                 title: 'Scale Degrees',
