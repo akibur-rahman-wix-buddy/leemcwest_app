@@ -47,7 +47,7 @@ class MusicInfoContainer extends StatelessWidget {
             title,
             style: TextFontStyle.headlineCinzel24w700cFFFFFF.copyWith(
               fontSize: 16.sp,
-              color: titleColor ?? AppColors.c1199F2,
+              color: titleColor ?? AppColors.cFFFFFF,
             ),
           ),
           UIHelper.verticalSpace(8.h),
@@ -57,6 +57,7 @@ class MusicInfoContainer extends StatelessWidget {
               subTitle,
               style: TextFontStyle.textStyle14w400c6A7282.copyWith(
                 fontSize: 12.sp,
+                color: AppColors.cE5E7EB
               ),
             ),
           ),

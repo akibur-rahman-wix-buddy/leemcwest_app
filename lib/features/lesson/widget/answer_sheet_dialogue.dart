@@ -7,7 +7,6 @@ import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/features/lesson/widget/congratulations_dialogue.dart';
 import 'package:leemcwest/features/lesson/widget/correct_ans_widget.dart';
 import 'package:leemcwest/features/lesson/widget/quiz_option.dart';
-import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class AnswerSheetDialogue extends StatelessWidget {
