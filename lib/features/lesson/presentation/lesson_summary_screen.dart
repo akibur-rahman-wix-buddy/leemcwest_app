@@ -4,6 +4,8 @@ import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
 import 'package:leemcwest/features/profile/widget/bullet_text.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 class LessonSummaryScreen extends StatefulWidget {
   const LessonSummaryScreen({super.key});
@@ -35,7 +37,9 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
             UIHelper.verticalSpace(52.h),
             CustomButton(
               name: 'Continue',
-              onCallBack: (){},
+              onCallBack: (){
+                NavigationService.navigateTo(Routes.nextLevelQuiz);
+              },
               context: context,
             ),
           ],

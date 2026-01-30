@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
@@ -7,18 +10,88 @@ import 'package:leemcwest/assets_helper/app_icons.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/pinput_field.dart';
-import 'package:leemcwest/features/authentication/verification/widget/dialogue_widget.dart';
+import 'package:leemcwest/features/authentication/verification/widget/confirm_dialogue_widget.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
+import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
+import 'package:leemcwest/networks/api_acess.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({super.key});
+  final String email;
+  const OtpVerificationScreen({super.key, required this.email});
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+  final _formkey = GlobalKey<FormState>();
+  bool isLoading = false;
+   TextEditingController otpController = TextEditingController();
+
+  // Future<void> submitForm() async {
+  //   if (!_formkey.currentState!.validate()) return;
+
+  //   setState(() => isLoading = true);
+
+  //   final success = await verifyEmailRxObj.verifyEmailRx(
+  //     email: widget.email,
+  //     otp: otpController.text,
+  //   );
+
+  //   setState(() => isLoading = false);
+
+  //   if (success) {
+  //     ToastUtil.showShortToast("Your email has been successfully verified.");
+  //     showDialog(
+  //       context: context,
+  //       barrierDismissible: false,
+  //       builder: (_) => const ConfirmDialogueWidget(),
+  //     );
+  //   } else {
+  //     ToastUtil.showShortToast(
+  //       "Email verification failed",
+  //     );
+  //   }
+  // }
+
+   Future<bool> submitForm() async {
+    try {
+      if (_formkey.currentState!.validate()) {
+        setState(() {
+          isLoading = true;
+        });
+        await verifyEmailRxObj.verifyEmailRX(
+      email: widget.email,
+      otp: otpController.text,
+    )
+            .then(
+          (value) {
+            if (value) {
+              setState(() {
+                isLoading = false;
+              });
+              showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (_) => const ConfirmDialogueWidget(),
+      );
+            } else {
+              setState(() {
+                isLoading = false;
+              });
+            }
+          },
+        );
+      }
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      ToastUtil.showShortToast("An error occurred. Please try again.");
+    }
+    return true;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,80 +109,86 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              UIHelper.verticalSpace(36.h),
-              Center(
-                child: Image.asset(
-                  AppImages.splashLogo,
-                  width: 140.w,
-                ),
-              ),
-              UIHelper.verticalSpace(8.h),
-              Center(
-                child: Text(
-                  'Check your Mail',
-                  style: TextFontStyle.headlineCinzel24w700cFFFFFF.copyWith(
-                    fontSize: 20.sp,
-                    color: AppColors.onboardingButtonColor,
+      body: Form(
+        key: _formkey,
+        child: SingleChildScrollView(
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                UIHelper.verticalSpace(36.h),
+                Center(
+                  child: Image.asset(
+                    AppImages.splashLogo,
+                    width: 140.w,
                   ),
                 ),
-              ),
-              UIHelper.verticalSpace(8.h),
-              Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                UIHelper.verticalSpace(8.h),
+                Center(
                   child: Text(
-                    'Please enter the 6 digit code sent to your email',
-                    style: TextFontStyle.textStyle14w400c6A7282,
-                    textAlign: TextAlign.center,
+                    'Check your Mail',
+                    style: TextFontStyle.headlineCinzel24w700cFFFFFF.copyWith(
+                      fontSize: 20.sp,
+                      color: AppColors.onboardingButtonColor,
+                    ),
                   ),
                 ),
-              ),
-              UIHelper.verticalSpace(32.h),
-              const Center(
-                child: PinputField(),
-              ),
-              UIHelper.verticalSpace(24.h),
-              CustomButton(
-                name: 'Verify',
-                onCallBack: () {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) {
-                      return const DialogueWidget();
-                    },
-                  );
-                },
-                context: context,
-              ),
-              UIHelper.verticalSpace(32.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Don’t have a code?',
-                    style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                      color: AppColors.c99A1AF,
+                UIHelper.verticalSpace(8.h),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Text(
+                      'Please enter the 4 digit code sent to your email',
+                      style: TextFontStyle.textStyle14w400c6A7282,
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                  UIHelper.horizontalSpace(4.w),
-                  Text(
-                    'Resend Code',
-                    style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                      color: AppColors.onboardingButtonColor,
-                      fontWeight: FontWeight.w500,
-                    ),
+                ),
+                UIHelper.verticalSpace(32.h),
+                Center(
+                  child: PinputField(
+                    controller: otpController,
                   ),
-                ],
-              )
-            ],
+                ),
+                UIHelper.verticalSpace(24.h),
+                isLoading
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.onboardingButtonColor,
+                        ),
+                      )
+                    : CustomButton(
+                        name: 'Verify',
+                        onCallBack: () {
+                          submitForm();
+                          log('otpController.text: ${otpController.text}');
+                        },
+                        context: context,
+                      ),
+                UIHelper.verticalSpace(32.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don’t have a code?',
+                      style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                        color: AppColors.c99A1AF,
+                      ),
+                    ),
+                    UIHelper.horizontalSpace(4.w),
+                    Text(
+                      'Resend Code',
+                      style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                        color: AppColors.onboardingButtonColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),

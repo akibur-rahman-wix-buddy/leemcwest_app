@@ -9,6 +9,7 @@ import 'package:leemcwest/features/home/presentation/advanced_insight_screen.dar
 import 'package:leemcwest/features/home/presentation/beginer_ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/core_theory_screen.dart';
 import 'package:leemcwest/features/home/presentation/ear_training_level_screen.dart';
+import 'package:leemcwest/features/home/presentation/ear_training_quiz_screen.dart';
 import 'package:leemcwest/features/home/presentation/ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/ear_training_theory_screen.dart';
 import 'package:leemcwest/features/home/presentation/ear_training_transition_screen.dart';
@@ -17,6 +18,7 @@ import 'package:leemcwest/features/home/presentation/notification_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_fade_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_summary_screen.dart';
+import 'package:leemcwest/features/lesson/presentation/next_level_quiz_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
 import 'package:leemcwest/features/profile/presentation/about_fht_screen.dart';
 import 'package:leemcwest/features/profile/presentation/edit_profile_screen.dart';
@@ -74,6 +76,8 @@ final class Routes {
   static const String beginerEarTraining = '/beginerEarTraining';
   static const String earTrainingTransition = '/earTrainingTransition';
   static const String earTrainingTheory = '/earTrainingTheory';
+  static const String earTrainingQuiz = '/earTrainingQuiz';
+  static const String nextLevelQuiz = '/nextLevelQuiz';
   
 }
 
@@ -104,12 +108,17 @@ final class RouteGenerator {
         }
 
       case Routes.otpVerification:
+      Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
-              widget: const OtpVerificationScreen(), settings: settings);
+              widget: OtpVerificationScreen(
+                email: args["email"],
+              ), settings: settings);
         } else {
           return CupertinoPageRoute(
-              builder: (context) => const OtpVerificationScreen());
+              builder: (context) =>  OtpVerificationScreen(
+                email: args["email"], 
+              ));
         }
 
       case Routes.forgotPassword:
@@ -362,6 +371,24 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const EarTrainingTheoryScreen());
+        }
+
+      case Routes.earTrainingQuiz:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const EarTrainingQuizScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const EarTrainingQuizScreen());
+        }
+
+      case Routes.nextLevelQuiz:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const NextLevelQuizScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const NextLevelQuizScreen());
         }
       
 

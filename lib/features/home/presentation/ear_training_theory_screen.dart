@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class EarTrainingTheoryScreen extends StatefulWidget {
@@ -14,6 +16,14 @@ class EarTrainingTheoryScreen extends StatefulWidget {
 }
 
 class _EarTrainingTheoryScreenState extends State<EarTrainingTheoryScreen> {
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 3), (){
+      NavigationService.navigateTo(Routes.earTrainingQuiz);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
