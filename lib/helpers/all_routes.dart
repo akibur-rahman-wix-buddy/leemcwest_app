@@ -1,7 +1,9 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:leemcwest/features/authentication/password/presentation/change_password_screen.dart';
 import 'package:leemcwest/features/authentication/password/presentation/create_password_screen.dart';
 import 'package:leemcwest/features/authentication/password/presentation/forgot_password_screen.dart';
+import 'package:leemcwest/features/authentication/password/presentation/password_reset_otp_screen.dart';
 import 'package:leemcwest/features/authentication/sign_in/presentation/sign_in_screen.dart';
 import 'package:leemcwest/features/authentication/sign_up/presentation/sign_up_screen.dart';
 import 'package:leemcwest/features/authentication/verification/presentation/otp_verification_screen.dart';
@@ -78,6 +80,8 @@ final class Routes {
   static const String earTrainingTheory = '/earTrainingTheory';
   static const String earTrainingQuiz = '/earTrainingQuiz';
   static const String nextLevelQuiz = '/nextLevelQuiz';
+  static const String resetPasswordOtp = '/resetPasswordOtp';
+  static const String changePassword = '/changePassword';
   
 }
 
@@ -389,6 +393,24 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const NextLevelQuizScreen());
+        }
+
+      case Routes.resetPasswordOtp:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const PasswordResetOtpScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const PasswordResetOtpScreen());
+        }
+
+      case Routes.changePassword:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const ChangePasswordScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const ChangePasswordScreen());
         }
       
 
