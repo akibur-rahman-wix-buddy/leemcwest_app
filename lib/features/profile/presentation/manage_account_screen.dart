@@ -12,6 +12,7 @@ import 'package:leemcwest/features/profile/widget/subscription_status_widget.dar
 import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/di.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
+import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
 
@@ -23,6 +24,7 @@ class ManageAccountScreen extends StatefulWidget {
 }
 
 class _ManageAccountScreenState extends State<ManageAccountScreen> {
+  bool isLoading = false;
   @override
   void initState() {
     super.initState();
@@ -116,7 +118,33 @@ class _ManageAccountScreenState extends State<ManageAccountScreen> {
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (context) => const DialogueWidget(),
+                    builder: (context) =>  DialogueWidget(
+                      onTapDelete: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
+                        deleteAccountRxObj.deleteAccountRx().then(
+                          (value) async {
+                            if (value) {
+                              ToastUtil.showShortToast("Delete Account successfully.");
+                              await appData.write(kKeyIsLoggedIn, false);
+                              await appData.write(kKeyAccessToken, '');
+                              setState(() {
+                                isLoading = false;
+                              });
+
+                              NavigationService.navigateToReplacement(
+                                  Routes.signUp);
+                            } else {
+                              setState(() {
+                                isLoading = false;
+                              });
+                              ToastUtil.showShortToast("Failed to delete account.");
+                            }
+                          },
+                        );
+                      },
+                    ),
                   );
                 },
               ),
