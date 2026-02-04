@@ -11,6 +11,7 @@ import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/pinput_field.dart';
 import 'package:leemcwest/features/authentication/verification/widget/confirm_dialogue_widget.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
@@ -27,33 +28,33 @@ class OtpVerificationScreen extends StatefulWidget {
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final _formkey = GlobalKey<FormState>();
   bool isLoading = false;
+  bool isLoading2 = false;
    TextEditingController otpController = TextEditingController();
 
-  // Future<void> submitForm() async {
-  //   if (!_formkey.currentState!.validate()) return;
+  Future<void> submitOtp() async {
+    setState(() {
+      isLoading2 = true;
+    });
+    try {
+      if (_formkey.currentState!.validate()) {
+        final success = await resendOtpRxObj.resendOtpRx(
+          email: widget.email,
+        );
 
-  //   setState(() => isLoading = true);
-
-  //   final success = await verifyEmailRxObj.verifyEmailRx(
-  //     email: widget.email,
-  //     otp: otpController.text,
-  //   );
-
-  //   setState(() => isLoading = false);
-
-  //   if (success) {
-  //     ToastUtil.showShortToast("Your email has been successfully verified.");
-  //     showDialog(
-  //       context: context,
-  //       barrierDismissible: false,
-  //       builder: (_) => const ConfirmDialogueWidget(),
-  //     );
-  //   } else {
-  //     ToastUtil.showShortToast(
-  //       "Email verification failed",
-  //     );
-  //   }
-  // }
+        if (success == true) {
+          NavigationService.navigateTo(Routes.otpVerification);
+        } else {
+          ToastUtil.showShortToast("Error");
+        }
+      }
+    } catch (e) {
+      ToastUtil.showShortToast(e.toString());
+    } finally {
+      setState(() {
+        isLoading2 = false;
+      });
+    }
+  }
 
    Future<bool> submitForm() async {
     try {
@@ -178,11 +179,24 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       ),
                     ),
                     UIHelper.horizontalSpace(4.w),
-                    Text(
-                      'Resend Code',
-                      style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                        color: AppColors.onboardingButtonColor,
-                        fontWeight: FontWeight.w500,
+                    isLoading2
+                    ?
+                    const Center(
+                      child: SpinKitCircle(
+                        color: AppColors.primaryColor2,
+                      ),
+                    )
+                    :
+                    GestureDetector(
+                      onTap: () {
+                        submitOtp();
+                      },
+                      child: Text(
+                        'Resend Code',
+                        style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                          color: AppColors.onboardingButtonColor,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ],

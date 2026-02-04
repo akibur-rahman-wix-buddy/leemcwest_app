@@ -28,7 +28,7 @@ final class Endpoints {
   static String resetPassOtp() =>"/api/password/forgot/verify";
   static String logOut() => "/api/logout";
   static String sendOtpEndPoint() => "/api/send-register-otp";
-  static String resendOtpEndPoint() => "/api/resend-register-otp";
+  static String resendOtpEndPoint() => "/api/email/verify/resend";
   static String verifyOtpEndPoint() => "/api/verify-register-otp";
   static String resendPassOtpEndPoint() => "/api/resend-otp";
   static String sendOtpPassEndPoint() => "/api/send-otp";
@@ -48,4 +48,5 @@ final class Endpoints {
   static String contactSupport() => "/api/support/contact";
   static String editProfile() => "/api/profile/details";
   static String getFaq() => "/api/faq";
+  static String deleteAccount() => "/api/profile/delete-account";
 }

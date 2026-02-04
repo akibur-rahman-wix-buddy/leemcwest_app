@@ -1,13 +1,17 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class DialogueWidget extends StatelessWidget {
+  final VoidCallback onTapDelete;
   const DialogueWidget({
-    super.key,
+    super.key, 
+    required this.onTapDelete,
   });
 
   @override
@@ -46,7 +50,7 @@ class DialogueWidget extends StatelessWidget {
                   child: CustomButton(
                     name: 'Cancel',
                     onCallBack: () {
-                      //NavigationService.navigateTo(Routes.signIn);
+                      NavigationService.goBack;
                     },
                     context: context,
                   ),
@@ -57,9 +61,7 @@ class DialogueWidget extends StatelessWidget {
                     name: 'Delete',
                     color: AppColors.cE7000B,
                     borderColor: AppColors.cE7000B,
-                    onCallBack: () {
-                      //NavigationService.navigateTo(Routes.signIn);
-                    },
+                    onCallBack:onTapDelete,
                     context: context,
                   ),
                 ),

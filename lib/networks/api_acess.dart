@@ -2,6 +2,7 @@ import 'package:leemcwest/features/authentication/data/rx_post_change_password/r
 import 'package:leemcwest/features/authentication/data/rx_post_create_password/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_forget_password/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_login/rx.dart';
+import 'package:leemcwest/features/authentication/data/rx_post_resend_otp/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_reset_password_otp/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_sign_up/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_verify_email/rx.dart';
@@ -10,6 +11,7 @@ import 'package:leemcwest/features/authentication/model/otp_pass_model.dart';
 import 'package:leemcwest/features/authentication/model/otp_verify_model.dart';
 import 'package:leemcwest/features/profile/data/rx_get_faq/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_get_profile_data/rx.dart';
+import 'package:leemcwest/features/profile/data/rx_post_delete_account/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_post_logout/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_post_update_profile/rx.dart';
 import 'package:leemcwest/features/profile/model/faq_model.dart';
@@ -32,3 +34,5 @@ PostFeatureSuggestionRx postFeatureSuggestionRxObj = PostFeatureSuggestionRx(emp
 PostBugReportRx postBugReportRxObj = PostBugReportRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 EditProfileRx editProfileRxObj = EditProfileRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 GetFaqRx getFaqRxObj = GetFaqRx(empty: FaqModel(), dataFetcher: BehaviorSubject<FaqModel>());
+ResendOtpRx resendOtpRxObj = ResendOtpRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+DeleteAccountRx deleteAccountRxObj = DeleteAccountRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
