@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
-import 'package:leemcwest/constants/app_constants.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 class LessonGradeWidget extends StatelessWidget {
   final String title;

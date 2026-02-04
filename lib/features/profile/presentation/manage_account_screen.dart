@@ -3,14 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
+import 'package:leemcwest/constants/app_constants.dart';
 import 'package:leemcwest/features/authentication/verification/widget/dialogue_widget.dart';
 import 'package:leemcwest/features/profile/widget/account_control_widget.dart';
 import 'package:leemcwest/features/profile/widget/information_btn.dart';
 import 'package:leemcwest/features/profile/widget/personal_information_widget.dart';
 import 'package:leemcwest/features/profile/widget/subscription_status_widget.dart';
 import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/di.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
+import 'package:leemcwest/networks/api_acess.dart';
 
 class ManageAccountScreen extends StatefulWidget {
   const ManageAccountScreen({super.key});
@@ -20,6 +23,11 @@ class ManageAccountScreen extends StatefulWidget {
 }
 
 class _ManageAccountScreenState extends State<ManageAccountScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getOwnProfileRxObj.getOwnProfileRx();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,21 +57,38 @@ class _ManageAccountScreenState extends State<ManageAccountScreen> {
                 ),
               ),
               UIHelper.verticalSpace(22.h),
-              PersonalInformationWidget(
-                url:
-                    'https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png',
-                name: 'Sarah Johnson',
-                email: 'sarah.johnson@email.com',
-                onTapEdit: () {
-                  NavigationService.navigateTo(Routes.editProfile);
-                },
-                onTapChangePassword: () {},
+              StreamBuilder(
+                stream: getOwnProfileRxObj.dataFetcher,
+                builder: (context, snapshot) {
+                  final data = snapshot.data;
+                  appData.write(kKeyName, data?.data?.personalInformation?.name);
+                  appData.write(kKeyEmail, data?.data?.personalInformation?.email);
+                  appData.write(kKeyPhoneVerifiedAt, data?.data?.personalInformation?.phone);
+                  return PersonalInformationWidget(
+                    url:
+                      data?.data?.personalInformation?.avatarUrl ??  'https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png',
+                    name: data?.data?.personalInformation?.name ?? 'N/A',
+                    email: data?.data?.personalInformation?.email ?? 'N/A',
+                    onTapEdit: () {
+                      NavigationService.navigateTo(Routes.editProfile);
+                    },
+                    onTapChangePassword: () {
+                      NavigationService.navigateTo(Routes.changePassword);
+                    },
+                  );
+                }
               ),
               UIHelper.verticalSpace(32.h),
-              SubscriptionStatusWidget(
-                plan: 'Tier 1',
-                billingDate: 'December 2, 2025',
-                onTapSubscription: () {},
+              StreamBuilder(
+                stream: getOwnProfileRxObj.dataFetcher,
+                builder: (context, snapshot) {
+                  final data = snapshot.data;
+                  return SubscriptionStatusWidget(
+                    plan: data?.data?.subscriptionStatus?.currentPlan ?? 'N/A',
+                    billingDate: data?.data?.subscriptionStatus?.nextBillingDate ?? 'N/A',
+                    onTapSubscription: () {},
+                  );
+                }
               ),
               UIHelper.verticalSpace(32.h),
               Text(

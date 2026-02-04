@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:leemcwest/features/onboarding/presentation/onboarding_screen.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/welcome_screen.dart';
 
 import 'constants/app_constants.dart';
@@ -38,9 +40,7 @@ class _LoadingState extends State<Loading> {
     if (isLoggedIn) {
       String token = appData.read(kKeyAccessToken);
       DioSingleton.instance.update(token);
-      Navigator.pushReplacement( context ,
-        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
-      );
+      NavigationService.navigateToReplacement(Routes.navigation);
     }
     else if (firstTime) {
       Navigator.pushReplacement( context ,

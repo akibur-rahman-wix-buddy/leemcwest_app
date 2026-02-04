@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/common_widgets/custom_title_appbar.dart';
+import 'package:leemcwest/constants/app_constants.dart';
 import 'package:leemcwest/features/profile/widget/profile_options_widget.dart';
 import 'package:leemcwest/features/profile/widget/user_profile_info.dart';
 import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/di.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
+import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
+import 'package:leemcwest/networks/api_acess.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -17,6 +22,12 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    getOwnProfileRxObj.getOwnProfileRx();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,12 +70,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               UIHelper.verticalSpace(32.h),
-              const UserProfileInfo(
-                url:
-                    'https://static.vecteezy.com/system/resources/previews/002/002/257/non_2x/beautiful-woman-avatar-character-icon-free-vector.jpg',
-                name: 'Your Name',
-                email: 'yourmail@com',
-              ),
+               StreamBuilder(
+                 stream: getOwnProfileRxObj.dataFetcher,
+                 builder: (context, snapshot) {
+                  final data = snapshot.data;
+                   return UserProfileInfo(
+                    url:
+                     data?.data?.personalInformation?.avatarUrl ??   'https://static.vecteezy.com/system/resources/previews/002/002/257/non_2x/beautiful-woman-avatar-character-icon-free-vector.jpg',
+                    name: data?.data?.personalInformation?.name ?? 'N/A',
+                    email: data?.data?.personalInformation?.email ?? 'N/A',
+                                 );
+                 }
+               ),
               UIHelper.verticalSpace(34.h),
               Text(
                 'Application',
@@ -154,6 +171,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 iconPath: Icons.share,
                 text: 'Share the App',
               ),
+              UIHelper.verticalSpace(26.h),
+              isLoading
+                  ? const Center(
+                      child: SpinKitCircle(
+                        color: AppColors.primaryColor2,
+                      ),
+                    )
+                  : ProfileOptionsWidget(
+                      iconPath: Icons.logout,
+                      text: 'Log out',
+                      onTap: () async {
+                        setState(() {
+                          isLoading = true;
+                        });
+                        logoutRxObj.logoutRx().then(
+                          (value) async {
+                            if (value) {
+                              ToastUtil.showShortToast("Logout successfully.");
+                              await appData.write(kKeyIsLoggedIn, false);
+                              await appData.write(kKeyAccessToken, '');
+                              setState(() {
+                                isLoading = false;
+                              });
+                              NavigationService.navigateToReplacement(
+                                Routes.signIn,
+                              );
+                            } else {
+                              setState(() {
+                                isLoading = false;
+                              });
+                              ToastUtil.showShortToast("Failed to logout.");
+                            }
+                          },
+                        );
+                      },
+                    ),
               UIHelper.verticalSpace(12.h),
             ],
           ),

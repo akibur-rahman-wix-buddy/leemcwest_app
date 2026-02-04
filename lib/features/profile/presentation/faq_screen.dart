@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
 import 'package:leemcwest/common_widgets/custom_textfeild.dart';
 import 'package:leemcwest/features/profile/widget/faq_tile_widget.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
+import 'package:leemcwest/networks/api_acess.dart';
 
 class FaqScreen extends StatefulWidget {
   const FaqScreen({super.key});
@@ -16,6 +18,11 @@ class FaqScreen extends StatefulWidget {
 
 class _FaqScreenState extends State<FaqScreen> {
   final searchController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    getFaqRxObj.getFaqRx();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,17 +67,52 @@ class _FaqScreenState extends State<FaqScreen> {
                 ),
               ),
               UIHelper.verticalSpace(24.h),
-              ListView.builder(
-                itemCount: 6,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return const FaqTileWidget(
-                    question: "1. How do I start learning?",
-                    answer:
-                        "Simply open the Lessons tab. The first few lessons are free...",
+              StreamBuilder(
+                stream: getFaqRxObj.dataFetcher,
+                builder: (context, snapshot) {
+                  final data = snapshot.data;
+                  if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: SpinKitCircle(color: AppColors.primaryColor2),
+                            );
+                          }
+
+                          if (snapshot.hasError) {
+                            return Center(
+                              child: Text("Error: ${snapshot.error}"),
+                            );
+                          }
+
+                          final faq = snapshot.data?.data ?? [];
+
+
+                          if (faq.isEmpty) {
+                            return Center(
+                              child: Padding(
+                                padding: EdgeInsets.all(20.h),
+                                child: Text(
+                                  'No Data',
+                                  style: TextFontStyle.headline18w500cFFFFFF
+                                      .copyWith(color: AppColors.c000000),
+                                ),
+                              ),
+                            );
+                          }
+                  return ListView.builder(
+                    itemCount: data?.data?.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final list = data?.data?[index];
+                      return FaqTileWidget(
+                        question: list?.question ?? "N/A",
+                        answer:
+                            list?.answer ?? "N/A",
+                      );
+                    },
                   );
-                },
+                }
               ),
             ],
           ),

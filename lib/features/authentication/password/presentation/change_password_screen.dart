@@ -8,51 +8,41 @@ import 'package:leemcwest/assets_helper/app_icons.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_textfeild.dart';
-import 'package:leemcwest/constants/app_constants.dart';
-import 'package:leemcwest/features/authentication/password/widget/change_password_dialogue.dart';
-import 'package:leemcwest/helpers/di.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
-import 'package:leemcwest/provider/auth_provider.dart';
-import 'package:provider/provider.dart';
 
-class CreatePasswordScreen extends StatefulWidget {
-  const CreatePasswordScreen({super.key});
+
+class ChangePasswordScreen extends StatefulWidget {
+  const ChangePasswordScreen({super.key});
 
   @override
-  State<CreatePasswordScreen> createState() => _CreatePasswordScreenState();
+  State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
 }
 
-class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+  final currentPasswordController = TextEditingController();
   final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
   
   Future<void> submitForm() async {
-    final auth = Provider.of<AuthProvider>(context, listen: false);
     setState(() {
       isLoading = true;
     });
     try {
       if (_formKey.currentState!.validate()) {
-        final success = await postResetPasswordRxObj.postResetPasswordRx(
-          email: auth.email ?? '',
+        final success = await postChangePasswordRxObj.postChangePasswordRx(
+          currentPassword: currentPasswordController.text, 
           password: newPasswordController.text,
           passwordConfirmation: confirmPasswordController.text,
-          token: appData.read(kKeyAccessToken) ?? '',
         );
 
         if (success == true) {
-           showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) {
-                      return const ChangePasswordDialogue();
-                    },
-                  );
+           NavigationService.navigateTo(Routes.manageAccount);
         } else {
           ToastUtil.showShortToast("Error");
         }
@@ -118,6 +108,19 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                   ),
                 ),
                 UIHelper.verticalSpace(32.h),
+                Text(
+                  'Current Password',
+                  style: TextFontStyle.textStyle14w500c0A2340,
+                ),
+                UIHelper.verticalSpace(8.h),
+                CustomTextField(
+                  controller: currentPasswordController,
+                  hintText: 'Current Password',
+                  fillColor: AppColors.cF3F4F6,
+                  borderRadius: 8.r,
+                  inputAction: TextInputAction.next,
+                ),
+                UIHelper.verticalSpace(16.h),
                 Text(
                   'New Password',
                   style: TextFontStyle.textStyle14w500c0A2340,
