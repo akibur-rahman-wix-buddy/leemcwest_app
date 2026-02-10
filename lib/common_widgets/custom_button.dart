@@ -6,7 +6,7 @@ import '../assets_helper/app_fonts.dart';
 
 Widget CustomButton({
   required String name,
-  required VoidCallback onCallBack,
+  required void Function() onCallBack,
   double? height,
   double? minWidth,
   double? borderRadius,
