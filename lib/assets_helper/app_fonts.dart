@@ -106,6 +106,11 @@ class TextFontStyle {
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
   );
+  static var textStyle16w600c6A7282 = GoogleFonts.inter(
+    color: AppColors.c6A7282,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
 
   static var textStyle16w400c6A7282 = GoogleFonts.inter(
     color: AppColors.c6A7282,
