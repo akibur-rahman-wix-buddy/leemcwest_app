@@ -13,6 +13,7 @@ import 'package:leemcwest/features/profile/data/rx_get_faq/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_get_profile_data/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_post_delete_account/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_post_logout/rx.dart';
+import 'package:leemcwest/features/profile/data/rx_post_review_store/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_post_update_profile/rx.dart';
 import 'package:leemcwest/features/profile/model/faq_model.dart';
 import 'package:leemcwest/features/profile/model/profile_data_model.dart';
@@ -36,3 +37,4 @@ EditProfileRx editProfileRxObj = EditProfileRx(empty: {}, dataFetcher: BehaviorS
 GetFaqRx getFaqRxObj = GetFaqRx(empty: FaqModel(), dataFetcher: BehaviorSubject<FaqModel>());
 ResendOtpRx resendOtpRxObj = ResendOtpRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 DeleteAccountRx deleteAccountRxObj = DeleteAccountRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+PostStoreReviewRx postStoreReviewRxObj = PostStoreReviewRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
