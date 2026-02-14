@@ -58,7 +58,9 @@ class ThankYouWidget extends StatelessWidget {
               UIHelper.verticalSpace(16.h),
               Text(
                 message,
-                style: TextFontStyle.headlinePoppins60016,
+                style: TextFontStyle.headlinePoppins60016.copyWith(
+                  color: AppColors.c020617,
+                ),
                 textAlign: TextAlign.center,
               ),
               UIHelper.verticalSpace(16.h),
@@ -85,29 +87,29 @@ class ThankYouWidget extends StatelessWidget {
               Text(
                 'Spread the word by rating us on PayStcre',
                 style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                  color: AppColors.c6A7282,
+                  color: AppColors.c020617,
                 ),
                 textAlign: TextAlign.center,
               ),
-              UIHelper.verticalSpace(20.h),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryColor2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.r),
-                    ),
-                    padding: EdgeInsets.symmetric(vertical: 14.h),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(
-                    'Close',
-                    style: TextFontStyle.textStyle16w600cFFFFFF,
-                  ),
-                ),
-              ),
-              UIHelper.verticalSpace(12.h),
+              // UIHelper.verticalSpace(20.h),
+              // SizedBox(
+              //   width: double.infinity,
+              //   child: ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //       backgroundColor: AppColors.primaryColor2,
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(12.r),
+              //       ),
+              //       padding: EdgeInsets.symmetric(vertical: 14.h),
+              //     ),
+              //     onPressed: () => Navigator.pop(context),
+              //     child: Text(
+              //       'Close',
+              //       style: TextFontStyle.textStyle16w600cFFFFFF,
+              //     ),
+              //   ),
+              // ),
+              // UIHelper.verticalSpace(12.h),
             ],
           ),
         ),

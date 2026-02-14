@@ -58,7 +58,7 @@ class Data {
 
 class DataPrivacy {
     String? downloadMyDataUrl;
-    String? privacyPolicyUrl;
+    PrivacyPolicyUrl? privacyPolicyUrl;
 
     DataPrivacy({
         this.downloadMyDataUrl,
@@ -71,12 +71,48 @@ class DataPrivacy {
 
     factory DataPrivacy.fromJson(Map<String, dynamic> json) => DataPrivacy(
         downloadMyDataUrl: json["download_my_data_url"],
-        privacyPolicyUrl: json["privacy_policy_url"],
+        privacyPolicyUrl: json["privacy_policy_url"] == null ? null : PrivacyPolicyUrl.fromJson(json["privacy_policy_url"]),
     );
 
     Map<String, dynamic> toJson() => {
         "download_my_data_url": downloadMyDataUrl,
-        "privacy_policy_url": privacyPolicyUrl,
+        "privacy_policy_url": privacyPolicyUrl?.toJson(),
+    };
+}
+
+class PrivacyPolicyUrl {
+    int? id;
+    String? pageTitle;
+    String? pageSlug;
+    String? pageContent;
+    String? status;
+
+    PrivacyPolicyUrl({
+        this.id,
+        this.pageTitle,
+        this.pageSlug,
+        this.pageContent,
+        this.status,
+    });
+
+    factory PrivacyPolicyUrl.fromRawJson(String str) => PrivacyPolicyUrl.fromJson(json.decode(str));
+
+    String toRawJson() => json.encode(toJson());
+
+    factory PrivacyPolicyUrl.fromJson(Map<String, dynamic> json) => PrivacyPolicyUrl(
+        id: json["id"],
+        pageTitle: json["page_title"],
+        pageSlug: json["page_slug"],
+        pageContent: json["page_content"],
+        status: json["status"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "page_title": pageTitle,
+        "page_slug": pageSlug,
+        "page_content": pageContent,
+        "status": status,
     };
 }
 
@@ -152,7 +188,6 @@ class SubscriptionStatus {
         nextBillingDate: json["next_billing_date"],
         isActive: json["is_active"],
     );
-
 
     Map<String, dynamic> toJson() => {
         "current_plan": currentPlan,

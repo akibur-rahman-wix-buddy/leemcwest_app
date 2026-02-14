@@ -49,4 +49,5 @@ final class Endpoints {
   static String editProfile() => "/api/profile/details";
   static String getFaq() => "/api/faq";
   static String deleteAccount() => "/api/profile/delete-account";
+  static String reviewStore() => "/api/reviews-store";
 }
