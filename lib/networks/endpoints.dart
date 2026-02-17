@@ -50,4 +50,6 @@ final class Endpoints {
   static String getFaq() => "/api/faq";
   static String deleteAccount() => "/api/profile/delete-account";
   static String reviewStore() => "/api/reviews-store";
+  static String notificationSettingsUpdate() => "/api/notification-settings-update";
+  static String getNotificationSettings() => "/api/notification-settings-show";
 }
