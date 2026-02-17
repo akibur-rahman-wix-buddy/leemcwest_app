@@ -37,6 +37,7 @@ final class Endpoints {
 
   static String featureSuggestion() => "/api/support/feature-suggestion";
   static String bugReport() => "/api/support/bug-report";
+  static String socialLogin() => "/api/social/login";
  
   
 

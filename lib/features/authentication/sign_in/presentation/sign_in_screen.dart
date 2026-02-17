@@ -9,6 +9,7 @@ import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_textfeild.dart';
 import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
+import 'package:leemcwest/helpers/social_login_helper.dart';
 import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
@@ -22,10 +23,12 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   final emailController = TextEditingController();
+
   final passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
+  bool isLoadingSocial = false;
 
   Future<void> submitForm() async {
     setState(() {
@@ -39,15 +42,13 @@ class _SignInScreenState extends State<SignInScreen> {
         );
 
         if (success == true) {
-           NavigationService.navigateTo(Routes.earTraining);
+          NavigationService.navigateTo(Routes.earTraining);
         } else {
           ToastUtil.showShortToast("Invalid Credentials");
         }
       }
     } catch (e) {
       ToastUtil.showShortToast(e.toString());
-
-      
     } finally {
       setState(() {
         isLoading = false;
@@ -110,7 +111,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   borderRadius: 8.r,
                   hintText: 'Enter your password',
                   isPassword: true,
-                  
                 ),
                 UIHelper.verticalSpace(12.h),
                 Row(
@@ -132,65 +132,95 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 UIHelper.verticalSpace(24.h),
                 isLoading
-                ?
-                 const Center(
-                  child: SpinKitCircle(
-                    color: AppColors.primaryColor2,
-                  ),
-                )
-                :
-                CustomButton(
-                  name: 'Login',
-                  onCallBack: () {
-                    submitForm();
-                  },
-                  context: context,
-                ),
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.primaryColor2,
+                        ),
+                      )
+                    : CustomButton(
+                        name: 'Login',
+                        onCallBack: () {
+                          submitForm();
+                        },
+                        context: context,
+                      ),
                 UIHelper.verticalSpace(24.h),
                 CustomAlternativeWidget(
                   text: 'Or continue with',
                 ),
                 UIHelper.verticalSpace(24.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        AppImages.google,
-                        width: 48.w,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: isLoadingSocial
+                          ? null
+                          : () async {
+                              setState(() {
+                                isLoadingSocial = true;
+                              });
+
+                              var google = SocialLoginHelper.instance;
+                              bool value =
+                                  await google.signInWithGoogle(context);
+
+                              setState(() {
+                                isLoadingSocial = false;
+                              });
+
+                              if (value) {
+                                ToastUtil.showShortToast(
+                                    "Social Log in Success");
+                                NavigationService.navigateTo(
+                                    Routes.earTraining);
+                              }
+                            },
+                      child: isLoadingSocial
+                          ? SizedBox(
+                              width: 48.w,
+                              height: 48.w,
+                              child:  const SpinKitCircle(
+                                color: AppColors.primaryColor2,
+                              ),
+                            )
+                          : Image.asset(
+                              AppImages.google,
+                              width: 48.w,
+                            ),
+                    ),
+                    UIHelper.horizontalSpace(24.w),
+                    Image.asset(
+                      AppImages.apple,
+                      width: 48.w,
+                    ),
+                  ],
+                ),
+                UIHelper.verticalSpace(24.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Don’t have an account?',
+                      style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                        color: AppColors.c99A1AF,
                       ),
-                      UIHelper.horizontalSpace(24.w),
-                      Image.asset(
-                        AppImages.apple,
-                        width: 48.w,
-                      ),
-                    ],
-                  ),
-                  UIHelper.verticalSpace(24.h),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Don’t have an account?',
+                    ),
+                    UIHelper.horizontalSpace(4.w),
+                    GestureDetector(
+                      onTap: () {
+                        NavigationService.navigateTo(Routes.signUp);
+                      },
+                      child: Text(
+                        'Sign up',
                         style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                          color: AppColors.c99A1AF,
+                          color: AppColors.onboardingButtonColor,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                      UIHelper.horizontalSpace(4.w),
-                      GestureDetector(
-                        onTap: () {
-                          NavigationService.navigateTo(Routes.signUp);
-                        },
-                        child: Text(
-                          'Sign up',
-                          style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                            color: AppColors.onboardingButtonColor,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  UIHelper.verticalSpace(24.h),
+                    ),
+                  ],
+                ),
+                UIHelper.verticalSpace(24.h),
               ],
             ),
           ),

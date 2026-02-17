@@ -5,10 +5,12 @@ import 'package:leemcwest/features/authentication/data/rx_post_login/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_resend_otp/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_reset_password_otp/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_sign_up/rx.dart';
+import 'package:leemcwest/features/authentication/data/rx_post_social_login/rx.dart';
 import 'package:leemcwest/features/authentication/data/rx_post_verify_email/rx.dart';
 import 'package:leemcwest/features/authentication/model/login_model.dart';
 import 'package:leemcwest/features/authentication/model/otp_pass_model.dart';
 import 'package:leemcwest/features/authentication/model/otp_verify_model.dart';
+import 'package:leemcwest/features/authentication/model/social_login_model.dart';
 import 'package:leemcwest/features/profile/data/rx_get_faq/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_get_notification_settings/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_get_profile_data/rx.dart';
@@ -43,3 +45,4 @@ DeleteAccountRx deleteAccountRxObj = DeleteAccountRx(empty: {}, dataFetcher: Beh
 PostStoreReviewRx postStoreReviewRxObj = PostStoreReviewRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 UpdateNotificationRx updateNotificationRxObj = UpdateNotificationRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 GetNotificationSettingsRx getNotificationSettingsRxObj = GetNotificationSettingsRx(empty: NotificationSettingsModel(), dataFetcher: BehaviorSubject<NotificationSettingsModel>());
+SocialLoginRX socialLoginRXObj = SocialLoginRX(empty: SocialLoginModel(), dataFetcher: BehaviorSubject<SocialLoginModel>());
