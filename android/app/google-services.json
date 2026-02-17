@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "412757137282",
+    "project_id": "numonix-bcf6e",
+    "storage_bucket": "numonix-bcf6e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412757137282:android:22fcc0a57ed5487d3da19b",
+        "android_client_info": {
+          "package_name": "com.numonix.numonix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd0-oVXFb7Ujwy7wubBa_ucmJ0oUE-18M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

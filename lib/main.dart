@@ -15,9 +15,14 @@ import 'helpers/register_provider.dart';
 import 'loading_screen.dart';
 import 'networks/dio/dio.dart';
 import 'networks/internet_checker/internet_checker_controller.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   Get.put(InternetController(), permanent: true);
   await GetStorage.init();
   diSetup();

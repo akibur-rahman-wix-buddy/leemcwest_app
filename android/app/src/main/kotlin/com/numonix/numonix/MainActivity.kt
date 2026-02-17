@@ -1,4 +1,4 @@
-package com.example.leemcwest
+package com.numonix.numonix
 
 import io.flutter.embedding.android.FlutterActivity
 
