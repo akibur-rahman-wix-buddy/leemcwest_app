@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
-import 'package:leemcwest/features/lesson/widget/quiz_option.dart';
+import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class QuizContainer extends StatelessWidget {
@@ -12,6 +12,7 @@ class QuizContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSelected = false;
     return Container(
       padding: EdgeInsets.all(16.sp),
       decoration: BoxDecoration(
@@ -29,13 +30,39 @@ class QuizContainer extends StatelessWidget {
             ),
           ),
           UIHelper.verticalSpace(20.h),
-          const QuizOption(),
-          UIHelper.verticalSpace(16.h),
-          const QuizOption(),
-          UIHelper.verticalSpace(16.h),
-          const QuizOption(),
-          UIHelper.verticalSpace(16.h),
-          const QuizOption(),
+          GestureDetector(
+      onTap: () {
+
+      },
+      child: Container(
+        padding: EdgeInsets.all(20.sp),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.sp),
+          color: AppColors.cF3F4F6,
+        ),
+        child: Row(
+          children: [
+            isSelected
+                ? Image.asset(
+                    AppImages.selected,
+                    width: 20.w,
+                  )
+                : Image.asset(
+                    AppImages.unselected,
+                    width: 20.w,
+                  ),
+            UIHelper.horizontalSpace(8.w),
+            Text(
+              'Retry Quiz',
+              style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                color: AppColors.c061426,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+         
         ],
       ),
     );
