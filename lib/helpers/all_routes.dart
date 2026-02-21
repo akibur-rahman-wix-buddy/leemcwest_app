@@ -7,6 +7,7 @@ import 'package:leemcwest/features/authentication/password/presentation/password
 import 'package:leemcwest/features/authentication/sign_in/presentation/sign_in_screen.dart';
 import 'package:leemcwest/features/authentication/sign_up/presentation/sign_up_screen.dart';
 import 'package:leemcwest/features/authentication/verification/presentation/otp_verification_screen.dart';
+import 'package:leemcwest/features/composition_builder/presentation/composition_builder_screen.dart';
 import 'package:leemcwest/features/home/presentation/advanced_insight_screen.dart';
 import 'package:leemcwest/features/home/presentation/beginer_ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/core_theory_screen.dart';
@@ -82,6 +83,7 @@ final class Routes {
   static const String nextLevelQuiz = '/nextLevelQuiz';
   static const String resetPasswordOtp = '/resetPasswordOtp';
   static const String changePassword = '/changePassword';
+  static const String compositionBuilderScreen = '/CompositionBuilderScreen';
   
 }
 
@@ -411,6 +413,15 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const ChangePasswordScreen());
+        }
+      
+      case Routes.compositionBuilderScreen:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const CompositionBuilderScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(
+              builder: (context) => const CompositionBuilderScreen());
         }
       
 

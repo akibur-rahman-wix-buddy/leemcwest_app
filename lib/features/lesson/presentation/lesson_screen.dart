@@ -9,6 +9,9 @@ import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class LessonScreen extends StatefulWidget {
+
+
+  
   const LessonScreen({super.key});
 
   @override
