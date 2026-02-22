@@ -30,6 +30,7 @@ class _EarTrainingScreenState extends State<EarTrainingScreen>
       vsync: this,
       duration: const Duration(seconds: 10),
     );
+    
 
     _animations = List.generate(items.length, (index) {
       final start = 0.15 + (index * 0.06);

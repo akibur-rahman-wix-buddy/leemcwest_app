@@ -170,13 +170,26 @@ final class RouteGenerator {
           return CupertinoPageRoute(
               builder: (context) => const FunctionalEarTrainingScreen());
         }
+
+
+        //  case Routes.partsDetailsScreen:
+        // Map args = settings.arguments as Map;
+        // return Platform.isAndroid
+        //     ? _FadedTransitionRoute(
+        //         widget: PartsDetailsScreen(id: args['id']), settings: settings)
+        //     : CupertinoPageRoute(
+        //         builder: (context) => PartsDetailsScreen(id: args['id']));
+
+
+
       case Routes.lessonDescription:
+      Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
-              widget: const LessonDescriptionScreen(), settings: settings);
+              widget:  LessonDescriptionScreen(id: args['id']), settings: settings);
         } else {
           return CupertinoPageRoute(
-              builder: (context) => const LessonDescriptionScreen());
+              builder: (context) =>  LessonDescriptionScreen(id: args['id']));
         }
       case Routes.quiz:
         if (Platform.isAndroid) {
@@ -343,14 +356,14 @@ final class RouteGenerator {
               builder: (context) => const CoreTheoryScreen());
         }
 
-      case Routes.lessonFade:
-        if (Platform.isAndroid) {
-          return FadedTransitionRoute(
-              widget: const LessonFadeScreen(), settings: settings);
-        } else {
-          return CupertinoPageRoute(
-              builder: (context) => const LessonFadeScreen());
-        }
+      // case Routes.lessonFade:
+      //   if (Platform.isAndroid) {
+      //     return FadedTransitionRoute(
+      //         widget: const LessonFadeScreen(), settings: settings);
+      //   } else {
+      //     return CupertinoPageRoute(
+      //         builder: (context) => const LessonFadeScreen());
+      //   }
 
       case Routes.beginerEarTraining:
         if (Platform.isAndroid) {

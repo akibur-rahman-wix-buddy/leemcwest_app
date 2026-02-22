@@ -42,7 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
         );
 
         if (success == true) {
-          NavigationService.navigateTo(Routes.earTraining);
+          NavigationService.navigateTo(Routes.navigation);
         } else {
           ToastUtil.showShortToast("Invalid Credentials");
         }
@@ -179,7 +179,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ? SizedBox(
                               width: 48.w,
                               height: 48.w,
-                              child:  const SpinKitCircle(
+                              child: const SpinKitCircle(
                                 color: AppColors.primaryColor2,
                               ),
                             )

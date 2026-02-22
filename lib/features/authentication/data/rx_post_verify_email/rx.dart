@@ -38,16 +38,16 @@ final class VerifyEmailRX extends RxResponseInt<OtpVerifyModel> {
       return false; // Return false on error
     }
   }
-  
+
   @override
   handleSuccessWithReturn(OtpVerifyModel data) {
     ToastUtil.showShortToast("Account Successfully Created.");
-    appData.write(kKeyAccessToken, data.token);
-        String token = appData.read(kKeyAccessToken);
+    appData.write(kKeyAccessToken, data.data?.token);
+    String token = appData.read(kKeyAccessToken);
     DioSingleton.instance.update(token);
-     dataFetcher.sink.add(data);
+    dataFetcher.sink.add(data);
   }
-  
+
   @override
   handleErrorWithReturn(dynamic error) {
     if (error is DioException) {

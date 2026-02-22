@@ -19,18 +19,16 @@ class BulletTextWidget extends StatelessWidget {
         const Text(
           "•  ",
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 18,
             height: 1.4,
           ),
         ),
         Expanded(
-          child: Text(
-            text,
-            style: TextFontStyle.headlineCinzel24w500cFFFFFF.copyWith(
-              color: AppColors.c000000,
-              fontSize: 16.sp,
-            )
-          ),
+          child: Text(text,
+              style: TextFontStyle.headlineCinzel24w500cFFFFFF.copyWith(
+                color: AppColors.c000000,
+                fontSize: 16.sp,
+              )),
         ),
       ],
     );

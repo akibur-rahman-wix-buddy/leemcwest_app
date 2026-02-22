@@ -11,6 +11,10 @@ import 'package:leemcwest/features/authentication/model/login_model.dart';
 import 'package:leemcwest/features/authentication/model/otp_pass_model.dart';
 import 'package:leemcwest/features/authentication/model/otp_verify_model.dart';
 import 'package:leemcwest/features/authentication/model/social_login_model.dart';
+import 'package:leemcwest/features/lesson/data/rx_get_lesson/rx.dart';
+import 'package:leemcwest/features/lesson/data/rx_get_lesson_show/rx.dart';
+import 'package:leemcwest/features/lesson/model/get_lesson_model.dart';
+import 'package:leemcwest/features/lesson/model/get_lesson_show_model.dart';
 import 'package:leemcwest/features/profile/data/rx_get_faq/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_get_notification_settings/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_get_profile_data/rx.dart';
@@ -26,23 +30,57 @@ import 'package:leemcwest/features/support/data/rx_post_bug_report/rx.dart';
 import 'package:leemcwest/features/support/data/rx_post_contact_support/rx.dart';
 import 'package:leemcwest/features/support/data/rx_post_feature_suggestion/rx.dart';
 import 'package:rxdart/subjects.dart';
+
 SignUpRx signUpRxObj = SignUpRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-VerifyEmailRX verifyEmailRxObj = VerifyEmailRX(empty: OtpVerifyModel(), dataFetcher: BehaviorSubject<OtpVerifyModel>());
-LoginRx loginRxObj = LoginRx(empty: LoginModel(), dataFetcher: BehaviorSubject<LoginModel>());
-ForgotPassRx forgotPassRxObj = ForgotPassRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-ResetPassOtpRx resetPassOtpRxObj = ResetPassOtpRx(empty: OtpPassModel(), dataFetcher: BehaviorSubject<OtpPassModel>());
-PostResetPasswordRx postResetPasswordRxObj = PostResetPasswordRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-PostChangePasswordRx postChangePasswordRxObj = PostChangePasswordRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+
+VerifyEmailRX verifyEmailRxObj = VerifyEmailRX(
+    empty: OtpVerifyModel(), dataFetcher: BehaviorSubject<OtpVerifyModel>());
+LoginRx loginRxObj =
+    LoginRx(empty: LoginModel(), dataFetcher: BehaviorSubject<LoginModel>());
+ForgotPassRx forgotPassRxObj =
+    ForgotPassRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+ResetPassOtpRx resetPassOtpRxObj = ResetPassOtpRx(
+    empty: OtpPassModel(), dataFetcher: BehaviorSubject<OtpPassModel>());
+PostResetPasswordRx postResetPasswordRxObj =
+    PostResetPasswordRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+PostChangePasswordRx postChangePasswordRxObj =
+    PostChangePasswordRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
 LogoutRx logoutRxObj = LogoutRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-GetOwnProfileRx getOwnProfileRxObj = GetOwnProfileRx(empty: ProfileDataModel(), dataFetcher: BehaviorSubject<ProfileDataModel>());
-PostContactSupportRx postContactSupportRxObj = PostContactSupportRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-PostFeatureSuggestionRx postFeatureSuggestionRxObj = PostFeatureSuggestionRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-PostBugReportRx postBugReportRxObj = PostBugReportRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-EditProfileRx editProfileRxObj = EditProfileRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-GetFaqRx getFaqRxObj = GetFaqRx(empty: FaqModel(), dataFetcher: BehaviorSubject<FaqModel>());
-ResendOtpRx resendOtpRxObj = ResendOtpRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-DeleteAccountRx deleteAccountRxObj = DeleteAccountRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-PostStoreReviewRx postStoreReviewRxObj = PostStoreReviewRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-UpdateNotificationRx updateNotificationRxObj = UpdateNotificationRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
-GetNotificationSettingsRx getNotificationSettingsRxObj = GetNotificationSettingsRx(empty: NotificationSettingsModel(), dataFetcher: BehaviorSubject<NotificationSettingsModel>());
-SocialLoginRX socialLoginRXObj = SocialLoginRX(empty: SocialLoginModel(), dataFetcher: BehaviorSubject<SocialLoginModel>());
+GetOwnProfileRx getOwnProfileRxObj = GetOwnProfileRx(
+    empty: ProfileDataModel(),
+    dataFetcher: BehaviorSubject<ProfileDataModel>());
+PostContactSupportRx postContactSupportRxObj =
+    PostContactSupportRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+PostFeatureSuggestionRx postFeatureSuggestionRxObj =
+    PostFeatureSuggestionRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+PostBugReportRx postBugReportRxObj =
+    PostBugReportRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+EditProfileRx editProfileRxObj =
+    EditProfileRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+GetFaqRx getFaqRxObj =
+    GetFaqRx(empty: FaqModel(), dataFetcher: BehaviorSubject<FaqModel>());
+ResendOtpRx resendOtpRxObj =
+    ResendOtpRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+DeleteAccountRx deleteAccountRxObj =
+    DeleteAccountRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+PostStoreReviewRx postStoreReviewRxObj =
+    PostStoreReviewRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+UpdateNotificationRx updateNotificationRxObj =
+    UpdateNotificationRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+GetNotificationSettingsRx getNotificationSettingsRxObj =
+    GetNotificationSettingsRx(
+        empty: NotificationSettingsModel(),
+        dataFetcher: BehaviorSubject<NotificationSettingsModel>());
+SocialLoginRX socialLoginRXObj = SocialLoginRX(
+    empty: SocialLoginModel(),
+    dataFetcher: BehaviorSubject<SocialLoginModel>());
+
+GetLessonRX getLessonRXObj = GetLessonRX(
+  empty: GetLessonResponseModel(),
+  dataFetcher: BehaviorSubject<GetLessonResponseModel>(),
+);
+
+GetLessonShowRX getLessonShowRXObj = GetLessonShowRX(
+  empty: GetLessonShowResponseModel(),
+  dataFetcher: BehaviorSubject<GetLessonShowResponseModel>(),
+);
