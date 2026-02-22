@@ -23,24 +23,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final List<Map<String, dynamic>> _onboardingData = [
     {
       "image": AppImages.splashLogo,
-      "title": "Learn Music Theory".tr,
+      "title": "Harmony In Motion ",
       "subtitle":
-          "Master functional harmonic theory with interactive lessons designed for musicians of all levels."
-              .tr,
+          "Study the core principles of Functional Numeric Harmony with guided lessons, and see how harmony is organised and understood.",
     },
     {
       "image": AppImages.splashLogo,
-      "title": "Practice & Build".tr,
+      "title": "Apply The System ",
       "subtitle":
-          "Create your own functional progressions with the harmonic composition builder"
-              .tr,
+          "Apply what you learn through building and listening, and hear how harmony moves and responds.",
     },
     {
       "image": AppImages.splashLogo,
-      "title": "Track Progress".tr,
+      "title": "Track Progress ",
       "subtitle":
-          "Track your progress of completed lessons and quizzes, and watch your skills grow with FHT."
-              .tr,
+          "Follow your progress and check your understanding using short quizzes and listening exercises to confirm clarity. ",
     },
   ];
 
@@ -119,7 +116,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           Text(
                             _onboardingData[index]['title'],
                             textAlign: TextAlign.center,
-                            style: TextFontStyle.headlineCinzel24w700cFFFFFF.copyWith(
+                            style: TextFontStyle.headlineCinzel24w700cFFFFFF
+                                .copyWith(
                               fontSize: 24.sp,
                               color: AppColors.onboardingButtonColor,
                             ),
@@ -167,35 +165,37 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               // >>>>>>>>>>>>>>> BUTTON >>>>>>>>>>>>>>>
               UIHelper.verticalSpace(40.h),
               Row(
-                mainAxisAlignment: _currentPage >= _onboardingData.length -2 ? MainAxisAlignment.spaceBetween : MainAxisAlignment.end,
+                mainAxisAlignment: _currentPage >= _onboardingData.length - 2
+                    ? MainAxisAlignment.spaceBetween
+                    : MainAxisAlignment.end,
                 children: [
-                  if(_currentPage >= _onboardingData.length - 2)
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: GestureDetector(
-                      onTap: () {
-                        if(_currentPage >= _onboardingData.length -2)
-                        {
-                          _pageController.previousPage(
-                            duration: const Duration(microseconds: 300),
-                            curve: Curves.easeInOut
-                          );
-                        }
-                      },
-                      child: Text(
-                        'Back'.tr,
-                        style: TextFontStyle.headlinePoppins60014.copyWith(
-                          color: AppColors.onboardingButtonColor,
+                  if (_currentPage >= _onboardingData.length - 2)
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: GestureDetector(
+                        onTap: () {
+                          if (_currentPage >= _onboardingData.length - 2) {
+                            _pageController.previousPage(
+                                duration: const Duration(microseconds: 300),
+                                curve: Curves.easeInOut);
+                          }
+                        },
+                        child: Text(
+                          'Back'.tr,
+                          style: TextFontStyle.headlinePoppins60014.copyWith(
+                            color: AppColors.onboardingButtonColor,
+                          ),
                         ),
                       ),
                     ),
-                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: OnboardingButton(
-                        text: _currentPage < _onboardingData.length - 1 ? 'Continue' : 'Get Started',
+                        text: _currentPage < _onboardingData.length - 1
+                            ? 'Continue'
+                            : 'Get Started',
                         onTap: () {
                           if (_currentPage < _onboardingData.length - 1) {
                             _pageController.nextPage(
@@ -203,7 +203,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               curve: Curves.easeInOut,
                             );
                           } else {
-                             NavigationService.navigateTo(Routes.signUp);
+                            NavigationService.navigateTo(Routes.signUp);
                           }
                         },
                       ),
