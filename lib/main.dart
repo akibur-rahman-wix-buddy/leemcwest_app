@@ -22,7 +22,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   Get.put(InternetController(), permanent: true);
   await GetStorage.init();
   diSetup();
@@ -42,10 +42,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     rotation();
-    theme: ThemeData(
-                primarySwatch: CustomTheme.kToDark,
-                useMaterial3: false,
-                scaffoldBackgroundColor: AppColors.cFFFFFF);
+    theme:
+    ThemeData(
+        primarySwatch: CustomTheme.kToDark,
+        useMaterial3: false,
+        scaffoldBackgroundColor: AppColors.cFFFFFF);
     setInitValue();
     return PopScope(
       canPop: false,
@@ -68,7 +69,6 @@ class UtillScreenMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -86,8 +86,6 @@ class UtillScreenMobile extends StatelessWidget {
           onGenerateRoute: RouteGenerator.generateRoute,
           home: const Loading(),
           // home: const AppOnboardingSeventeenScreen(),
-
-
         );
       },
     );

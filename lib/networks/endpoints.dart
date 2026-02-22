@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 // const String url = String.fromEnvironment("BASE_URL");
-const String url = "https://leemcwest.thewarriors.team";
+const String url = "https://leemcwest.thewarriors.team/api";
 const String imageUrl = "$url/";
 
 final class NetworkConstants {
@@ -21,36 +21,34 @@ final class Endpoints {
   //backend_url
 
   // Authentication
-  static String signUp() => "/api/register";
-  static String login() => "/api/login";
-  static String verifyEmail() =>"/api/email/verify";
-  static String forgotPassEndpoint() =>"/api/password/forgot";
-  static String resetPassOtp() =>"/api/password/forgot/verify";
-  static String logOut() => "/api/logout";
-  static String sendOtpEndPoint() => "/api/send-register-otp";
-  static String resendOtpEndPoint() => "/api/email/verify/resend";
-  static String verifyOtpEndPoint() => "/api/verify-register-otp";
-  static String resendPassOtpEndPoint() => "/api/resend-otp";
-  static String sendOtpPassEndPoint() => "/api/send-otp";
-  static String verifyOtpPassEndPoint() => "/api/verify-otp";
-  static String createPassWordEndPoint() => "/api/password/reset";
+  static String signUp() => "/register";
+  static String login() => "/login";
+  static String verifyEmail() => "/email/verify";
+  static String forgotPassEndpoint() => "/password/forgot";
+  static String resetPassOtp() => "/password/forgot/verify";
+  static String logOut() => "/logout";
+  static String sendOtpEndPoint() => "/send-register-otp";
+  static String resendOtpEndPoint() => "/email/verify/resend";
+  static String verifyOtpEndPoint() => "/verify-register-otp";
+  static String resendPassOtpEndPoint() => "/resend-otp";
+  static String sendOtpPassEndPoint() => "/send-otp";
+  static String verifyOtpPassEndPoint() => "/verify-otp";
+  static String createPassWordEndPoint() => "/password/reset";
 
-  static String featureSuggestion() => "/api/support/feature-suggestion";
-  static String bugReport() => "/api/support/bug-report";
-  static String socialLogin() => "/api/social/login";
- 
-  
+  static String featureSuggestion() => "/support/feature-suggestion";
+  static String bugReport() => "/support/bug-report";
+  static String socialLogin() => "/social/login";
 
-
-  
   // Profile
-  static String getProfile() => "/api/profile/manage-account";
-  static String changePassWordEndPoint() => "/api/password/change";
-  static String contactSupport() => "/api/support/contact";
-  static String editProfile() => "/api/profile/details";
-  static String getFaq() => "/api/faq";
-  static String deleteAccount() => "/api/profile/delete-account";
-  static String reviewStore() => "/api/reviews-store";
-  static String notificationSettingsUpdate() => "/api/notification-settings-update";
-  static String getNotificationSettings() => "/api/notification-settings-show";
+  static String getProfile() => "/profile/manage-account";
+  static String changePassWordEndPoint() => "/password/change";
+  static String contactSupport() => "/support/contact";
+  static String editProfile() => "/profile/details";
+  static String getFaq() => "/faq";
+  static String deleteAccount() => "/profile/delete-account";
+  static String reviewStore() => "/reviews-store";
+  static String notificationSettingsUpdate() => "/notification-settings-update";
+  static String getNotificationSettings() => "/notification-settings-show";
+  static String getLesson() => "/lessons";
+  static String getLessonShow({ required int lessonId}) => "/lessons/show/$lessonId";
 }
