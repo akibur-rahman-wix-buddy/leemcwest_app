@@ -8,13 +8,15 @@ import 'package:leemcwest/features/progress/presentation/progress_screen.dart';
 
 
 class NavigationsBarScreen extends StatefulWidget {
-  const NavigationsBarScreen({super.key});
+  final int? pageNum;
+  const NavigationsBarScreen({super.key, this.pageNum});
 
   @override
   State<NavigationsBarScreen> createState() => _NavigationsBarScreenState();
 }
 
 class _NavigationsBarScreenState extends State<NavigationsBarScreen> {
+  
   int index = 0; // Corrected variable name
   final List _pageList = [
     const HomeScreen(),
@@ -22,6 +24,11 @@ class _NavigationsBarScreenState extends State<NavigationsBarScreen> {
     const ProgressScreen(),
     const ProfileScreen(),
   ];
+  @override
+  void initState() {
+    super.initState();
+    index = widget.pageNum ?? 0;
+  }
 
   @override
   Widget build(BuildContext context) {

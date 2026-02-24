@@ -38,8 +38,6 @@ import 'package:leemcwest/features/support/presentation/support_screen.dart';
 import 'package:leemcwest/features/support/presentation/terms_use_screen.dart';
 import 'package:leemcwest/navigation_screen.dart';
 
-
-
 final class Routes {
   static final Routes _routes = Routes._internal();
 
@@ -84,7 +82,6 @@ final class Routes {
   static const String resetPasswordOtp = '/resetPasswordOtp';
   static const String changePassword = '/changePassword';
   static const String compositionBuilderScreen = '/CompositionBuilderScreen';
-  
 }
 
 final class RouteGenerator {
@@ -101,30 +98,29 @@ final class RouteGenerator {
           return FadedTransitionRoute(
               widget: const SignUpScreen(), settings: settings);
         } else {
-          return CupertinoPageRoute(
-              builder: (context) => const SignUpScreen());
+          return CupertinoPageRoute(builder: (context) => const SignUpScreen());
         }
       case Routes.signIn:
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
               widget: const SignInScreen(), settings: settings);
         } else {
-          return CupertinoPageRoute(
-              builder: (context) => const SignInScreen());
+          return CupertinoPageRoute(builder: (context) => const SignInScreen());
         }
 
       case Routes.otpVerification:
-      Map args = settings.arguments as Map;
+        Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
               widget: OtpVerificationScreen(
                 email: args["email"],
-              ), settings: settings);
+              ),
+              settings: settings);
         } else {
           return CupertinoPageRoute(
-              builder: (context) =>  OtpVerificationScreen(
-                email: args["email"], 
-              ));
+              builder: (context) => OtpVerificationScreen(
+                    email: args["email"],
+                  ));
         }
 
       case Routes.forgotPassword:
@@ -155,13 +151,24 @@ final class RouteGenerator {
         }
 
       case Routes.navigation:
-        if (Platform.isAndroid) {
-          return FadedTransitionRoute(
-              widget: const NavigationsBarScreen(), settings: settings);
-        } else {
-          return CupertinoPageRoute(
-              builder: (context) => const NavigationsBarScreen());
-        }
+        final args = settings.arguments as Map<String, dynamic>?;
+
+        final pageNum = args?['pageNum'] as int? ?? 0;
+        return Platform.isAndroid
+            ? FadedTransitionRoute(
+                widget: NavigationsBarScreen(pageNum: pageNum),
+                settings: settings)
+            : CupertinoPageRoute(
+                builder: (context) => NavigationsBarScreen(pageNum: pageNum));
+
+      // case Routes.navigation:
+      //   if (Platform.isAndroid) {
+      //     return FadedTransitionRoute(
+      //         widget: const NavigationsBarScreen(), settings: settings);
+      //   } else {
+      //     return CupertinoPageRoute(
+      //         builder: (context) => const NavigationsBarScreen());
+      //   }
       case Routes.functionalEarTraining:
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
@@ -171,33 +178,30 @@ final class RouteGenerator {
               builder: (context) => const FunctionalEarTrainingScreen());
         }
 
-
-        //  case Routes.partsDetailsScreen:
-        // Map args = settings.arguments as Map;
-        // return Platform.isAndroid
-        //     ? _FadedTransitionRoute(
-        //         widget: PartsDetailsScreen(id: args['id']), settings: settings)
-        //     : CupertinoPageRoute(
-        //         builder: (context) => PartsDetailsScreen(id: args['id']));
-
-
+      //  case Routes.partsDetailsScreen:
+      // Map args = settings.arguments as Map;
+      // return Platform.isAndroid
+      //     ? _FadedTransitionRoute(
+      //         widget: PartsDetailsScreen(id: args['id']), settings: settings)
+      //     : CupertinoPageRoute(
+      //         builder: (context) => PartsDetailsScreen(id: args['id']));
 
       case Routes.lessonDescription:
-      Map args = settings.arguments as Map;
+        Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
-              widget:  LessonDescriptionScreen(id: args['id']), settings: settings);
+              widget: LessonDescriptionScreen(id: args['id']),
+              settings: settings);
         } else {
           return CupertinoPageRoute(
-              builder: (context) =>  LessonDescriptionScreen(id: args['id']));
+              builder: (context) => LessonDescriptionScreen(id: args['id']));
         }
       case Routes.quiz:
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
               widget: const QuizScreen(), settings: settings);
         } else {
-          return CupertinoPageRoute(
-              builder: (context) => const QuizScreen());
+          return CupertinoPageRoute(builder: (context) => const QuizScreen());
         }
       case Routes.savedWork:
         if (Platform.isAndroid) {
@@ -222,8 +226,7 @@ final class RouteGenerator {
           return FadedTransitionRoute(
               widget: const FaqScreen(), settings: settings);
         } else {
-          return CupertinoPageRoute(
-              builder: (context) => const FaqScreen());
+          return CupertinoPageRoute(builder: (context) => const FaqScreen());
         }
 
       case Routes.userGuide:
@@ -270,7 +273,7 @@ final class RouteGenerator {
           return CupertinoPageRoute(
               builder: (context) => const ManageAccountScreen());
         }
-      
+
       case Routes.support:
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
@@ -427,7 +430,7 @@ final class RouteGenerator {
           return CupertinoPageRoute(
               builder: (context) => const ChangePasswordScreen());
         }
-      
+
       case Routes.compositionBuilderScreen:
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
@@ -436,7 +439,6 @@ final class RouteGenerator {
           return CupertinoPageRoute(
               builder: (context) => const CompositionBuilderScreen());
         }
-      
 
       default:
         return null;

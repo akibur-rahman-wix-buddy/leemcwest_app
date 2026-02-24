@@ -82,6 +82,7 @@ class _LessonScreenState extends State<LessonScreen> {
                         itemBuilder: (context, index) {
                           final lesson = data!.lessons![index];
                           return Container(
+                            margin: EdgeInsets.only(bottom: 15.h),
                             padding: EdgeInsets.all(16.sp),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8.r),

@@ -75,6 +75,7 @@ class UtillScreenMobile extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return GetMaterialApp(
+          theme: ThemeData(scaffoldBackgroundColor: const Color(0xFFEEF3ED)),
           debugShowCheckedModeBanner: false,
           builder: (context, widget) {
             return MediaQuery(
