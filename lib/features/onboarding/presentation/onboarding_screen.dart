@@ -132,7 +132,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               fontWeight: FontWeight.w400,
                               color: AppColors.c99A1AF,
                             ),
-                            maxLines: 2,
                           ),
                         ],
                       ),

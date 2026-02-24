@@ -45,8 +45,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     imagePath: AppImages.homeBackOne,
                     btnText: 'Start Lesson',
                     onTap: () {
-                      NavigationService.navigateTo(
-                          Routes.compositionBuilderScreen);
+                      NavigationService.navigateToWithArgs(
+                        Routes.navigation,
+                        {'pageNum': 1},
+                      );
                     },
                   ),
                   UIHelper.verticalSpace(10.h),
@@ -67,6 +69,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'Pick up right where you left off and keep your flow strong.',
                     imagePath: AppImages.homeBackOne,
                     btnText: 'Start Lesson',
+                    onTap: () {
+                      NavigationService.navigateTo(
+                          Routes.compositionBuilderScreen);
+                    },
                   ),
                   UIHelper.verticalSpace(10.h),
                   MusicInfoContainer(

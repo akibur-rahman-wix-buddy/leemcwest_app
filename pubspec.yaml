@@ -82,6 +82,7 @@ dependencies:
   firebase_auth: ^5.7.0
   google_sign_in: ^6.2.1
   piano: ^1.0.4
+  just_audio: ^0.9.46
 
 dev_dependencies:
   flutter_test:
