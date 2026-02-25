@@ -7,8 +7,11 @@ import 'package:leemcwest/assets_helper/app_icons.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class LessonCompleteDialogue extends StatelessWidget {
+  final String text;
+  final VoidCallback nextlesson;
+  final VoidCallback startQuiz;
   const LessonCompleteDialogue({
-    super.key,
+    super.key, required this.text, required this.nextlesson, required this.startQuiz,
   });
 
   @override
@@ -24,7 +27,7 @@ class LessonCompleteDialogue extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "You've Completed Lesson 3!",
+              text,
               style: TextFontStyle.textStyle14w400c6A7282.copyWith(
                 fontSize: 18.sp,
                 fontWeight: FontWeight.w600,
@@ -39,49 +42,53 @@ class LessonCompleteDialogue extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             UIHelper.verticalSpace(24.h),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
-                color: AppColors.onboardingButtonColor,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Proceed to next lesson',
-                    style: TextFontStyle.headlinePoppins50014.copyWith(
-                      color: AppColors.cFFFFFF,
+            GestureDetector(onTap:nextlesson ,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  color: AppColors.onboardingButtonColor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Proceed to next lesson',
+                      style: TextFontStyle.headlinePoppins50014.copyWith(
+                        color: AppColors.cFFFFFF,
+                      ),
                     ),
-                  ),
-                  UIHelper.horizontalSpace(4.w),
-                  SvgPicture.asset(
-                    AppIcons.forwardArrow,
-                  ),
-                ],
+                    UIHelper.horizontalSpace(4.w),
+                    SvgPicture.asset(
+                      AppIcons.forwardArrow,
+                    ),
+                  ],
+                ),
               ),
             ),
             UIHelper.verticalSpace(12.h),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.r),
-                color: AppColors.c3DC699,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Start Quiz',
-                    style: TextFontStyle.headlinePoppins50014.copyWith(
-                      color: AppColors.cFFFFFF,
+            GestureDetector(onTap: startQuiz,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  color: AppColors.c3DC699,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Start Quiz',
+                      style: TextFontStyle.headlinePoppins50014.copyWith(
+                        color: AppColors.cFFFFFF,
+                      ),
                     ),
-                  ),
-                  UIHelper.horizontalSpace(4.w),
-                  SvgPicture.asset(
-                    AppIcons.forwardArrow,
-                  ),
-                ],
+                    UIHelper.horizontalSpace(4.w),
+                    SvgPicture.asset(
+                      AppIcons.forwardArrow,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
