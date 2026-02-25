@@ -12,8 +12,12 @@ import 'package:leemcwest/features/authentication/model/otp_pass_model.dart';
 import 'package:leemcwest/features/authentication/model/otp_verify_model.dart';
 import 'package:leemcwest/features/authentication/model/social_login_model.dart';
 import 'package:leemcwest/features/lesson/data/rx_get_lesson/rx.dart';
+import 'package:leemcwest/features/lesson/data/rx_get_lesson_quiz/rx.dart';
 import 'package:leemcwest/features/lesson/data/rx_get_lesson_show/rx.dart';
+import 'package:leemcwest/features/lesson/data/rx_post_lesson_completed/rx.dart';
+import 'package:leemcwest/features/lesson/data/rx_post_next_lesson/rx.dart';
 import 'package:leemcwest/features/lesson/model/get_lesson_model.dart';
+import 'package:leemcwest/features/lesson/model/get_lesson_quiz_model.dart';
 import 'package:leemcwest/features/lesson/model/get_lesson_show_model.dart';
 import 'package:leemcwest/features/profile/data/rx_get_faq/rx.dart';
 import 'package:leemcwest/features/profile/data/rx_get_notification_settings/rx.dart';
@@ -84,3 +88,14 @@ GetLessonShowRX getLessonShowRXObj = GetLessonShowRX(
   empty: GetLessonShowResponseModel(),
   dataFetcher: BehaviorSubject<GetLessonShowResponseModel>(),
 );
+
+GetLessonQuizRX getLessonQuizRXObj = GetLessonQuizRX(
+  empty: GetLessonQuizResponseModel(),
+  dataFetcher: BehaviorSubject<GetLessonQuizResponseModel>(),
+);
+
+LessonCompletedRx lessonCompletedRxObj =
+    LessonCompletedRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+
+NextLessonRx nextLessonRxObj =
+    NextLessonRx(empty: {}, dataFetcher: BehaviorSubject<Map>());

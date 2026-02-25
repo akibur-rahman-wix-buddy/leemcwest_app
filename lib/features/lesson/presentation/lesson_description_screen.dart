@@ -12,6 +12,7 @@ import 'package:leemcwest/features/lesson/widget/lesson_complete_dialogue.dart';
 import 'package:leemcwest/features/lesson/widget/network_image_widget.dart';
 import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
+import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
 
@@ -30,6 +31,96 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
   void initState() {
     super.initState();
     getLessonShowRXObj.getLessonShowRX(lessonId: widget.id);
+  }
+
+  bool isLoading = false;
+  bool isNext = false;
+
+  Future<void> lessonCompletedMethod() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+      await lessonCompletedRxObj
+          .lessonCompletedRx(lessonId: widget.id.toString())
+          .then((value) async {
+        if (value) {
+          setState(() {
+            isLoading = false;
+          });
+          ToastUtil.showShortToast('Mark as complete Lesson ${widget.id}');
+
+          // patientProfileShortInfoRXOObj.patientProfileShortInfoRX();
+        } else {
+          setState(() {
+            isLoading = false;
+          });
+        }
+      });
+    } catch (e) {
+      setState(() {
+        isLoading = false;
+      });
+      ToastUtil.showShortToast(e.toString());
+    }
+  }
+
+  Future<void> nextLessonMethod() async {
+    try {
+      setState(() {
+        isNext = true;
+      });
+      await nextLessonRxObj
+          .nextLessonRx(lessonId: widget.id.toString())
+          .then((value) async {
+        if (value) {
+          setState(() {
+            isNext = false;
+          });
+
+          if (value) {
+            final nextLesson =
+                nextLessonRxObj.getFileData.value?['data']?['next_lesson'];
+
+            // ✅ Check if next lesson is null
+            if (nextLesson == null) {
+              ToastUtil.showShortToast("Course completed");
+
+              // ✅ Go back
+              NavigationService.goBack;
+
+              return;
+            }
+
+            // ✅ If exists, navigate
+            final nextLessonId = nextLesson['id'];
+
+            ToastUtil.showShortToast("Next Lesson Start");
+
+            NavigationService.navigateToWithArgs(
+              Routes.lessonDescription,
+              {'id': nextLessonId},
+            );
+          }
+          // final nextLessonId =
+          //     nextLessonRxObj.getFileData.value['data']['next_lesson']['id'];
+
+          // print("Next Lesson ID: $nextLessonId");
+
+          // NavigationService.navigateToWithArgs(
+          //     Routes.lessonDescription, {'id': nextLessonId});
+        } else {
+          setState(() {
+            isNext = false;
+          });
+        }
+      });
+    } catch (e) {
+      setState(() {
+        isNext = false;
+      });
+      ToastUtil.showShortToast(e.toString());
+    }
   }
 
   @override
@@ -115,21 +206,40 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
                         UIHelper.verticalSpace(32.h),
                         UIHelper.customDivider(),
                         UIHelper.verticalSpace(32.h),
-                        CustomButton(
-                          name: 'Mark as complete',
-                          color: AppColors.c3DC699,
-                          borderColor: AppColors.c3DC699,
-                          onCallBack: () {
-                            showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) {
-                                return const LessonCompleteDialogue();
-                              },
-                            );
-                          },
-                          context: context,
-                        ),
+                        isLoading
+                            ? Center(
+                                child: SizedBox(
+                                  height: 80.h,
+                                  width: 60.w,
+                                  child: SpinKitCircle(
+                                    color: AppColors.primaryColor,
+                                    size: 60.h,
+                                  ),
+                                ),
+                              )
+                            : CustomButton(
+                                name: 'Mark as complete',
+                                color: AppColors.c3DC699,
+                                borderColor: AppColors.c3DC699,
+                                onCallBack: () {
+                                  lessonCompletedMethod();
+                                  showDialog(
+                                    context: context,
+                                    barrierDismissible: false,
+                                    builder: (context) {
+                                      return LessonCompleteDialogue(
+                                        text:
+                                            "You've Completed Lesson ${widget.id} !",
+                                        nextlesson: () {
+                                          nextLessonMethod();
+                                        },
+                                        startQuiz: () {},
+                                      );
+                                    },
+                                  );
+                                },
+                                context: context,
+                              ),
                         UIHelper.verticalSpace(20.h),
                         GestureDetector(
                           onTap: () {
