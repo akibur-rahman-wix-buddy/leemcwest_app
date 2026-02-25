@@ -241,36 +241,52 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
                                 context: context,
                               ),
                         UIHelper.verticalSpace(20.h),
-                        GestureDetector(
-                          onTap: () {
-                            NavigationService.navigateTo(Routes.quiz);
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 15.h, horizontal: 32.w),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.r),
-                              color: AppColors.onboardingButtonColor,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Start Quiz',
-                                  style: TextFontStyle.headlinePoppins50014
-                                      .copyWith(
-                                          color: AppColors.cFFFFFF,
-                                          fontSize: 16.sp),
+
+                        isLoading
+                            ? Center(
+                                child: SizedBox(
+                                  height: 80.h,
+                                  width: 60.w,
+                                  child: SpinKitCircle(
+                                    color: AppColors.primaryColor,
+                                    size: 60.h,
+                                  ),
                                 ),
-                                UIHelper.horizontalSpace(10.w),
-                                Image.asset(
-                                  AppImages.quizBook,
-                                  width: 20.w,
+                              )
+                            : GestureDetector(
+                                onTap: () {
+                                  NavigationService.navigateToWithArgs(
+                                    Routes.quiz,
+                                    {'id': widget.id},
+                                  );
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 15.h, horizontal: 32.w),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12.r),
+                                    color: AppColors.onboardingButtonColor,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Start Quiz',
+                                        style: TextFontStyle
+                                            .headlinePoppins50014
+                                            .copyWith(
+                                                color: AppColors.cFFFFFF,
+                                                fontSize: 16.sp),
+                                      ),
+                                      UIHelper.horizontalSpace(10.w),
+                                      Image.asset(
+                                        AppImages.quizBook,
+                                        width: 20.w,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
+                              ),
                         UIHelper.verticalSpace(64.h)
                       ],
                     );

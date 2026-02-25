@@ -19,7 +19,6 @@ import 'package:leemcwest/features/home/presentation/ear_training_transition_scr
 import 'package:leemcwest/features/home/presentation/functional_ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/notification_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
-import 'package:leemcwest/features/lesson/presentation/lesson_fade_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_summary_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/next_level_quiz_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/quiz_screen.dart';
@@ -197,11 +196,12 @@ final class RouteGenerator {
               builder: (context) => LessonDescriptionScreen(id: args['id']));
         }
       case Routes.quiz:
+        Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
-              widget: const QuizScreen(), settings: settings);
+              widget:  QuizScreen(id: args['id']), settings: settings);
         } else {
-          return CupertinoPageRoute(builder: (context) => const QuizScreen());
+          return CupertinoPageRoute(builder: (context) =>  QuizScreen(id: args['id']));
         }
       case Routes.savedWork:
         if (Platform.isAndroid) {
