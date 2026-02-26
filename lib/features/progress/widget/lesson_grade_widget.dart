@@ -5,7 +5,7 @@ import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 class LessonGradeWidget extends StatelessWidget {
   final String title;
-  final String grade;
+  final int grade;
   final String subtitle;
   const LessonGradeWidget({
     super.key, 
@@ -40,7 +40,7 @@ class LessonGradeWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                grade,
+                grade.toString(),
                 style: TextFontStyle.textStyle14w500c6A7282
                     .copyWith(color: AppColors.c3DD983),
               ),

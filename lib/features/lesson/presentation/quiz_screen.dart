@@ -33,12 +33,51 @@ class _QuizScreenState extends State<QuizScreen> {
     getLessonQuizRXObj.getLessonQuizRX(lessonId: widget.id);
   }
 
-  /// ================= SUBMIT =================
-  // Future<void> submitAnswerMethod() async {
+  Future<Map<String, dynamic>?> submitAnswerMethod() async {
+    try {
+      if (selectedAnswers.length < totalQuestionCount) {
+        ToastUtil.showShortToast("Please answer all questions");
+        return null;
+      }
+
+      setState(() => isLoading = true);
+
+      List<Map<String, dynamic>> formattedAnswers = [];
+
+      selectedAnswers.forEach((questionId, answerValue) {
+        formattedAnswers.add({
+          "question_id": questionId,
+          "answer": answerValue,
+        });
+      });
+
+      // Call your Rx API
+      final success = await submitAnswerRxObj.submitAnswerRx(
+        lessonId: widget.id,
+        answers: formattedAnswers,
+      );
+
+      setState(() => isLoading = false);
+
+      if (success) {
+        // Return the API response
+        return submitAnswerRxObj.getFileData.valueOrNull;
+      } else {
+        ToastUtil.showShortToast("Failed to submit answer");
+        return null;
+      }
+    } catch (e) {
+      setState(() => isLoading = false);
+      ToastUtil.showShortToast(e.toString());
+      return null;
+    }
+  }
+
+  // Future<bool> submitAnswerMethod() async {
   //   try {
   //     if (selectedAnswers.length < totalQuestionCount) {
   //       ToastUtil.showShortToast("Please answer all questions");
-  //       return;
+  //       return false;
   //     }
 
   //     setState(() => isLoading = true);
@@ -61,52 +100,16 @@ class _QuizScreenState extends State<QuizScreen> {
 
   //     if (success) {
   //       ToastUtil.showShortToast('Answer Submitted Successfully');
-  //       return;
-
+  //       return true;
   //     }
+
+  //     return false;
   //   } catch (e) {
   //     setState(() => isLoading = false);
   //     ToastUtil.showShortToast(e.toString());
+  //     return false;
   //   }
   // }
-// Updated method to return success status
-  Future<bool> submitAnswerMethod() async {
-    try {
-      if (selectedAnswers.length < totalQuestionCount) {
-        ToastUtil.showShortToast("Please answer all questions");
-        return false;
-      }
-
-      setState(() => isLoading = true);
-
-      List<Map<String, dynamic>> formattedAnswers = [];
-
-      selectedAnswers.forEach((questionId, answerValue) {
-        formattedAnswers.add({
-          "question_id": questionId,
-          "answer": answerValue,
-        });
-      });
-
-      bool success = await submitAnswerRxObj.submitAnswerRx(
-        lessonId: widget.id,
-        answers: formattedAnswers,
-      );
-
-      setState(() => isLoading = false);
-
-      if (success) {
-        ToastUtil.showShortToast('Answer Submitted Successfully');
-        return true;
-      }
-
-      return false;
-    } catch (e) {
-      setState(() => isLoading = false);
-      ToastUtil.showShortToast(e.toString());
-      return false;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -205,11 +208,56 @@ class _QuizScreenState extends State<QuizScreen> {
                             size: 60.h,
                           ),
                         )
-                      : CustomButton(
+                      :
+                      // CustomButton(
+                      //     name: "Submit Answer",
+                      //     onCallBack: () async {
+                      //       bool success = await submitAnswerMethod();
+                      //       if (success) {
+                      //         showDialog(
+                      //           context: context,
+                      //           builder: (context) => Dialog(
+                      //             backgroundColor: AppColors.cFFFFFF,
+                      //             shape: RoundedRectangleBorder(
+                      //               borderRadius: BorderRadius.circular(12.r),
+                      //             ),
+                      //             child: Container(
+                      //               padding: EdgeInsets.all(16.sp),
+                      //               child: Column(
+                      //                 mainAxisSize: MainAxisSize.min,
+                      //                 children: [
+                      //                   Text("Congratulations"),
+                      //                   UIHelper.verticalSpace(12.h),
+                      //                   StepCircularProgress(
+                      //                       currentStep: 3, totalSteps: 4),
+                      //                   UIHelper.verticalSpace(12.h),
+                      //                   Text(
+                      //                       "You are answered 3 out of 4 questions"),
+                      //                   UIHelper.verticalSpace(12.h),
+                      //                   CustomButton(
+                      //                       name: "Lesson Summary",
+                      //                       onCallBack: () {},
+                      //                       context: context)
+                      //                 ],
+                      //               ),
+                      //             ),
+                      //           ),
+                      //         );
+                      //       }
+                      //     },
+                      //     context: context,
+                      //   ),
+                      CustomButton(
                           name: "Submit Answer",
                           onCallBack: () async {
-                            bool success = await submitAnswerMethod();
-                            if (success) {
+                            final apiResponse = await submitAnswerMethod();
+
+                            if (apiResponse != null) {
+                              final answered = apiResponse['answered'] ??
+                                  0; // adjust key names from your API
+                              final total =
+                                  apiResponse['total'] ?? totalQuestionCount;
+
                               showDialog(
                                 context: context,
                                 builder: (context) => Dialog(
@@ -217,21 +265,37 @@ class _QuizScreenState extends State<QuizScreen> {
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.r),
                                   ),
-                                  child: StepCircularProgress(
-                                      currentStep: 3, totalSteps: 4),
+                                  child: Container(
+                                    padding: EdgeInsets.all(16.sp),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text("Congratulations",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18.sp)),
+                                        UIHelper.verticalSpace(12.h),
+                                        StepCircularProgress(
+                                            currentStep: answered,
+                                            totalSteps: total),
+                                        UIHelper.verticalSpace(12.h),
+                                        Text(
+                                            "You answered $answered out of $total questions"),
+                                        UIHelper.verticalSpace(12.h),
+                                        CustomButton(
+                                          name: "Lesson Summary",
+                                          onCallBack: () {},
+                                          context: context,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               );
                             }
                           },
                           context: context,
                         ),
-                  // CustomButton(
-                  //     name: "Submit Answer",
-                  //     onCallBack: () {
-                  //       submitAnswerMethod();
-                  //     },
-                  //     context: context,
-                  //   ),
 
                   UIHelper.verticalSpace(40.h),
                   CustomButton(
