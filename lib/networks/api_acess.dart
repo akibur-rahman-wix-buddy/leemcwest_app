@@ -16,6 +16,7 @@ import 'package:leemcwest/features/lesson/data/rx_get_lesson_quiz/rx.dart';
 import 'package:leemcwest/features/lesson/data/rx_get_lesson_show/rx.dart';
 import 'package:leemcwest/features/lesson/data/rx_post_lesson_completed/rx.dart';
 import 'package:leemcwest/features/lesson/data/rx_post_next_lesson/rx.dart';
+import 'package:leemcwest/features/lesson/data/rx_post_submit_answer/rx.dart';
 import 'package:leemcwest/features/lesson/model/get_lesson_model.dart';
 import 'package:leemcwest/features/lesson/model/get_lesson_quiz_model.dart';
 import 'package:leemcwest/features/lesson/model/get_lesson_show_model.dart';
@@ -96,6 +97,12 @@ GetLessonQuizRX getLessonQuizRXObj = GetLessonQuizRX(
 
 LessonCompletedRx lessonCompletedRxObj =
     LessonCompletedRx(empty: {}, dataFetcher: BehaviorSubject<Map>());
+
+SubmitAnswerRx submitAnswerRxObj =
+    SubmitAnswerRx(
+      empty: {},
+      dataFetcher: BehaviorSubject<Map<String, dynamic>>(),
+    );
 
 NextLessonRx nextLessonRxObj =
     NextLessonRx(empty: {}, dataFetcher: BehaviorSubject<Map>());

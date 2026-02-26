@@ -54,4 +54,5 @@ final class Endpoints {
   static String nextLesson() => "/lessons/next";
   static String getLessonShow({ required int lessonId}) => "/lessons/show/$lessonId";
   static String getLessonQuiz({ required int lessonId}) => "/quiz/by-lesson/$lessonId";
+  static String submitAnswer({ required int lessonId}) => "/quiz/submit/$lessonId";
 }
