@@ -6,8 +6,9 @@ import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
-import 'package:leemcwest/features/lesson/widget/answer_sheet_dialogue.dart';
 import 'package:leemcwest/features/lesson/widget/quiz_drag_widget.dart';
+import 'package:leemcwest/features/lesson/widget/step_circular_progress.dart';
+import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
 
@@ -22,11 +23,89 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> {
   Map<int, dynamic> selectedAnswers = {};
+  bool isLoading = false;
+  int totalQuestionCount = 0;
 
   @override
   void initState() {
     super.initState();
+    selectedAnswers.clear();
     getLessonQuizRXObj.getLessonQuizRX(lessonId: widget.id);
+  }
+
+  /// ================= SUBMIT =================
+  // Future<void> submitAnswerMethod() async {
+  //   try {
+  //     if (selectedAnswers.length < totalQuestionCount) {
+  //       ToastUtil.showShortToast("Please answer all questions");
+  //       return;
+  //     }
+
+  //     setState(() => isLoading = true);
+
+  //     List<Map<String, dynamic>> formattedAnswers = [];
+
+  //     selectedAnswers.forEach((questionId, answerValue) {
+  //       formattedAnswers.add({
+  //         "question_id": questionId,
+  //         "answer": answerValue,
+  //       });
+  //     });
+
+  //     bool success = await submitAnswerRxObj.submitAnswerRx(
+  //       lessonId: widget.id,
+  //       answers: formattedAnswers,
+  //     );
+
+  //     setState(() => isLoading = false);
+
+  //     if (success) {
+  //       ToastUtil.showShortToast('Answer Submitted Successfully');
+  //       return;
+
+  //     }
+  //   } catch (e) {
+  //     setState(() => isLoading = false);
+  //     ToastUtil.showShortToast(e.toString());
+  //   }
+  // }
+// Updated method to return success status
+  Future<bool> submitAnswerMethod() async {
+    try {
+      if (selectedAnswers.length < totalQuestionCount) {
+        ToastUtil.showShortToast("Please answer all questions");
+        return false;
+      }
+
+      setState(() => isLoading = true);
+
+      List<Map<String, dynamic>> formattedAnswers = [];
+
+      selectedAnswers.forEach((questionId, answerValue) {
+        formattedAnswers.add({
+          "question_id": questionId,
+          "answer": answerValue,
+        });
+      });
+
+      bool success = await submitAnswerRxObj.submitAnswerRx(
+        lessonId: widget.id,
+        answers: formattedAnswers,
+      );
+
+      setState(() => isLoading = false);
+
+      if (success) {
+        ToastUtil.showShortToast('Answer Submitted Successfully');
+        return true;
+      }
+
+      return false;
+    } catch (e) {
+      setState(() => isLoading = false);
+      ToastUtil.showShortToast(e.toString());
+      return false;
+    }
   }
 
   @override
@@ -56,6 +135,20 @@ class _QuizScreenState extends State<QuizScreen> {
             }
 
             final lesson = quizData[0];
+
+            /// ====== CALCULATE TOTAL QUESTIONS ======
+            ///
+
+            totalQuestionCount = (lesson.mcq?.length ?? 0) +
+                (lesson.tapOrder?.length ?? 0) +
+                (lesson.dragDrop?.length ?? 0);
+
+            // totalQuestionCount = 0;
+            // if (lesson.mcq != null) totalQuestionCount += lesson.mcq!.length;
+            // if (lesson.tapOrder != null)
+            //   totalQuestionCount += lesson.tapOrder!.length;
+            // if (lesson.dragDrop != null)
+            //   totalQuestionCount += lesson.dragDrop!.length;
 
             int questionNumber = 0;
 
@@ -89,7 +182,8 @@ class _QuizScreenState extends State<QuizScreen> {
                       },
                     ),
 
-                  /// ================= DRAG DROP =================
+                  // / ================= DRAG DROP =================
+
                   if (lesson.dragDrop != null && lesson.dragDrop!.isNotEmpty)
                     ListView.builder(
                       shrinkWrap: true,
@@ -104,17 +198,75 @@ class _QuizScreenState extends State<QuizScreen> {
 
                   UIHelper.verticalSpace(20.h),
 
-                  CustomButton(
-                    name: "Submit Answer",
-                    onCallBack: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) => const AnswerSheetDialogue(),
-                      );
-                    },
-                    context: context,
-                  ),
+                  isLoading
+                      ? Center(
+                          child: SpinKitCircle(
+                            color: AppColors.primaryColor,
+                            size: 60.h,
+                          ),
+                        )
+                      : CustomButton(
+                          name: "Submit Answer",
+                          onCallBack: () async {
+                            bool success = await submitAnswerMethod();
+                            if (success) {
+                              showDialog(
+                                context: context,
+                                builder: (context) => Dialog(
+                                  backgroundColor: AppColors.cFFFFFF,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12.r),
+                                  ),
+                                  child: StepCircularProgress(
+                                      currentStep: 3, totalSteps: 4),
+                                ),
+                              );
+                            }
+                          },
+                          context: context,
+                        ),
+                  // CustomButton(
+                  //     name: "Submit Answer",
+                  //     onCallBack: () {
+                  //       submitAnswerMethod();
+                  //     },
+                  //     context: context,
+                  //   ),
 
+                  UIHelper.verticalSpace(40.h),
+                  CustomButton(
+                      name: "dailog",
+                      onCallBack: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => Dialog(
+                            backgroundColor: AppColors.cFFFFFF,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.r),
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.all(16.sp),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text("Congratulations"),
+                                  UIHelper.verticalSpace(12.h),
+                                  StepCircularProgress(
+                                      currentStep: 3, totalSteps: 4),
+                                  UIHelper.verticalSpace(12.h),
+                                  Text("You are answered 3 out of 4 questions"),
+                                  UIHelper.verticalSpace(12.h),
+                                  CustomButton(
+                                      name: "Lesson Summary",
+                                      onCallBack: () {},
+                                      context: context)
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      context: context),
                   UIHelper.verticalSpace(40.h),
                 ],
               ),
@@ -125,7 +277,7 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-  /// 🔹 Main Question Builder
+  /// ================= QUESTION BUILDER =================
   Widget buildQuestionWidget(dynamic question, int number) {
     return Container(
       margin: EdgeInsets.only(bottom: 16.h),
@@ -150,13 +302,18 @@ class _QuizScreenState extends State<QuizScreen> {
           else if (question.type == "tap_order")
             buildTapOrder(question)
           else if (question.type == "drag_drop")
-            DragDropQuestionWidget(question: question),
+            DragDropQuestionWidget(
+              question: question,
+              onAnswer: (questionId, answerList) {
+                selectedAnswers[questionId] = answerList;
+              },
+            ),
         ],
       ),
     );
   }
 
-  /// 🔹 MCQ
+  /// ================= MCQ =================
   Widget buildMCQ(dynamic question) {
     final List options = question.options ?? [];
 
@@ -185,12 +342,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 ),
                 UIHelper.horizontalSpace(10.w),
                 Expanded(
-                  child: Text(
-                    options[i].toString(),
-                    style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                      color: AppColors.c061426,
-                    ),
-                  ),
+                  child: Text(options[i].toString()),
                 ),
               ],
             ),
@@ -200,7 +352,7 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-  /// 🔹 Tap Order
+  // 🔹 Tap Order
   Widget buildTapOrder(dynamic question) {
     final List options = question.options ?? [];
 
@@ -265,205 +417,3 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:flutter_spinkit/flutter_spinkit.dart';
-// import 'package:leemcwest/assets_helper/app_colors.dart';
-// import 'package:leemcwest/assets_helper/app_fonts.dart';
-// import 'package:leemcwest/assets_helper/app_image.dart';
-// import 'package:leemcwest/common_widgets/custom_button.dart';
-// import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
-// import 'package:leemcwest/features/lesson/widget/answer_sheet_dialogue.dart';
-// import 'package:leemcwest/features/lesson/widget/quiz_drag_widget.dart';
-// import 'package:leemcwest/helpers/ui_helpers.dart';
-// import 'package:leemcwest/networks/api_acess.dart';
-
-// class QuizScreen extends StatefulWidget {
-//   final int id;
-
-//   const QuizScreen({super.key, required this.id});
-
-//   @override
-//   State<QuizScreen> createState() => _QuizScreenState();
-// }
-
-// class _QuizScreenState extends State<QuizScreen> {
-//   Map<int, dynamic> selectedAnswers = {};
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     getLessonQuizRXObj.getLessonQuizRX(lessonId: widget.id);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: AppColors.cF9FAFB,
-//       appBar: const CustomCenterTitleAppbar(title: "QUIZ"),
-//       body: Padding(
-//         padding: EdgeInsets.symmetric(horizontal: 16.w),
-//         child: StreamBuilder(
-//           stream: getLessonQuizRXObj.dataFetcher,
-//           builder: (context, snapshot) {
-//             final quizData = snapshot.data?.data;
-
-//             if (snapshot.connectionState == ConnectionState.waiting &&
-//                 quizData == null) {
-//               return Center(
-//                 child: SpinKitCircle(
-//                   color: AppColors.primaryColor,
-//                   size: 50.sp,
-//                 ),
-//               );
-//             }
-
-//             if (quizData == null || quizData.isEmpty) {
-//               return const Center(child: Text("No Quiz Found"));
-//             }
-
-//             /// ✅ Correct: Access mcq list properly
-//             final mcqList = quizData[0].mcq ?? [];
-//             final dragDropList = quizData[0].dragDrop ?? [];
-//             final tappOrderList = quizData[0].tapOrder ?? [];
-
-//             return SingleChildScrollView(
-//               child: Column(
-//                 children: [
-//                   /// Questions
-//                   ListView.builder(
-//                     shrinkWrap: true,
-//                     physics: const NeverScrollableScrollPhysics(),
-//                     itemCount: dragDropList.length,
-//                     itemBuilder: (context, index) {
-//                       final question = mcqList[index];
-
-//                       return buildQuestionWidget(
-//                         question,
-//                         index,
-//                       );
-//                     },
-//                   ),
-
-//                   UIHelper.verticalSpace(20.h),
-//                   ListView.builder(
-//                     shrinkWrap: true,
-//                     physics: const NeverScrollableScrollPhysics(),
-//                     itemCount: dragDropList.length,
-//                     itemBuilder: (context, index) {
-//                       final dragDrop = dragDropList[index];
-
-//                       return DragDropQuestionWidget(question: dragDrop);
-//                     },
-//                   ),
-
-//                   UIHelper.verticalSpace(20.h),
-//                   ListView.builder(
-//                     shrinkWrap: true,
-//                     physics: const NeverScrollableScrollPhysics(),
-//                     itemCount: tappOrderList.length,
-//                     itemBuilder: (context, index) {
-//                       final tapOrder = tappOrderList[index];
-
-//                       return buildTapOrder(tapOrder);
-//                     },
-//                   ),
-
-//                   UIHelper.verticalSpace(20.h),
-
-//                   /// Submit Button
-//                   CustomButton(
-//                     name: "Submit Answer",
-//                     onCallBack: () {
-//                       showDialog(
-//                         context: context,
-//                         builder: (_) => const AnswerSheetDialogue(),
-//                       );
-//                     },
-//                     context: context,
-//                   ),
-
-//                   UIHelper.verticalSpace(40.h),
-//                 ],
-//               ),
-//             );
-//           },
-//         ),
-//       ),
-//     );
-//   }
-
-//   /// Main Question Builder
-//   Widget buildQuestionWidget(dynamic question, int index) {
-//     return Container(
-//       margin: EdgeInsets.only(bottom: 16.h),
-//       padding: EdgeInsets.all(16.sp),
-//       decoration: BoxDecoration(
-//         color: Colors.white,
-//         borderRadius: BorderRadius.circular(12.r),
-//       ),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           /// ✅ Correct property name
-//           Text(
-//             "${index + 1}. ${question.questionText ?? ""}",
-//             style: TextFontStyle.textStyle14w500c6A7282.copyWith(
-//               fontSize: 16.sp,
-//               color: AppColors.c364153,
-//             ),
-//           ),
-
-//           UIHelper.verticalSpace(12.h),
-
-//           buildMCQ(question),
-//         ],
-//       ),
-//     );
-//   }
-
-//   /// MCQ Widget
-//   Widget buildMCQ(dynamic question) {
-//     final List options = question.options ?? [];
-
-//     return Column(
-//       children: List.generate(options.length, (i) {
-//         bool selected = selectedAnswers[question.id] == i;
-
-//         return GestureDetector(
-//           onTap: () {
-//             setState(() {
-//               selectedAnswers[question.id] = i;
-//             });
-//           },
-//           child: Container(
-//             margin: EdgeInsets.only(bottom: 10.h),
-//             padding: EdgeInsets.all(14.sp),
-//             decoration: BoxDecoration(
-//               color: AppColors.cF3F4F6,
-//               borderRadius: BorderRadius.circular(10.r),
-//             ),
-//             child: Row(
-//               children: [
-//                 Image.asset(
-//                   selected ? AppImages.selected : AppImages.unselected,
-//                   width: 20.w,
-//                 ),
-//                 UIHelper.horizontalSpace(10.w),
-//                 Expanded(
-//                   child: Text(
-//                     options[i].toString(),
-//                     style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-//                       color: AppColors.c061426,
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         );
-//       }),
-//     );
-//   }
-// }
