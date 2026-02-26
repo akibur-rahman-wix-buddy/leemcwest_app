@@ -3,22 +3,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
+
 class LessonGradeWidget extends StatelessWidget {
   final String title;
   final int grade;
   final String subtitle;
   const LessonGradeWidget({
-    super.key, 
-    required this.title, 
-    required this.grade, 
+    super.key,
+    required this.title,
+    required this.grade,
     required this.subtitle,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          EdgeInsets.symmetric(vertical: 18.h, horizontal: 12.w),
+      padding: EdgeInsets.symmetric(vertical: 18.h, horizontal: 12.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
@@ -33,14 +33,13 @@ class LessonGradeWidget extends StatelessWidget {
             children: [
               Text(
                 title,
-                style:
-                    TextFontStyle.textStyle14w400c6A7282.copyWith(
+                style: TextFontStyle.textStyle14w400c6A7282.copyWith(
                   fontSize: 16.sp,
                   color: AppColors.c0A0E1A,
                 ),
               ),
               Text(
-                grade.toString(),
+                "${grade.toString()}%",
                 style: TextFontStyle.textStyle14w500c6A7282
                     .copyWith(color: AppColors.c3DD983),
               ),
