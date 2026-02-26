@@ -41,7 +41,7 @@ class DonutPercentageCard extends StatelessWidget {
                 style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
               Text(
-                "${percentage.toInt()}%",
+                "${percentage}%",
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

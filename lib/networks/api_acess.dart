@@ -31,6 +31,8 @@ import 'package:leemcwest/features/profile/data/rx_post_update_profile/rx.dart';
 import 'package:leemcwest/features/profile/model/faq_model.dart';
 import 'package:leemcwest/features/profile/model/notification_settings_model.dart';
 import 'package:leemcwest/features/profile/model/profile_data_model.dart';
+import 'package:leemcwest/features/progress/data/rx_get_progress/rx.dart';
+import 'package:leemcwest/features/progress/model/get_progress_model.dart';
 import 'package:leemcwest/features/support/data/rx_post_bug_report/rx.dart';
 import 'package:leemcwest/features/support/data/rx_post_contact_support/rx.dart';
 import 'package:leemcwest/features/support/data/rx_post_feature_suggestion/rx.dart';
@@ -94,6 +96,13 @@ GetLessonQuizRX getLessonQuizRXObj = GetLessonQuizRX(
   empty: GetLessonQuizResponseModel(),
   dataFetcher: BehaviorSubject<GetLessonQuizResponseModel>(),
 );
+
+
+GetProgressRX getProgressRXObj = GetProgressRX(
+  empty: GetProgressResponseModel(),
+  dataFetcher: BehaviorSubject<GetProgressResponseModel>(),
+);
+
 
 LessonCompletedRx lessonCompletedRxObj =
     LessonCompletedRx(empty: {}, dataFetcher: BehaviorSubject<Map>());

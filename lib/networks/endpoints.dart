@@ -50,6 +50,7 @@ final class Endpoints {
   static String notificationSettingsUpdate() => "/notification-settings-update";
   static String getNotificationSettings() => "/notification-settings-show";
   static String getLesson() => "/lessons";
+  static String getProgress() => "/user/progress";
   static String lessonCompleted() => "/lessons/completed";
   static String nextLesson() => "/lessons/next";
   static String getLessonShow({ required int lessonId}) => "/lessons/show/$lessonId";
