@@ -307,12 +307,13 @@ final class RouteGenerator {
               builder: (context) => const SuggestAFeatureScreen());
         }
       case Routes.lessonSummary:
+       Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
-              widget: const LessonSummaryScreen(), settings: settings);
+              widget:  LessonSummaryScreen(id: args['id']), settings: settings);
         } else {
           return CupertinoPageRoute(
-              builder: (context) => const LessonSummaryScreen());
+              builder: (context) =>  LessonSummaryScreen(id: args['id']));
         }
       case Routes.editProfile:
         if (Platform.isAndroid) {
