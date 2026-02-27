@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +12,7 @@ import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_textfeild.dart';
 import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
+import 'package:leemcwest/helpers/social_login_helper.dart';
 import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
@@ -28,6 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final passwordConfirmationController = TextEditingController();
   bool isChecked = false;
   bool isLoading = false;
+  bool isLoadingSocial = false;
   final _formKey = GlobalKey<FormState>();
 
   Future<void> registerMethod() async {
@@ -53,8 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               NavigationService.navigateToWithArgs(Routes.otpVerification, {
                 "email": emailController.text,
               });
-              ToastUtil.showShortToast(
-                  "OTP Sent successfully.");
+              ToastUtil.showShortToast("OTP Sent successfully.");
             } else {
               setState(() {
                 isLoading = false;
@@ -71,6 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ToastUtil.showShortToast(e.toString());
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -176,20 +180,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 UIHelper.verticalSpace(24.h),
                 isLoading
-                ?
-                const Center(
-                  child: SpinKitCircle(
-                    color: AppColors.onboardingButtonColor,
-                  ),
-                )
-                :
-                CustomButton(
-                  name: 'Sign up',
-                  onCallBack: () {
-                    registerMethod();
-                  },
-                  context: context,
-                ),
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.onboardingButtonColor,
+                        ),
+                      )
+                    : CustomButton(
+                        name: 'Sign up',
+                        onCallBack: () {
+                          registerMethod();
+                        },
+                        context: context,
+                      ),
                 UIHelper.verticalSpace(20.h),
                 Center(
                     child: RichText(
@@ -245,10 +247,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      AppImages.google,
-                      width: 48.w,
-                    ),
+                    isLoadingSocial
+                        ? SizedBox(
+                            width: 48.w,
+                            height: 48.w,
+                            child: const SpinKitCircle(
+                              color: AppColors.primaryColor2,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () async {
+                              setState(() {
+                                isLoadingSocial = true;
+                              });
+
+                              var google = SocialLoginHelper.instance;
+                              bool value =
+                                  await google.signInWithGoogle(context);
+
+                              setState(() {
+                                isLoadingSocial = false;
+                              });
+                              log('============Value Not Working');
+
+                              if (value) {
+                                // await sentFCMToken();
+                                // checkSubscription();
+
+                                NavigationService.navigateTo(Routes.navigation);
+
+                                ToastUtil.showShortToast(
+                                  "Log in Success",
+                                );
+                              } else {
+                                log('>>>login Fail');
+                              }
+                            },
+                            child: Image.asset(
+                              AppImages.google,
+                              width: 48.w,
+                            ),
+                          ),
                     UIHelper.horizontalSpace(24.w),
                     Image.asset(
                       AppImages.apple,
