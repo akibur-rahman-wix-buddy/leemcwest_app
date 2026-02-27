@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
 
-
 class NetworkImageWidget extends StatelessWidget {
   final String imageUrl;
   final double? height;
@@ -20,8 +19,8 @@ class NetworkImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double imageHeight = height ?? 65.h;
-    final double imageWidth = width ?? 242.w;
+    final double imageHeight = height ?? 80.h;
+    final double imageWidth = width ?? double.infinity;
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(borderRadius.r),
