@@ -8,6 +8,8 @@ import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
 import 'package:leemcwest/features/lesson/widget/quiz_drag_widget.dart';
 import 'package:leemcwest/features/lesson/widget/step_circular_progress.dart';
+import 'package:leemcwest/helpers/all_routes.dart';
+import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
@@ -271,20 +273,29 @@ class _QuizScreenState extends State<QuizScreen> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Text("Congratulations",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 18.sp)),
+                                            style: TextFontStyle
+                                                .headlinePublicSans60024
+                                                .copyWith(fontSize: 20)),
                                         UIHelper.verticalSpace(12.h),
                                         StepCircularProgress(
                                             currentStep: answered,
                                             totalSteps: total),
                                         UIHelper.verticalSpace(12.h),
                                         Text(
-                                            "You answered $answered out of $total questions"),
+                                            "You answered $answered out of $total questions",
+                                            style: TextFontStyle
+                                                .headline40014c989BA2
+                                                .copyWith(
+                                                    color: AppColors.c6A7282)),
                                         UIHelper.verticalSpace(12.h),
                                         CustomButton(
                                           name: "Lesson Summary",
-                                          onCallBack: () {},
+                                          onCallBack: () {
+                                            NavigationService
+                                                .navigateToWithArgs(
+                                                    Routes.lessonSummary,
+                                                    {"id": widget.id});
+                                          },
                                           context: context,
                                         ),
                                       ],
@@ -297,40 +308,6 @@ class _QuizScreenState extends State<QuizScreen> {
                           context: context,
                         ),
 
-                  UIHelper.verticalSpace(40.h),
-                  CustomButton(
-                      name: "dailog",
-                      onCallBack: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => Dialog(
-                            backgroundColor: AppColors.cFFFFFF,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.r),
-                            ),
-                            child: Container(
-                              padding: EdgeInsets.all(16.sp),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text("Congratulations"),
-                                  UIHelper.verticalSpace(12.h),
-                                  StepCircularProgress(
-                                      currentStep: 3, totalSteps: 4),
-                                  UIHelper.verticalSpace(12.h),
-                                  Text("You are answered 3 out of 4 questions"),
-                                  UIHelper.verticalSpace(12.h),
-                                  CustomButton(
-                                      name: "Lesson Summary",
-                                      onCallBack: () {},
-                                      context: context)
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                      context: context),
                   UIHelper.verticalSpace(40.h),
                 ],
               ),

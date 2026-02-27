@@ -84,7 +84,8 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
 
             // ✅ Check if next lesson is null
             if (nextLesson == null) {
-              ToastUtil.showShortToast("Course completed");
+              ToastUtil.showShortToast(
+                  "Congratulations Your Course is completed");
 
               // ✅ Go back
               NavigationService.goBack;

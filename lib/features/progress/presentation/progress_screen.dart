@@ -86,13 +86,17 @@ class _ProgressScreenState extends State<ProgressScreen> {
                                 PercentageContainer(
                                   text1: data?.lessonCompleted?.summary ?? '',
                                   text2: data?.progressFraction ?? "",
-                                  percentage: 75,
+                                  percentage:
+                                      data?.lessonsDonePercentage?.toDouble() ??
+                                          0,
                                 ),
                                 UIHelper.verticalSpace(12.h),
                                 PercentageContainer(
                                     text1: 'Quizzes Done',
                                     text2: data?.quizzesDone ?? "",
-                                    percentage: 75
+                                    percentage: data?.quizzesDonePercentage
+                                            ?.toDouble() ??
+                                        0
                                     // data.totalProgress??"",
                                     ),
                               ],
