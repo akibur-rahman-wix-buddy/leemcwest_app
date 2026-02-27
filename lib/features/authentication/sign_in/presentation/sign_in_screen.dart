@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -152,10 +154,16 @@ class _SignInScreenState extends State<SignInScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      onTap: isLoadingSocial
-                          ? null
-                          : () async {
+                    isLoadingSocial
+                        ? SizedBox(
+                            width: 48.w,
+                            height: 48.w,
+                            child: const SpinKitCircle(
+                              color: AppColors.primaryColor2,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () async {
                               setState(() {
                                 isLoadingSocial = true;
                               });
@@ -167,27 +175,62 @@ class _SignInScreenState extends State<SignInScreen> {
                               setState(() {
                                 isLoadingSocial = false;
                               });
+                              log('============Value Not Working');
 
                               if (value) {
+                                // await sentFCMToken();
+                                // checkSubscription();
+
+                                NavigationService.navigateTo(Routes.navigation);
+
                                 ToastUtil.showShortToast(
-                                    "Social Log in Success");
-                                NavigationService.navigateTo(
-                                    Routes.earTraining);
+                                  "Log in Success",
+                                );
+                              } else {
+                                log('>>>login Fail');
                               }
                             },
-                      child: isLoadingSocial
-                          ? SizedBox(
-                              width: 48.w,
-                              height: 48.w,
-                              child: const SpinKitCircle(
-                                color: AppColors.primaryColor2,
-                              ),
-                            )
-                          : Image.asset(
+                            child: Image.asset(
                               AppImages.google,
                               width: 48.w,
                             ),
-                    ),
+                          ),
+                    // GestureDetector(
+                    //   onTap: isLoadingSocial
+                    //       ? null
+                    //       : () async {
+                    //           setState(() {
+                    //             isLoadingSocial = true;
+                    //           });
+
+                    //           var google = SocialLoginHelper.instance;
+                    //           bool value =
+                    //               await google.signInWithGoogle(context);
+
+                    //           setState(() {
+                    //             isLoadingSocial = false;
+                    //           });
+
+                    //           if (value) {
+                    //             ToastUtil.showShortToast(
+                    //                 "Social Log in Success");
+                    //             NavigationService.navigateTo(
+                    //                 Routes.earTraining);
+                    //           }
+                    //         },
+                    //   child: isLoadingSocial
+                    //       ? SizedBox(
+                    //           width: 48.w,
+                    //           height: 48.w,
+                    //           child: const SpinKitCircle(
+                    //             color: AppColors.primaryColor2,
+                    //           ),
+                    //         )
+                    //       : Image.asset(
+                    //           AppImages.google,
+                    //           width: 48.w,
+                    //         ),
+                    // ),
                     UIHelper.horizontalSpace(24.w),
                     Image.asset(
                       AppImages.apple,

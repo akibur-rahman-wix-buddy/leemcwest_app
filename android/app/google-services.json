@@ -12,7 +12,28 @@
           "package_name": "com.numonix.numonix"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "412757137282-ho4p96fi3td21pjuaoljssejqif0jve1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.numonix.numonix",
+            "certificate_hash": "00cd72b14a7e0dd33a2c5b001819598916e49470"
+          }
+        },
+        {
+          "client_id": "412757137282-l9qh60o1u2qopasj79793kbq1klt8ufh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.numonix.numonix",
+            "certificate_hash": "f91e0810de0ba2374798ebb544e0da2f174d23ac"
+          }
+        },
+        {
+          "client_id": "412757137282-2l3qgcccl2g07vlj4vj2n79uonvkkruo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAd0-oVXFb7Ujwy7wubBa_ucmJ0oUE-18M"
@@ -20,7 +41,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412757137282-2l3qgcccl2g07vlj4vj2n79uonvkkruo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "412757137282-lcqpn2v9le1nd0p5bo6sqbeo8ei5l3j4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.numonix.numonix"
+              }
+            }
+          ]
         }
       }
     }
