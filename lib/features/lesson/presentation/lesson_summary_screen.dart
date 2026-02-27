@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
-import 'package:leemcwest/assets_helper/app_fonts.dart';
 import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
+import 'package:leemcwest/features/lesson/widget/html_view_widget.dart';
 import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/toast.dart';
@@ -46,7 +46,8 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
 
             // ✅ Check if next lesson is null
             if (nextLesson == null) {
-              ToastUtil.showShortToast(" Congratulations Your Course is completed");
+              ToastUtil.showShortToast(
+                  " Congratulations Your Course is completed");
 
               return;
             }
@@ -89,7 +90,7 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
       appBar: const CustomCenterTitleAppbar(
         title: 'Lesson Summary',
       ),
-      body: Padding(
+      body: SingleChildScrollView(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: StreamBuilder(
               stream: getLessonSummaryRXObj.dataFetcher,
@@ -119,14 +120,8 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
 
                 return Column(
                   children: [
-                    UIHelper.verticalSpace(32.h),
-                    Text(
-                      data?.summary ?? "",
-                      style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                        color: AppColors.c4A5565,
-                        fontSize: 16.sp,
-                      ),
-                    ),
+                    UIHelper.verticalSpace(20.h),
+                    HtmlViewWidget(input: data?.summary ?? ''),
                     // const BulletText(
                     //     text:
                     //         'The tonic (T) chord is the home where musical flow both begins and ends.'),
@@ -150,6 +145,7 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
                       },
                       context: context,
                     ),
+                    UIHelper.verticalSpace(60.h),
                   ],
                 );
               })),
