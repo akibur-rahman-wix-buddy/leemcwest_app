@@ -320,16 +320,9 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
               }
 
               return NetworkAudioPlayerWidget(
-                // audioUrl:
-                //     "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-
+                key: ValueKey(selectedIndex),
                 audioUrl: data?.lesson?.contents?[selectedIndex].audioUrl ?? '',
               );
-            })
-        // const LessonAudioPlayer(
-        //   currentTime: "1:25",
-        //   totalTime: "3:15",
-        // ),
-        );
+            }));
   }
 }
