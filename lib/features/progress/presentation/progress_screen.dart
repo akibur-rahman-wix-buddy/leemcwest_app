@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
+import 'package:leemcwest/assets_helper/app_icons.dart';
 import 'package:leemcwest/common_widgets/custom_title_appbar.dart';
 import 'package:leemcwest/features/progress/widget/circular_percentage_card.dart';
 import 'package:leemcwest/features/progress/widget/lesson_grade_widget.dart';
@@ -41,9 +43,8 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   final data = snapshot.data?.data;
                   final lessonItem =
                       snapshot.data?.data?.lessonCompleted?.items;
-                  // final item = data?.lessonCompleted?.items[];
 
-                  // appData.write(kKeyScheduleId, data?.id.toString());
+                  final quizTaken = snapshot.data?.data?.quizzesTaken?.items;
 
                   if (snapshot.connectionState == ConnectionState.waiting &&
                       data == null) {
@@ -117,12 +118,11 @@ class _ProgressScreenState extends State<ProgressScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Icon(
-                                  Icons.grade,
-                                ),
+                                SvgPicture.asset(AppIcons.lessonCompleted),
                                 UIHelper.horizontalSpace(10.w),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       'Lesson Completed',
@@ -156,7 +156,71 @@ class _ProgressScreenState extends State<ProgressScreen> {
                                       grade:
                                           lessonDetails?.progressPercentage ??
                                               0,
-                                      subtitle: lessonDetails?.status ?? "",
+                                      subtitle:
+                                          "${lessonDetails?.lessonId} ${lessonDetails?.status ?? ""}",
+                                    ),
+                                  );
+                                }),
+                          ],
+                        ),
+                      ),
+                      UIHelper.verticalSpace(32.h),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w, vertical: 16.h),
+                        decoration: BoxDecoration(
+                          color: AppColors.cFFFFFF,
+                          borderRadius: BorderRadius.circular(12.r),
+                          border: Border.all(
+                            color: AppColors.CEDBFF,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SvgPicture.asset(AppIcons.quizCompleted),
+                                UIHelper.horizontalSpace(10.w),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Quizzes Taken',
+                                      style: TextFontStyle
+                                          .headlineCinzel18w600c141313,
+                                    ),
+                                    UIHelper.verticalSpace(4.h),
+                                    Text(
+                                      data?.quizzesTaken?.summary ?? "",
+                                      style: TextFontStyle
+                                          .textStyle12w400c64748B
+                                          .copyWith(
+                                        color: AppColors.c99A1AF,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            UIHelper.verticalSpace(20.h),
+                            ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: quizTaken?.length,
+                                itemBuilder: (context, index) {
+                                  final quizDetails = quizTaken?[index];
+                                  return Padding(
+                                    padding: EdgeInsets.only(bottom: 12.h),
+                                    child: LessonGradeWidget(
+                                      title: quizDetails?.title ?? "No Title",
+                                      grade:
+                                          quizDetails?.progressPercentage ?? 0,
+                                      subtitle:
+                                          "${quizDetails?.quizId} ${quizDetails?.status ?? ""}",
                                     ),
                                   );
                                 }),
