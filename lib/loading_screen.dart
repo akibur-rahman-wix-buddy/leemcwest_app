@@ -5,9 +5,7 @@ import 'package:leemcwest/features/onboarding/presentation/onboarding_screen.dar
 import 'package:leemcwest/helpers/all_routes.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/welcome_screen.dart';
-
 import 'constants/app_constants.dart';
-
 import 'helpers/di.dart';
 import 'helpers/helper_methods.dart';
 import 'networks/dio/dio.dart';

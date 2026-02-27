@@ -46,5 +46,7 @@ class AppIcons {
   static const String play= '$iconsRoute/playSoundIcon.svg';
   static const String starr= '$iconsRoute/starr.svg';
   static const String starr2= '$iconsRoute/starr2.svg';
+  static const String lessonCompleted= '$iconsRoute/lessonCompleted.svg';
+  static const String quizCompleted= '$iconsRoute/quizCompleted.svg';
  
 }
