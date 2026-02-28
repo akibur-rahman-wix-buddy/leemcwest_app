@@ -10,6 +10,7 @@ class CustomNavigationAppbarDuplicate extends StatelessWidget {
   final String title;
   final String subTitle;
   final String url;
+  final VoidCallback menuTap;
   VoidCallback onTapNotification;
 
   CustomNavigationAppbarDuplicate(
@@ -17,7 +18,7 @@ class CustomNavigationAppbarDuplicate extends StatelessWidget {
       required this.title,
       required this.subTitle,
       required this.url,
-      required this.onTapNotification});
+      required this.onTapNotification, required this.menuTap});
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +39,11 @@ class CustomNavigationAppbarDuplicate extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(
-                  AppImages.menu,
-                  width: 38.w,
+                GestureDetector(onTap:menuTap ,
+                  child: Image.asset(
+                    AppImages.menu,
+                    width: 38.w,
+                  ),
                 ),
                 UIHelper.horizontalSpace(8.w),
                 Column(

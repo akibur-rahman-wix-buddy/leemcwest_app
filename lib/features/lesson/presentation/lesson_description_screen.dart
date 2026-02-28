@@ -234,7 +234,12 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
                                         nextlesson: () {
                                           nextLessonMethod();
                                         },
-                                        startQuiz: () {},
+                                        startQuiz: () {
+                                          NavigationService.navigateToWithArgs(
+                                            Routes.quiz,
+                                            {'id': widget.id},
+                                          );
+                                        },
                                       );
                                     },
                                   );

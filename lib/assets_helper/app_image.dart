@@ -57,4 +57,7 @@ class AppImages {
   static const String insightBackThree = '$_basePath/insightBackThree.png';
   static const String insightBackFour = '$_basePath/insightBackFour.png';
   static const String insightBackFive = '$_basePath/insightBackFive.png';
+  static const String onboarding1 = '$_basePath/onboarding1.png';
+  static const String onboarding2 = '$_basePath/onboarding2.png';
+  static const String onboarding3 = '$_basePath/onboarding3.png';
 }

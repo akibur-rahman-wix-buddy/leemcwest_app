@@ -18,6 +18,7 @@ import 'package:leemcwest/features/home/presentation/ear_training_theory_screen.
 import 'package:leemcwest/features/home/presentation/ear_training_transition_screen.dart';
 import 'package:leemcwest/features/home/presentation/functional_ear_training_screen.dart';
 import 'package:leemcwest/features/home/presentation/notification_screen.dart';
+import 'package:leemcwest/features/introduction/presentation/intro_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_description_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/lesson_summary_screen.dart';
 import 'package:leemcwest/features/lesson/presentation/next_level_quiz_screen.dart';
@@ -81,6 +82,7 @@ final class Routes {
   static const String resetPasswordOtp = '/resetPasswordOtp';
   static const String changePassword = '/changePassword';
   static const String compositionBuilderScreen = '/CompositionBuilderScreen';
+  static const String introScreen = '/IntroScreen';
 }
 
 final class RouteGenerator {
@@ -199,9 +201,10 @@ final class RouteGenerator {
         Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
-              widget:  QuizScreen(id: args['id']), settings: settings);
+              widget: QuizScreen(id: args['id']), settings: settings);
         } else {
-          return CupertinoPageRoute(builder: (context) =>  QuizScreen(id: args['id']));
+          return CupertinoPageRoute(
+              builder: (context) => QuizScreen(id: args['id']));
         }
       case Routes.savedWork:
         if (Platform.isAndroid) {
@@ -307,13 +310,13 @@ final class RouteGenerator {
               builder: (context) => const SuggestAFeatureScreen());
         }
       case Routes.lessonSummary:
-       Map args = settings.arguments as Map;
+        Map args = settings.arguments as Map;
         if (Platform.isAndroid) {
           return FadedTransitionRoute(
-              widget:  LessonSummaryScreen(id: args['id']), settings: settings);
+              widget: LessonSummaryScreen(id: args['id']), settings: settings);
         } else {
           return CupertinoPageRoute(
-              builder: (context) =>  LessonSummaryScreen(id: args['id']));
+              builder: (context) => LessonSummaryScreen(id: args['id']));
         }
       case Routes.editProfile:
         if (Platform.isAndroid) {
@@ -439,6 +442,14 @@ final class RouteGenerator {
         } else {
           return CupertinoPageRoute(
               builder: (context) => const CompositionBuilderScreen());
+        }
+
+      case Routes.introScreen:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const IntroScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(builder: (context) => const IntroScreen());
         }
 
       default:

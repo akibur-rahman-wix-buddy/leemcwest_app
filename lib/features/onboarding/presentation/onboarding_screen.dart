@@ -54,8 +54,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage(AppImages.splashScreen)),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(_currentPage == 0
+                  ? AppImages.onboarding1
+                  : _currentPage == 1
+                      ? AppImages.onboarding2
+                      : AppImages.onboarding3)),
         ),
         child: SafeArea(
           // 👈 prevent status bar overlap
@@ -71,17 +76,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     if (_currentPage != _onboardingData.length - 1)
                       GestureDetector(
                         onTap: () {
-                          // NavigationService.navigateTo(Routes.loginSignup);
+                          NavigationService.navigateTo(Routes.signIn);
                         },
-                        child: GestureDetector(
-                          onTap: () {
-                            NavigationService.navigateTo(Routes.signIn);
-                          },
-                          child: Text(
-                            'Skip'.tr,
-                            style: TextFontStyle.headlinePoppins60014.copyWith(
-                              color: AppColors.onboardingButtonColor,
-                            ),
+                        child: Text(
+                          'Skip'.tr,
+                          style: TextFontStyle.headlinePoppins60014.copyWith(
+                            color: AppColors.onboardingButtonColor,
                           ),
                         ),
                       ),

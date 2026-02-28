@@ -49,13 +49,12 @@ class TextFontStyle {
     height: 1.50,
   );
   static final headlineRozhaOne40024 = TextStyle(
-    color: AppColors.cFFFFFF /* Neutral-N90 */,
-    fontSize: 24.sp,
-    fontFamily: 'RozhaOne',
-    fontWeight: FontWeight.w400,
-    height: 1.50,
-    letterSpacing: -0.55
-  );
+      color: AppColors.cFFFFFF /* Neutral-N90 */,
+      fontSize: 24.sp,
+      fontFamily: 'RozhaOne',
+      fontWeight: FontWeight.w400,
+      height: 1.50,
+      letterSpacing: -0.55);
 
   ///>>>>>>>>>>>>>>>>>>>> Pretendard >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   static final textStyle20w600c000A15ColorPretendard = TextStyle(
@@ -65,28 +64,28 @@ class TextFontStyle {
     fontWeight: FontWeight.w600,
     height: 1.50,
   );
-  static final  headlinePretendard60013= TextStyle(
+  static final headlinePretendard60013 = TextStyle(
     color: AppColors.addBg /* Neutral-N90 */,
     fontSize: 13.sp,
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600,
     letterSpacing: 0.16,
   );
-  static final  headlinePretendard60016= TextStyle(
+  static final headlinePretendard60016 = TextStyle(
     color: AppColors.addBg /* Neutral-N90 */,
     fontSize: 16.sp,
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600,
     letterSpacing: 0.16,
   );
-  static final  headlinePretendard50013= TextStyle(
+  static final headlinePretendard50013 = TextStyle(
     color: AppColors.cFFFFFF /* Neutral-N90 */,
     fontSize: 13.sp,
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w500,
     letterSpacing: 0.25,
   );
-  static final  headlinePretendard70028= TextStyle(
+  static final headlinePretendard70028 = TextStyle(
     color: AppColors.cFFFFFF /* Neutral-N90 */,
     fontSize: 28.sp,
     fontFamily: 'Pretendard',
@@ -144,19 +143,19 @@ class TextFontStyle {
     fontWeight: FontWeight.w500,
   );
 
-   static var textStyle14w500c0A2340 = GoogleFonts.inter(
+  static var textStyle14w500c0A2340 = GoogleFonts.inter(
     color: AppColors.c0A2340,
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
   );
 
-   static var textStyle16w400c141313 = GoogleFonts.inter(
+  static var textStyle16w400c141313 = GoogleFonts.inter(
     color: AppColors.c141313,
     fontSize: 16.sp,
     fontWeight: FontWeight.w400,
   );
 
-   static var textStyle16w600c020617 = GoogleFonts.inter(
+  static var textStyle16w600c020617 = GoogleFonts.inter(
     color: AppColors.c020617,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
@@ -213,6 +212,16 @@ class TextFontStyle {
 
   static var textStyle14w400c6B6B6B = GoogleFonts.poppins(
     color: AppColors.c6B6B6B,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static var textStyle14w400c4A5565 = GoogleFonts.poppins(
+    color: AppColors.c4A5565,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static var textStyle14w400c0A2340 = GoogleFonts.inter(
+    color: AppColors.c0A2340,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
   );
@@ -286,9 +295,16 @@ class TextFontStyle {
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
   );
+
   static var headlinePublicSans60024 = GoogleFonts.publicSans(
     color: AppColors.c134074,
     fontSize: 24.sp,
     fontWeight: FontWeight.w600,
+  );
+
+  static var headlinecinzel70018 = GoogleFonts.cinzel(
+    color: AppColors.c134074,
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w700,
   );
 }
