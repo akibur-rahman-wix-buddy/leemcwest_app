@@ -48,5 +48,10 @@ class AppIcons {
   static const String starr2= '$iconsRoute/starr2.svg';
   static const String lessonCompleted= '$iconsRoute/lessonCompleted.svg';
   static const String quizCompleted= '$iconsRoute/quizCompleted.svg';
+  static const String homeMenu= '$iconsRoute/homeMenu.svg';
+  static const String membership= '$iconsRoute/membership.svg';
+  static const String setting= '$iconsRoute/setting.svg';
+  static const String support= '$iconsRoute/support.svg';
+  static const String userGuid= '$iconsRoute/userGuid.svg';
  
 }
