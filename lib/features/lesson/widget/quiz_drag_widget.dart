@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:leemcwest/common_widgets/custom_button.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 
 class DragDropQuestionWidget extends StatefulWidget {
   final dynamic question;
+  final VoidCallback checkOntap;
 
   /// ✅ ADD CALLBACK
   final Function(int questionId, List<int> answer) onAnswer;
@@ -11,7 +13,7 @@ class DragDropQuestionWidget extends StatefulWidget {
   const DragDropQuestionWidget({
     Key? key,
     required this.question,
-    required this.onAnswer,
+    required this.onAnswer, required this.checkOntap,
   }) : super(key: key);
 
   @override
@@ -119,6 +121,12 @@ class _DragDropQuestionWidgetState extends State<DragDropQuestionWidget> {
             );
           }),
         ),
+        UIHelper.verticalSpace(16.h),
+        CustomButton(
+  name: "Check Answer",
+  onCallBack: widget.checkOntap,
+  context: context,
+)
       ],
     );
   }

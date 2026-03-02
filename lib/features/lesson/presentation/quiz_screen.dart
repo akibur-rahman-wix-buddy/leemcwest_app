@@ -210,46 +210,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             size: 60.h,
                           ),
                         )
-                      :
-                      // CustomButton(
-                      //     name: "Submit Answer",
-                      //     onCallBack: () async {
-                      //       bool success = await submitAnswerMethod();
-                      //       if (success) {
-                      //         showDialog(
-                      //           context: context,
-                      //           builder: (context) => Dialog(
-                      //             backgroundColor: AppColors.cFFFFFF,
-                      //             shape: RoundedRectangleBorder(
-                      //               borderRadius: BorderRadius.circular(12.r),
-                      //             ),
-                      //             child: Container(
-                      //               padding: EdgeInsets.all(16.sp),
-                      //               child: Column(
-                      //                 mainAxisSize: MainAxisSize.min,
-                      //                 children: [
-                      //                   Text("Congratulations"),
-                      //                   UIHelper.verticalSpace(12.h),
-                      //                   StepCircularProgress(
-                      //                       currentStep: 3, totalSteps: 4),
-                      //                   UIHelper.verticalSpace(12.h),
-                      //                   Text(
-                      //                       "You are answered 3 out of 4 questions"),
-                      //                   UIHelper.verticalSpace(12.h),
-                      //                   CustomButton(
-                      //                       name: "Lesson Summary",
-                      //                       onCallBack: () {},
-                      //                       context: context)
-                      //                 ],
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         );
-                      //       }
-                      //     },
-                      //     context: context,
-                      //   ),
-                      CustomButton(
+                      : CustomButton(
                           name: "Submit Answer",
                           onCallBack: () async {
                             final apiResponse = await submitAnswerMethod();
@@ -347,6 +308,12 @@ class _QuizScreenState extends State<QuizScreen> {
               question: question,
               onAnswer: (questionId, answerList) {
                 selectedAnswers[questionId] = answerList;
+              },
+              checkOntap: () {
+                List<int> selected = selectedAnswers[question.id] ?? [];
+
+                print("Question ID: ${question.id}");
+                print("Selected Indexes: $selected");
               },
             ),
         ],
@@ -453,6 +420,17 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Text(value.toString()),
             );
           }),
+        ),
+        UIHelper.verticalSpace(16.h),
+        CustomButton(
+          name: "Check Answer",
+          onCallBack: () {
+            List<int> selected = selectedAnswers[question.id] ?? [];
+
+            print("Question ID: ${question.id}");
+            print("Selected Indexes: $selected");
+          },
+          context: context,
         ),
       ],
     );

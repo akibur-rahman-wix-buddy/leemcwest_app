@@ -53,5 +53,7 @@ class AppIcons {
   static const String setting= '$iconsRoute/setting.svg';
   static const String support= '$iconsRoute/support.svg';
   static const String userGuid= '$iconsRoute/userGuid.svg';
+  static const String audio= '$iconsRoute/audio.svg';
+  static const String dot= '$iconsRoute/dot.svg';
  
 }

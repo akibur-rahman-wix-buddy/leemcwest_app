@@ -1,13 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
 class NetworkAudioPlayerWidget extends StatefulWidget {
   final String audioUrl;
+  final VoidCallback farwordOntap;
+  final VoidCallback backOntap;
 
   const NetworkAudioPlayerWidget({
     Key? key,
     required this.audioUrl,
+    required this.farwordOntap,
+    required this.backOntap,
   }) : super(key: key);
 
   @override
@@ -144,21 +147,22 @@ class _NetworkAudioPlayerWidgetState extends State<NetworkAudioPlayerWidget> {
                 children: [
                   /// PREVIOUS (Seek -10 sec)
                   IconButton(
-                    icon: const Icon(
-                      Icons.replay_10,
-                      color: Colors.grey,
-                      size: 28,
-                    ),
-                    onPressed: () async {
-                      final newPosition =
-                          _position - const Duration(seconds: 10);
-                      await _player.seek(
-                        newPosition > Duration.zero
-                            ? newPosition
-                            : Duration.zero,
-                      );
-                    },
-                  ),
+                      icon: const Icon(
+                        Icons.skip_previous,
+                        color: Colors.grey,
+                        size: 28,
+                      ),
+                      onPressed: widget.backOntap
+                      // () async {
+                      //   final newPosition =
+                      //       _position - const Duration(seconds: 10);
+                      //   await _player.seek(
+                      //     newPosition > Duration.zero
+                      //         ? newPosition
+                      //         : Duration.zero,
+                      //   );
+                      // },
+                      ),
 
                   /// PLAY / PAUSE (BIG CENTER BUTTON)
                   GestureDetector(
@@ -186,19 +190,21 @@ class _NetworkAudioPlayerWidgetState extends State<NetworkAudioPlayerWidget> {
 
                   /// NEXT (Seek +10 sec)
                   IconButton(
-                    icon: const Icon(
-                      Icons.forward_10,
-                      color: Color(0xff1f3c88),
-                      size: 28,
-                    ),
-                    onPressed: () async {
-                      final newPosition =
-                          _position + const Duration(seconds: 10);
-                      await _player.seek(
-                        newPosition < _duration ? newPosition : _duration,
-                      );
-                    },
-                  ),
+                      icon: const Icon(
+                        Icons.skip_next,
+                        color: Color(0xff1f3c88),
+                        size: 28,
+                      ),
+                      onPressed: widget.farwordOntap
+
+                      //  () async {
+                      //   final newPosition =
+                      //       _position + const Duration(seconds: 10);
+                      //   await _player.seek(
+                      //     newPosition < _duration ? newPosition : _duration,
+                      //   );
+                      // },
+                      ),
                 ],
               );
             },
