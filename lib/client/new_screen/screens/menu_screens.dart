@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:leemcwest/client/presentation/app_theme.dart';
-import 'package:leemcwest/client/presentation/shared_widgets.dart';
-
+import '../widgets/shared_widgets.dart';
 
 // ═══════════════════════════════════════
 // BURGER MENU OVERLAY
 // ═══════════════════════════════════════
 
 class BurgerMenuOverlay extends StatelessWidget {
-  final VoidCallback? onClose;
+  final VoidCallback onClose;
   final ValueChanged<String>? onNavigate;
-  const BurgerMenuOverlay({super.key, this.onClose, this.onNavigate});
+  const BurgerMenuOverlay({super.key, required this.onClose, this.onNavigate});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +46,7 @@ class BurgerMenuOverlay extends StatelessWidget {
                   child: ListView(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     children: items.map((item) => GestureDetector(
-                      onTap: () { onNavigate?.call(item['screen']!); onClose?.call(); },
+                      onTap: () { onNavigate?.call(item['screen']!); onClose(); },
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
                         decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: AppColors.border))),

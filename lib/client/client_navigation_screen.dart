@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_image.dart';
-import 'package:leemcwest/features/home/presentation/home_screen.dart';
-import 'package:leemcwest/features/lesson/presentation/lesson_screen.dart';
-import 'package:leemcwest/features/profile/presentation/profile_screen.dart';
-import 'package:leemcwest/features/progress/presentation/progress_screen.dart';
+import 'package:leemcwest/client/presentation/app_screens.dart';
 
 
 class ClientNavigationsBarScreen extends StatefulWidget {
@@ -20,9 +17,9 @@ class _ClientNavigationsBarScreenState extends State<ClientNavigationsBarScreen>
   int index = 0; // Corrected variable name
   final List _pageList = [
     const HomeScreen(),
-    const LessonScreen(),
+    const HomeNotificationsScreen(),
+    const SavedWorkScreen(),
     const ProgressScreen(),
-    const ProfileScreen(),
   ];
   @override
   void initState() {

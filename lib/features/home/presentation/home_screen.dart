@@ -117,7 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         'See FNH applied to real music and compositions. Analyse how functional flow shapes structure, tension and release across genres and styles.',
                     imagePath: AppImages.homeBackOne,
                     btnText: 'Explore Studies',
-                    onTap: () {},
+                    onTap: () {
+                      NavigationService.navigateTo(Routes.multiScreenPage);
+                    },
                   ),
                   UIHelper.verticalSpace(22.h),
                   MusicInfoContainer(
@@ -126,7 +128,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         'Learn how to write your own music. With guided tools and templates that help you experiment, develop ideas and shape complete songs with FNH concepts.',
                     imagePath: AppImages.homeBackOne,
                     btnText: 'Start Writing',
-                    onTap: () {},
+                    onTap: () {
+                      NavigationService.navigateTo(
+                          Routes.clientNavigationsBarScreen);
+                    },
                   ),
                   // UIHelper.verticalSpace(22.h),
                   // MusicInfoContainer(

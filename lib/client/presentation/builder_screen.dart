@@ -3,7 +3,6 @@ import 'package:leemcwest/client/presentation/builder_models.dart';
 import 'package:leemcwest/client/presentation/builder_theme.dart';
 import 'package:leemcwest/client/presentation/builder_widgets.dart';
 
-
 /// The main Composition Builder screen.
 /// Contains: header, config row, hierarchy bar, beat ruler,
 /// sentence rows, input panel (Notes/Functions/Library), playback bar.
@@ -35,26 +34,46 @@ class _BuilderScreenState extends State<BuilderScreen> {
     super.initState();
     _sentences = [
       SentenceData(num: 1, beatCount: 8, chords: {
-        1: const ChordData(world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
-        5: const ChordData(world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
-        7: const ChordData(world: 'D', notes: ['5', '7#', '2'], leadingCore: '2'),
+        1: const ChordData(
+            world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
+        5: const ChordData(
+            world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
+        7: const ChordData(
+            world: 'D', notes: ['5', '7#', '2'], leadingCore: '2'),
       }),
       SentenceData(num: 2, beatCount: 8, chords: {
-        1: const ChordData(world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#', duration: 2),
-        5: const ChordData(world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
-        7: const ChordData(world: 'D', notes: ['5', '7#', '2'], leadingCore: '2', duration: 2),
+        1: const ChordData(
+            world: 'T#',
+            notes: ['1', '3#', '5'],
+            leadingCore: '3#',
+            duration: 2),
+        5: const ChordData(
+            world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
+        7: const ChordData(
+            world: 'D', notes: ['5', '7#', '2'], leadingCore: '2', duration: 2),
       }),
       SentenceData(num: 3, beatCount: 8, chords: {
-        1: const ChordData(world: 'Db', notes: ['2b', '4', '6'], leadingCore: '2b', hasReframe: true),
-        7: const ChordData(world: 'Db', notes: ['4#', '2b', '7'], leadingCore: '2b'),
+        1: const ChordData(
+            world: 'Db',
+            notes: ['2b', '4', '6'],
+            leadingCore: '2b',
+            hasReframe: true),
+        7: const ChordData(
+            world: 'Db', notes: ['4#', '2b', '7'], leadingCore: '2b'),
       }),
       SentenceData(num: 4, beatCount: 12, chords: {
-        1: const ChordData(world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
-        3: const ChordData(world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
-        5: const ChordData(world: 'D', notes: ['5', '7#', '2'], leadingCore: '2'),
-        7: const ChordData(world: 'D#', notes: ['4#', '7', '2'], leadingCore: '4#'),
-        9: const ChordData(world: 'Db', notes: ['2b', '4', '6'], leadingCore: '2b'),
-        11: const ChordData(world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
+        1: const ChordData(
+            world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
+        3: const ChordData(
+            world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
+        5: const ChordData(
+            world: 'D', notes: ['5', '7#', '2'], leadingCore: '2'),
+        7: const ChordData(
+            world: 'D#', notes: ['4#', '7', '2'], leadingCore: '4#'),
+        9: const ChordData(
+            world: 'Db', notes: ['2b', '4', '6'], leadingCore: '2b'),
+        11: const ChordData(
+            world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
       }),
     ];
   }
@@ -104,17 +123,30 @@ class _BuilderScreenState extends State<BuilderScreen> {
             // ── Header ──
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: Color(0xFF1A1A1A)))),
+              decoration: const BoxDecoration(
+                  border: Border(bottom: BorderSide(color: Color(0xFF1A1A1A)))),
               child: Row(
                 children: [
-                  GestureDetector(onTap: () => Navigator.maybePop(context), child: const Text('‹', style: TextStyle(color: BuilderColors.textFaint, fontSize: 20))),
+                  GestureDetector(
+                      onTap: () => Navigator.maybePop(context),
+                      child: const Text('‹',
+                          style: TextStyle(
+                              color: BuilderColors.textFaint, fontSize: 20))),
                   const SizedBox(width: 10),
-                  Expanded(child: Text('COMPOSITION BUILDER', style: BuilderTypography.heading())),
-                  const Text('↩', style: TextStyle(color: BuilderColors.textFaint, fontSize: 13)),
+                  Expanded(
+                      child: Text('COMPOSITION BUILDER',
+                          style: BuilderTypography.heading())),
+                  const Text('↩',
+                      style: TextStyle(
+                          color: BuilderColors.textFaint, fontSize: 13)),
                   const SizedBox(width: 14),
-                  const Text('↪', style: TextStyle(color: BuilderColors.textFaint, fontSize: 13)),
+                  const Text('↪',
+                      style: TextStyle(
+                          color: BuilderColors.textFaint, fontSize: 13)),
                   const SizedBox(width: 14),
-                  const Text('⋮', style: TextStyle(color: BuilderColors.textFaint, fontSize: 16)),
+                  const Text('⋮',
+                      style: TextStyle(
+                          color: BuilderColors.textFaint, fontSize: 16)),
                 ],
               ),
             ),
@@ -129,22 +161,42 @@ class _BuilderScreenState extends State<BuilderScreen> {
                   _configChip('🔊'),
                   GestureDetector(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-                      decoration: BoxDecoration(color: BuilderColors.card, borderRadius: BorderRadius.circular(8)),
-                      child: Text('TSDT ▾', style: TextStyle(fontSize: 11, color: BuilderColors.accent, fontWeight: FontWeight.w600)),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 5),
+                      decoration: BoxDecoration(
+                          color: BuilderColors.card,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Text('TSDT ▾',
+                          style: TextStyle(
+                              fontSize: 11,
+                              color: BuilderColors.accent,
+                              fontWeight: FontWeight.w600)),
                     ),
                   ),
                   const SizedBox(width: 6),
                   GestureDetector(
-                    onTap: () => setState(() => _showEnergyLane = !_showEnergyLane),
+                    onTap: () =>
+                        setState(() => _showEnergyLane = !_showEnergyLane),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
-                        color: _showEnergyLane ? BuilderColors.accent.withOpacity(0.13) : BuilderColors.card,
+                        color: _showEnergyLane
+                            ? BuilderColors.accent.withOpacity(0.13)
+                            : BuilderColors.card,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: _showEnergyLane ? BuilderColors.accent.withOpacity(0.27) : Colors.transparent),
+                        border: Border.all(
+                            color: _showEnergyLane
+                                ? BuilderColors.accent.withOpacity(0.27)
+                                : Colors.transparent),
                       ),
-                      child: Text('∿', style: TextStyle(fontSize: 13, color: _showEnergyLane ? BuilderColors.accent : BuilderColors.textDim, fontWeight: FontWeight.w600)),
+                      child: Text('∿',
+                          style: TextStyle(
+                              fontSize: 13,
+                              color: _showEnergyLane
+                                  ? BuilderColors.accent
+                                  : BuilderColors.textDim,
+                              fontWeight: FontWeight.w600)),
                     ),
                   ),
                 ],
@@ -156,12 +208,16 @@ class _BuilderScreenState extends State<BuilderScreen> {
 
             // ── Beat ruler ──
             BeatRuler(
-              activeBeat: _activeBeat.isNotEmpty ? int.tryParse(_activeBeat.split('-').last) : null,
+              activeBeat: _activeBeat.isNotEmpty
+                  ? int.tryParse(_activeBeat.split('-').last)
+                  : null,
               beatCount: _activeBeat.isNotEmpty
-                  ? (_sentences[int.tryParse(_activeBeat.split('-').first) ?? 0].beatCount)
+                  ? (_sentences[int.tryParse(_activeBeat.split('-').first) ?? 0]
+                      .beatCount)
                   : 8,
               onBeatTap: (b) => setState(() {
-                final si = _activeBeat.isNotEmpty ? _activeBeat.split('-').first : '0';
+                final si =
+                    _activeBeat.isNotEmpty ? _activeBeat.split('-').first : '0';
                 _activeBeat = '$si-$b';
               }),
             ),
@@ -181,7 +237,8 @@ class _BuilderScreenState extends State<BuilderScreen> {
 
             // ── Input Panel ──
             Container(
-              decoration: const BoxDecoration(border: Border(top: BorderSide(color: BuilderColors.border))),
+              decoration: const BoxDecoration(
+                  border: Border(top: BorderSide(color: BuilderColors.border))),
               child: Column(
                 children: [
                   // Mode tabs
@@ -196,15 +253,29 @@ class _BuilderScreenState extends State<BuilderScreen> {
                             child: Container(
                               padding: const EdgeInsets.symmetric(vertical: 8),
                               decoration: BoxDecoration(
-                                color: active ? BuilderColors.accent : BuilderColors.card,
+                                color: active
+                                    ? BuilderColors.accent
+                                    : BuilderColors.card,
                                 borderRadius: m == 'Notes'
-                                    ? const BorderRadius.only(topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))
+                                    ? const BorderRadius.only(
+                                        topLeft: Radius.circular(8),
+                                        bottomLeft: Radius.circular(8))
                                     : m == 'Library'
-                                        ? const BorderRadius.only(topRight: Radius.circular(8), bottomRight: Radius.circular(8))
+                                        ? const BorderRadius.only(
+                                            topRight: Radius.circular(8),
+                                            bottomRight: Radius.circular(8))
                                         : null,
                               ),
                               alignment: Alignment.center,
-                              child: Text(m, style: TextStyle(fontSize: 11, fontWeight: active ? FontWeight.w700 : FontWeight.w400, color: active ? Colors.white : BuilderColors.textDim)),
+                              child: Text(m,
+                                  style: TextStyle(
+                                      fontSize: 11,
+                                      fontWeight: active
+                                          ? FontWeight.w700
+                                          : FontWeight.w400,
+                                      color: active
+                                          ? Colors.white
+                                          : BuilderColors.textDim)),
                             ),
                           ),
                         );
@@ -222,14 +293,17 @@ class _BuilderScreenState extends State<BuilderScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 24),
-                            child: OctaveStrip(current: _currentOctave, onChange: (v) => setState(() => _currentOctave = v)),
+                            child: OctaveStrip(
+                                current: _currentOctave,
+                                onChange: (v) =>
+                                    setState(() => _currentOctave = v)),
                           ),
                           ..._keyboardKeys.map((k) => PianoKey(
-                            label: k.label,
-                            isBlack: k.isBlack,
-                            isSelected: _noteSet.contains(k.label),
-                            onTap: () => _toggleNote(k.label),
-                          )),
+                                label: k.label,
+                                isBlack: k.isBlack,
+                                isSelected: _noteSet.contains(k.label),
+                                onTap: () => _toggleNote(k.label),
+                              )),
                         ],
                       ),
                     ),
@@ -240,27 +314,50 @@ class _BuilderScreenState extends State<BuilderScreen> {
                       padding: const EdgeInsets.all(12),
                       child: Column(
                         children: [
-                          Wrap(spacing: 6, children: ['T', 'T#', 'S', 'S#', 'D', 'D#', 'Db'].map((f) =>
-                            FuncBtn(label: f, isActive: _activeFunc == f, onTap: () => setState(() => _activeFunc = f)),
-                          ).toList()),
+                          Wrap(
+                              spacing: 6,
+                              children: ['T', 'T#', 'S', 'S#', 'D', 'D#', 'Db']
+                                  .map(
+                                    (f) => FuncBtn(
+                                        label: f,
+                                        isActive: _activeFunc == f,
+                                        onTap: () =>
+                                            setState(() => _activeFunc = f)),
+                                  )
+                                  .toList()),
                           const SizedBox(height: 12),
-                          Text('Chords for $_activeFunc:', style: BuilderTypography.label(size: 11, color: BuilderColors.textFaint)),
+                          Text('Chords for $_activeFunc:',
+                              style: BuilderTypography.label(
+                                  size: 11, color: BuilderColors.textFaint)),
                           const SizedBox(height: 6),
-                          ...['4 6# 1|Natural triad', '6# 1 3#|With tonic colour', '3# 6# 1|Tonic overlap'].map((c) {
+                          ...[
+                            '4 6# 1|Natural triad',
+                            '6# 1 3#|With tonic colour',
+                            '3# 6# 1|Tonic overlap'
+                          ].map((c) {
                             final parts = c.split('|');
                             final w = WorldColors.forWorld(_activeFunc);
                             return Container(
                               margin: const EdgeInsets.only(bottom: 6),
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 10),
                               decoration: BoxDecoration(
                                 color: BuilderColors.surface,
                                 borderRadius: BorderRadius.circular(10),
-                                border: Border.all(color: BuilderColors.cardAlt),
+                                border:
+                                    Border.all(color: BuilderColors.cardAlt),
                               ),
                               child: Row(children: [
-                                Text(parts[0], style: BuilderTypography.mono(size: 14, weight: FontWeight.w700, color: BuilderColors.textSecondary)),
+                                Text(parts[0],
+                                    style: BuilderTypography.mono(
+                                        size: 14,
+                                        weight: FontWeight.w700,
+                                        color: BuilderColors.textSecondary)),
                                 const SizedBox(width: 12),
-                                Text(parts[1], style: const TextStyle(fontSize: 10, color: BuilderColors.textDim)),
+                                Text(parts[1],
+                                    style: const TextStyle(
+                                        fontSize: 10,
+                                        color: BuilderColors.textDim)),
                               ]),
                             );
                           }),
@@ -274,24 +371,56 @@ class _BuilderScreenState extends State<BuilderScreen> {
                       padding: const EdgeInsets.all(8),
                       child: Column(
                         children: [
-                          Wrap(spacing: 4, children: ['All', 'T', 'T#', 'S', 'S#', 'D', 'D#', 'Db'].map((f) {
-                            final active = f == 'S#';
-                            final w = WorldColors.forWorld(f);
-                            return Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-                              decoration: BoxDecoration(color: active ? w : BuilderColors.card, borderRadius: BorderRadius.circular(6)),
-                              child: Text(f, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w600, color: active ? Colors.white : w)),
-                            );
-                          }).toList()),
+                          Wrap(
+                              spacing: 4,
+                              children: [
+                                'All',
+                                'T',
+                                'T#',
+                                'S',
+                                'S#',
+                                'D',
+                                'D#',
+                                'Db'
+                              ].map((f) {
+                                final active = f == 'S#';
+                                final w = WorldColors.forWorld(f);
+                                return Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 3),
+                                  decoration: BoxDecoration(
+                                      color: active ? w : BuilderColors.card,
+                                      borderRadius: BorderRadius.circular(6)),
+                                  child: Text(f,
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w600,
+                                          color: active ? Colors.white : w)),
+                                );
+                              }).toList()),
                           const SizedBox(height: 8),
-                          Wrap(spacing: 6, runSpacing: 6, children: [
-                            const LibraryChip(notes: '4 6# 1', world: 'S#'),
-                            const LibraryChip(notes: '6# 1 3#', world: 'S#'),
-                            const LibraryChip(notes: '3# 6# 1', world: 'S#'),
-                            const LibraryChip(notes: '6# 2 4#', world: 'D#'),
-                            const LibraryChip(notes: '4 6# 2b', world: 'Db'),
-                            const LibraryChip(notes: '6# 1 4', world: 'S#'),
-                          ].map((c) => SizedBox(width: (MediaQuery.of(context).size.width - 28) / 3, child: c)).toList()),
+                          Wrap(
+                              spacing: 6,
+                              runSpacing: 6,
+                              children: [
+                                const LibraryChip(notes: '4 6# 1', world: 'S#'),
+                                const LibraryChip(
+                                    notes: '6# 1 3#', world: 'S#'),
+                                const LibraryChip(
+                                    notes: '3# 6# 1', world: 'S#'),
+                                const LibraryChip(
+                                    notes: '6# 2 4#', world: 'D#'),
+                                const LibraryChip(
+                                    notes: '4 6# 2b', world: 'Db'),
+                                const LibraryChip(notes: '6# 1 4', world: 'S#'),
+                              ]
+                                  .map((c) => SizedBox(
+                                      width:
+                                          (MediaQuery.of(context).size.width -
+                                                  28) /
+                                              3,
+                                      child: c))
+                                  .toList()),
                         ],
                       ),
                     ),
@@ -302,23 +431,43 @@ class _BuilderScreenState extends State<BuilderScreen> {
             // ── Playback bar ──
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              decoration: const BoxDecoration(border: Border(top: BorderSide(color: Color(0xFF1A1A1A)))),
+              decoration: const BoxDecoration(
+                  border: Border(top: BorderSide(color: Color(0xFF1A1A1A)))),
               child: Row(
                 children: [
-                  const Text('⏮', style: TextStyle(fontSize: 14, color: BuilderColors.textFaint)),
+                  const Text('⏮',
+                      style: TextStyle(
+                          fontSize: 14, color: BuilderColors.textFaint)),
                   const SizedBox(width: 16),
                   Container(
-                    width: 38, height: 38,
-                    decoration: BoxDecoration(color: BuilderColors.accent, shape: BoxShape.circle, boxShadow: [BoxShadow(color: BuilderColors.accent.withOpacity(0.27), blurRadius: 12)]),
+                    width: 38,
+                    height: 38,
+                    decoration: BoxDecoration(
+                        color: BuilderColors.accent,
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: BuilderColors.accent.withOpacity(0.27),
+                              blurRadius: 12)
+                        ]),
                     alignment: Alignment.center,
-                    child: const Text('▶', style: TextStyle(fontSize: 16, color: Colors.white)),
+                    child: const Text('▶',
+                        style: TextStyle(fontSize: 16, color: Colors.white)),
                   ),
                   const SizedBox(width: 16),
-                  const Text('🔁', style: TextStyle(fontSize: 13, color: BuilderColors.textFaint)),
+                  const Text('🔁',
+                      style: TextStyle(
+                          fontSize: 13, color: BuilderColors.textFaint)),
                   const Spacer(),
-                  Text('S1 · Bar 2 · Beat 5', style: BuilderTypography.mono(size: 11, color: BuilderColors.textFaint)),
+                  Text('S1 · Bar 2 · Beat 5',
+                      style: BuilderTypography.mono(
+                          size: 11, color: BuilderColors.textFaint)),
                   const SizedBox(width: 12),
-                  const Text('90', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: BuilderColors.textDim)),
+                  const Text('90',
+                      style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          color: BuilderColors.textDim)),
                 ],
               ),
             ),
@@ -333,8 +482,11 @@ class _BuilderScreenState extends State<BuilderScreen> {
       padding: const EdgeInsets.only(right: 6),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-        decoration: BoxDecoration(color: BuilderColors.card, borderRadius: BorderRadius.circular(8)),
-        child: Text(label, style: BuilderTypography.label(size: 11, color: BuilderColors.textMuted)),
+        decoration: BoxDecoration(
+            color: BuilderColors.card, borderRadius: BorderRadius.circular(8)),
+        child: Text(label,
+            style: BuilderTypography.label(
+                size: 11, color: BuilderColors.textMuted)),
       ),
     );
   }
@@ -344,7 +496,8 @@ class _BuilderScreenState extends State<BuilderScreen> {
     final isExtended = bc > 8;
     final coveredBeats = <int>{};
     for (final entry in sent.chords.entries) {
-      for (var i = 1; i < entry.value.duration; i++) coveredBeats.add(entry.key + i);
+      for (var i = 1; i < entry.value.duration; i++)
+        coveredBeats.add(entry.key + i);
     }
 
     return Container(
@@ -367,7 +520,9 @@ class _BuilderScreenState extends State<BuilderScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 6),
               child: Row(
-                mainAxisAlignment: isExtended ? MainAxisAlignment.start : MainAxisAlignment.center,
+                mainAxisAlignment: isExtended
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.center,
                 children: List.generate(bc, (i) {
                   final b = i + 1;
                   if (coveredBeats.contains(b)) return const SizedBox.shrink();
@@ -379,7 +534,8 @@ class _BuilderScreenState extends State<BuilderScreen> {
                       chord: chord,
                       isEmpty: chord == null,
                       isActive: _activeBeat == beatKey,
-                      isPendingTarget: _activeBeat == beatKey && _selectedNotes.isNotEmpty,
+                      isPendingTarget:
+                          _activeBeat == beatKey && _selectedNotes.isNotEmpty,
                       onTap: () => setState(() => _activeBeat = beatKey),
                     ),
                   );

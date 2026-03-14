@@ -32,8 +32,10 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
 
   int get _total => widget.pages.length;
   StudyPage get _current => widget.pages[_currentPage];
-  StudyPage? get _prev => _currentPage > 0 ? widget.pages[_currentPage - 1] : null;
-  StudyPage? get _next => _currentPage < _total - 1 ? widget.pages[_currentPage + 1] : null;
+  StudyPage? get _prev =>
+      _currentPage > 0 ? widget.pages[_currentPage - 1] : null;
+  StudyPage? get _next =>
+      _currentPage < _total - 1 ? widget.pages[_currentPage + 1] : null;
 
   void _goTo(int page) {
     setState(() => _currentPage = page.clamp(0, _total - 1));
@@ -44,7 +46,8 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
   List<Widget> _buildDots() {
     final dots = <Widget>[];
     for (var i = 0; i < _total; i++) {
-      final isNewGroup = i > 0 && widget.pages[i].group != widget.pages[i - 1].group;
+      final isNewGroup =
+          i > 0 && widget.pages[i].group != widget.pages[i - 1].group;
       if (isNewGroup) {
         dots.add(Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2),
@@ -57,7 +60,8 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
         onTap: () => _goTo(i),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
-          width: isCurrent ? 16 : 6, height: 6,
+          width: isCurrent ? 16 : 6,
+          height: 6,
           decoration: BoxDecoration(
             color: isCurrent || isPast ? AppColors.accent : AppColors.border,
             borderRadius: BorderRadius.circular(3),
@@ -69,7 +73,9 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
               : null,
         ),
       ));
-      if (i < _total - 1 && !(i + 1 < _total && widget.pages[i + 1].group != widget.pages[i].group)) {
+      if (i < _total - 1 &&
+          !(i + 1 < _total &&
+              widget.pages[i + 1].group != widget.pages[i].group)) {
         dots.add(const SizedBox(width: 4));
       }
     }
@@ -77,7 +83,10 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
   }
 
   @override
-  void dispose() { _scrollController.dispose(); super.dispose(); }
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,26 +108,35 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                         children: [
                           GestureDetector(
                             onTap: widget.onBack,
-                            child: const Icon(Icons.arrow_back, color: AppColors.textMuted, size: 22),
+                            child: const Icon(Icons.arrow_back,
+                                color: AppColors.textMuted, size: 22),
                           ),
                           Expanded(
                             child: Text(
                               widget.studyTitle,
                               textAlign: TextAlign.center,
-                              style: AppTypography.label(size: 12, weight: FontWeight.w500, color: AppColors.textMuted),
+                              style: AppTypography.label(
+                                  size: 12,
+                                  weight: FontWeight.w500,
+                                  color: AppColors.textMuted),
                             ),
                           ),
                           GestureDetector(
                             onTap: () => setState(() => _showKeyMap = true),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 3),
                               decoration: BoxDecoration(
                                 color: AppColors.accentSoft,
                                 borderRadius: BorderRadius.circular(6),
-                                border: Border.all(color: AppColors.accent.withOpacity(0.3)),
+                                border: Border.all(
+                                    color: AppColors.accent.withOpacity(0.3)),
                               ),
                               child: Text('KEY MAP',
-                                  style: AppTypography.mono(size: 9, weight: FontWeight.w700, color: AppColors.accent)),
+                                  style: AppTypography.mono(
+                                      size: 9,
+                                      weight: FontWeight.w700,
+                                      color: AppColors.accent)),
                             ),
                           ),
                         ],
@@ -130,20 +148,28 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                       padding: const EdgeInsets.only(top: 8),
                       child: Text(
                         _current.group.toUpperCase(),
-                        style: AppTypography.mono(size: 10, color: AppColors.accent, weight: FontWeight.w400)
+                        style: AppTypography.mono(
+                                size: 10,
+                                color: AppColors.accent,
+                                weight: FontWeight.w400)
                             .copyWith(letterSpacing: 1.0),
                       ),
                     ),
 
                     // Row 3: Page title
-                    Text(_current.title, style: AppTypography.heading(size: 16, weight: FontWeight.w600)),
+                    Text(_current.title,
+                        style: AppTypography.heading(
+                            size: 16, weight: FontWeight.w600)),
 
                     // Row 4: Page counter
                     Padding(
                       padding: const EdgeInsets.only(top: 4),
                       child: Text(
                         'Page ${_currentPage + 1} of $_total',
-                        style: AppTypography.mono(size: 10, color: AppColors.textMuted, weight: FontWeight.w400),
+                        style: AppTypography.mono(
+                            size: 10,
+                            color: AppColors.textMuted,
+                            weight: FontWeight.w400),
                       ),
                     ),
 
@@ -156,14 +182,16 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                           value: (_currentPage + 1) / _total,
                           minHeight: 3,
                           backgroundColor: AppColors.border,
-                          valueColor: const AlwaysStoppedAnimation<Color>(AppColors.accent),
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              AppColors.accent),
                         ),
                       ),
                     ),
 
                     // Page dots
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 12),
                       child: Wrap(
                         alignment: WrapAlignment.center,
                         children: _buildDots(),
@@ -186,7 +214,8 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ..._current.elements.map((el) => StudyElementRenderer(element: el)),
+                      ..._current.elements
+                          .map((el) => StudyElementRenderer(element: el)),
                       const SizedBox(height: 8),
 
                       // Previous button
@@ -201,9 +230,13 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                               label: Text(_prev!.title),
                               style: OutlinedButton.styleFrom(
                                 foregroundColor: AppColors.textSecondary,
-                                side: const BorderSide(color: AppColors.border, width: 1.5),
-                                padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 20),
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSpacing.buttonRadius)),
+                                side: const BorderSide(
+                                    color: AppColors.border, width: 1.5),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 13, horizontal: 20),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(
+                                        AppSpacing.buttonRadius)),
                               ),
                             ),
                           ),
@@ -218,8 +251,11 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.accent,
                               foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSpacing.buttonRadius)),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(
+                                      AppSpacing.buttonRadius)),
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -235,7 +271,9 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                         Column(
                           children: [
                             const SizedBox(height: 8),
-                            Text('Study Complete', style: AppTypography.heading(size: 16, weight: FontWeight.w600)),
+                            Text('Study Complete',
+                                style: AppTypography.heading(
+                                    size: 16, weight: FontWeight.w600)),
                             const SizedBox(height: 8),
                             Text('Return to the study list to explore more.',
                                 style: AppTypography.body(size: 14)),
@@ -247,8 +285,11 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: AppColors.accent,
                                   foregroundColor: Colors.white,
-                                  padding: const EdgeInsets.symmetric(vertical: 15),
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSpacing.buttonRadius)),
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 15),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppSpacing.buttonRadius)),
                                 ),
                                 child: const Text('Back to Studies'),
                               ),
