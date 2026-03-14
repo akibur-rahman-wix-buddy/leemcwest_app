@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:leemcwest/client/client_navigation_screen.dart';
+import 'package:leemcwest/client/presentation/multiple_screen.dart';
 import 'package:leemcwest/features/authentication/password/presentation/change_password_screen.dart';
 import 'package:leemcwest/features/authentication/password/presentation/create_password_screen.dart';
 import 'package:leemcwest/features/authentication/password/presentation/forgot_password_screen.dart';
@@ -83,6 +85,8 @@ final class Routes {
   static const String changePassword = '/changePassword';
   static const String compositionBuilderScreen = '/CompositionBuilderScreen';
   static const String introScreen = '/IntroScreen';
+  static const String clientNavigationsBarScreen = '/ClientNavigationsBarScreen';
+  static const String multiScreenPage = '/MultiScreenPage';
 }
 
 final class RouteGenerator {
@@ -450,6 +454,23 @@ final class RouteGenerator {
               widget: const IntroScreen(), settings: settings);
         } else {
           return CupertinoPageRoute(builder: (context) => const IntroScreen());
+        }
+
+
+      case Routes.clientNavigationsBarScreen:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const ClientNavigationsBarScreen(), settings: settings);
+        } else {
+          return CupertinoPageRoute(builder: (context) => const ClientNavigationsBarScreen());
+        }
+
+      case Routes.multiScreenPage:
+        if (Platform.isAndroid) {
+          return FadedTransitionRoute(
+              widget: const MultiScreenPage(), settings: settings);
+        } else {
+          return CupertinoPageRoute(builder: (context) => const MultiScreenPage());
         }
 
       default:
