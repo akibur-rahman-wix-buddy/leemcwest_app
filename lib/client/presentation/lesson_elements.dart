@@ -560,7 +560,7 @@ class _SentenceGridWidgetState extends State<SentenceGridWidget> {
                     child: Container(
                       width: 22,
                       height: 22,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.accent,
                         shape: BoxShape.circle,
                         boxShadow: [

@@ -128,7 +128,7 @@ class SecondaryButton extends StatelessWidget {
           border: Border.all(color: AppColors.border, width: 1.5),
         ),
         alignment: Alignment.center,
-        child: Text(label, style: TextStyle(
+        child: Text(label, style: const TextStyle(
           fontFamily: AppTypography.fontDisplay, fontSize: 14,
           fontWeight: FontWeight.w500, color: AppColors.textSecondary,
         )),
@@ -322,9 +322,9 @@ class HomeSectionCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         gradient: LinearGradient(
           begin: Alignment.topLeft, end: Alignment.bottomRight,
-          colors: [color.withOpacity(0.13), AppColors.card],
+          colors: [color.withValues(alpha: .13), AppColors.card],
         ),
-        border: Border.all(color: color.withOpacity(0.19)),
+        border: Border.all(color: color.withValues(alpha: .19)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -71,7 +71,7 @@ class _IntroOnboardingScreenState extends State<IntroOnboardingScreen> {
                         width: i == _currentPage ? 20 : 6, height: 6,
                         margin: const EdgeInsets.symmetric(horizontal: 4),
                         decoration: BoxDecoration(
-                          color: i == _currentPage ? _navy : _navy.withOpacity(0.18),
+                          color: i == _currentPage ? _navy : _navy.withValues(alpha: .18),
                           borderRadius: BorderRadius.circular(3),
                         ),
                       ),
@@ -115,24 +115,24 @@ class _IntroOnboardingScreenState extends State<IntroOnboardingScreen> {
 
   // ── PAGE 1: Welcome ──
   Widget _buildPage1() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 32),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const _TrefoilIcon(size: 110),
-          const SizedBox(height: 32),
-          const Text('Welcome to', style: TextStyle(
+          _TrefoilIcon(size: 110),
+          SizedBox(height: 32),
+          Text('Welcome to', style: TextStyle(
             fontFamily: _cinzel, fontSize: 14, fontWeight: FontWeight.w400,
             color: _navyMuted, letterSpacing: 2.0,
           )),
-          const SizedBox(height: 8),
-          const Text('NumoniX', style: TextStyle(
+          SizedBox(height: 8),
+          Text('NumoniX', style: TextStyle(
             fontFamily: _cinzel, fontSize: 36, fontWeight: FontWeight.w700,
             color: _navy, letterSpacing: -0.5, height: 1.1,
           )),
-          const SizedBox(height: 20),
-          const Text(
+          SizedBox(height: 20),
+          Text(
             'Where You Experience\nHarmony In Motion',
             textAlign: TextAlign.center,
             style: TextStyle(fontFamily: _cinzel, fontSize: 15, color: _navyLight, height: 1.6),
@@ -206,7 +206,7 @@ class _IntroOnboardingScreenState extends State<IntroOnboardingScreen> {
             padding: const EdgeInsets.only(bottom: 16),
             child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Container(width: 6, height: 6, margin: const EdgeInsets.only(top: 8),
-                decoration: BoxDecoration(shape: BoxShape.circle, color: _navy.withOpacity(0.4))),
+                decoration: BoxDecoration(shape: BoxShape.circle, color: _navy.withValues(alpha: .4))),
               const SizedBox(width: 12),
               Expanded(child: RichText(text: TextSpan(
                 style: const TextStyle(fontFamily: _cinzel, fontSize: 14.5, color: _navy, height: 1.65),
@@ -290,7 +290,7 @@ class _TrefoilPainter extends CustomPainter {
     final c = Offset(size.width / 2, size.height / 2);
     final s = size.width / 120;
 
-    canvas.drawCircle(c, 50 * s, Paint()..color = navy.withOpacity(0.1)..style = PaintingStyle.stroke..strokeWidth = 0.4 * s);
+    canvas.drawCircle(c, 50 * s, Paint()..color = navy.withValues(alpha: .1)..style = PaintingStyle.stroke..strokeWidth = 0.4 * s);
 
     final p = Paint()..style = PaintingStyle.stroke..strokeWidth = 2 * s;
 
@@ -299,14 +299,14 @@ class _TrefoilPainter extends CustomPainter {
     canvas.restore();
 
     canvas.save(); canvas.translate(c.dx - 18 * s, c.dy + 12 * s); canvas.rotate(-0.52);
-    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 48 * s, height: 40 * s), p..color = navyLight.withOpacity(0.85));
+    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 48 * s, height: 40 * s), p..color = navyLight.withValues(alpha: .85));
     canvas.restore();
 
     canvas.save(); canvas.translate(c.dx + 18 * s, c.dy + 12 * s); canvas.rotate(0.52);
-    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 48 * s, height: 40 * s), p..color = navyLight.withOpacity(0.85));
+    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 48 * s, height: 40 * s), p..color = navyLight.withValues(alpha: .85));
     canvas.restore();
 
-    canvas.drawCircle(Offset(c.dx, c.dy - 2 * s), 3.5 * s, Paint()..color = navy.withOpacity(0.5));
+    canvas.drawCircle(Offset(c.dx, c.dy - 2 * s), 3.5 * s, Paint()..color = navy.withValues(alpha: .5));
   }
 
   @override
@@ -330,7 +330,7 @@ class _WavePainter extends CustomPainter {
     const navy = Color(0xFF1A1A3E);
     for (var i = 0; i < 3; i++) {
       final paint = Paint()
-        ..color = navy.withOpacity(0.12 - i * 0.03)
+        ..color = navy.withValues(alpha: .12 - i * 0.03)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1.0 - i * 0.2;
       final path = Path();

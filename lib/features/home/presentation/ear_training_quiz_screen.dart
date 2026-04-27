@@ -72,7 +72,7 @@ class _EarTrainingQuizScreenState extends State<EarTrainingQuizScreen> {
                   child: OptionWidget(
                     text: 'T → S → T',
                     bgColor: AppColors.cF0FDF4,
-                    borderColor: AppColors.c05DF72.withOpacity(0.5),
+                    borderColor: AppColors.c05DF72.withValues(alpha: .5),
                   ),
                 ),
               ],
@@ -84,7 +84,7 @@ class _EarTrainingQuizScreenState extends State<EarTrainingQuizScreen> {
                   child: OptionWidget(
                     text: 'T → S → T',
                     bgColor: AppColors.cF0FDF4,
-                    borderColor: AppColors.c05DF72.withOpacity(0.5),
+                    borderColor: AppColors.c05DF72.withValues(alpha: .5),
                   ),
                 ),
                 UIHelper.horizontalSpace(18.w),
@@ -92,7 +92,7 @@ class _EarTrainingQuizScreenState extends State<EarTrainingQuizScreen> {
                   child: OptionWidget(
                     text: 'D → S → T',
                     bgColor: AppColors.cF0FDF4,
-                    borderColor: AppColors.c05DF72.withOpacity(0.5),
+                    borderColor: AppColors.c05DF72.withValues(alpha: .5),
                   ),
                 ),
               ],
@@ -100,13 +100,14 @@ class _EarTrainingQuizScreenState extends State<EarTrainingQuizScreen> {
             UIHelper.verticalSpace(16.h),
             const CorrectAnswerWidget(
               answer: 'T → S → T',
-              description: 'A plagal cadence pattern: Tonic to Subdominant and back to Tonic, creating a softer resolution.',
+              description:
+                  'A plagal cadence pattern: Tonic to Subdominant and back to Tonic, creating a softer resolution.',
             ),
             UIHelper.verticalSpace(32.h),
             Row(
               children: [
                 Expanded(
-                  child: CustomButton(
+                  child: customButton(
                     name: 'Tonic Root Hint',
                     context: context,
                     borderColor: AppColors.cE2E8F0,
@@ -114,30 +115,30 @@ class _EarTrainingQuizScreenState extends State<EarTrainingQuizScreen> {
                     textStyle: const TextStyle(
                       color: AppColors.c061426,
                     ),
-                    onCallBack: (){},
+                    onCallBack: () {},
                   ),
                 ),
                 UIHelper.horizontalSpace(12.w),
                 Expanded(
-                  child: CustomButton(
+                  child: customButton(
                     name: 'Show Answer',
                     context: context,
-                    onCallBack: (){},
+                    onCallBack: () {},
                   ),
                 ),
               ],
             ),
             UIHelper.verticalSpace(32.h),
-            CustomButton(
-                    name: 'Next Phrase',
-                    context: context,
-                    borderColor: AppColors.c134074,
-                    color: AppColors.cFFFFFF,
-                    textStyle: const TextStyle(
-                      color: AppColors.c134074,
-                    ),
-                    onCallBack: (){},
-                  ),
+            customButton(
+              name: 'Next Phrase',
+              context: context,
+              borderColor: AppColors.c134074,
+              color: AppColors.cFFFFFF,
+              textStyle: const TextStyle(
+                color: AppColors.c134074,
+              ),
+              onCallBack: () {},
+            ),
           ],
         ),
       ),

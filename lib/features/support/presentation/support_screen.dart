@@ -36,7 +36,7 @@ class _SupportScreenState extends State<SupportScreen> {
               ),
             ),
             UIHelper.verticalSpace(120.h),
-            CustomButton(
+            customButton(
               name: 'Contact Support',
               onCallBack: () {
                 NavigationService.navigateTo(Routes.contactSupport);
@@ -49,7 +49,7 @@ class _SupportScreenState extends State<SupportScreen> {
               ),
             ),
             UIHelper.verticalSpace(18.h),
-            CustomButton(
+            customButton(
               name: 'Report A Bug',
               onCallBack: () {
                 NavigationService.navigateTo(Routes.reportabug);
@@ -62,7 +62,7 @@ class _SupportScreenState extends State<SupportScreen> {
               ),
             ),
             UIHelper.verticalSpace(18.h),
-            CustomButton(
+            customButton(
               name: 'Suggest A Feature',
               onCallBack: () {
                 NavigationService.navigateTo(Routes.suggestafeature);

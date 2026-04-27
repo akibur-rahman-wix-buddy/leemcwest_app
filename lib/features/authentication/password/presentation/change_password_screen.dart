@@ -14,7 +14,6 @@ import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
 
-
 class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
 
@@ -28,7 +27,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final confirmPasswordController = TextEditingController();
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
-  
+
   Future<void> submitForm() async {
     setState(() {
       isLoading = true;
@@ -36,13 +35,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     try {
       if (_formKey.currentState!.validate()) {
         final success = await postChangePasswordRxObj.postChangePasswordRx(
-          currentPassword: currentPasswordController.text, 
+          currentPassword: currentPasswordController.text,
           password: newPasswordController.text,
           passwordConfirmation: confirmPasswordController.text,
         );
 
         if (success == true) {
-           NavigationService.navigateTo(Routes.manageAccount);
+          NavigationService.navigateTo(Routes.manageAccount);
         } else {
           ToastUtil.showShortToast("Error");
         }
@@ -55,7 +54,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
       });
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -147,19 +146,18 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 UIHelper.verticalSpace(24.h),
                 isLoading
-                ? const Center(
-                  child: SpinKitCircle(
-                    color: AppColors.primaryColor2,
-                  ),
-                )
-                :
-                CustomButton(
-                  name: 'Reset Password',
-                  onCallBack: (){
-                   submitForm();
-                  },
-                  context: context,
-                ),
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.primaryColor2,
+                        ),
+                      )
+                    : customButton(
+                        name: 'Reset Password',
+                        onCallBack: () {
+                          submitForm();
+                        },
+                        context: context,
+                      ),
               ],
             ),
           ),

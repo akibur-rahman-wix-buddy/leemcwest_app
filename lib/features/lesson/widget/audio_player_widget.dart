@@ -7,11 +7,11 @@ class NetworkAudioPlayerWidget extends StatefulWidget {
   final VoidCallback backOntap;
 
   const NetworkAudioPlayerWidget({
-    Key? key,
+    super.key,
     required this.audioUrl,
     required this.farwordOntap,
     required this.backOntap,
-  }) : super(key: key);
+  });
 
   @override
   State<NetworkAudioPlayerWidget> createState() =>

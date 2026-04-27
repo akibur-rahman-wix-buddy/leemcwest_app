@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../assets_helper/app_colors.dart';
 import '../assets_helper/app_fonts.dart';
 
-
-Widget CustomButton({
+Widget customButton({
   required String name,
   required void Function() onCallBack,
   double? height,
@@ -30,7 +29,8 @@ Widget CustomButton({
         minimumSize: Size(minWidth ?? 170.w, height ?? 55.h),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
-          side: BorderSide(color: borderColor ?? AppColors.onboardingButtonColor),
+          side:
+              BorderSide(color: borderColor ?? AppColors.onboardingButtonColor),
         ),
         elevation: elevation,
       ),
@@ -57,10 +57,10 @@ Widget CustomButton({
             overflow: TextOverflow.ellipsis,
             style: textStyle ??
                 TextFontStyle.headlinePoppins60014.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16// Change based on design
-                ),
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16 // Change based on design
+                    ),
           ),
           if (suffixImage != null)
             Padding(

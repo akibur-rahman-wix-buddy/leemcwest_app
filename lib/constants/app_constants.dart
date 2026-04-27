@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 final class AppRegExpText {
   AppRegExpText._();
@@ -61,7 +60,7 @@ final class AppRegExpText {
 
 
 ///Page Value
- const int TITLE = 1;
+ const int title = 1;
 
 
 

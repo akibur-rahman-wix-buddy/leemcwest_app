@@ -3,13 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
 import 'package:leemcwest/assets_helper/app_fonts.dart';
-import 'package:leemcwest/common_widgets/custom_button.dart';
+
 import 'package:leemcwest/common_widgets/custom_center_title_appbar.dart';
 import 'package:leemcwest/common_widgets/custom_textfeild.dart';
 import 'package:leemcwest/helpers/navigation_service.dart';
 import 'package:leemcwest/helpers/toast.dart';
 import 'package:leemcwest/helpers/ui_helpers.dart';
 import 'package:leemcwest/networks/api_acess.dart';
+
+import '../../../common_widgets/custom_button.dart';
 
 class ContactSupportScreen extends StatefulWidget {
   const ContactSupportScreen({super.key});
@@ -119,7 +121,7 @@ class _ContactSupportScreenState extends State<ContactSupportScreen> {
                     ),
                   )
                   :
-                  CustomButton(
+                  customButton(
                     name: 'Submit',
                     onCallBack: () {
                       submitForm();

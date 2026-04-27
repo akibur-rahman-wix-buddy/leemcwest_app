@@ -23,7 +23,7 @@ class WorldColors {
     }
   }
 
-  static Color withAlpha(Color c, double a) => c.withOpacity(a);
+  static Color withAlpha(Color c, double a) => c.withValues(alpha: a);
 }
 
 /// Core note colours for piano keyboard highlighting.
@@ -79,7 +79,7 @@ class BuilderTypography {
       TextStyle(fontFamily: fontUI, fontSize: size, fontWeight: FontWeight.w500, color: color);
 
   static TextStyle sectionHeader() =>
-      TextStyle(fontFamily: fontMono, fontSize: 9, fontWeight: FontWeight.w700, color: BuilderColors.textFaint, letterSpacing: 1.5);
+      const TextStyle(fontFamily: fontMono, fontSize: 9, fontWeight: FontWeight.w700, color: BuilderColors.textFaint, letterSpacing: 1.5);
 }
 
 /// Hierarchy orientations.

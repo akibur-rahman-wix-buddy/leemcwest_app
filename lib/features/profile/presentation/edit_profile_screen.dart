@@ -30,7 +30,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final phoneController = TextEditingController();
   File? profileImage;
   final ImagePicker _picker = ImagePicker();
-   final formKey = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
   bool isLoading = false;
   Future<void> submitForm() async {
     try {
@@ -64,6 +64,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       ToastUtil.showShortToast(e.toString());
     }
   }
+
   @override
   void initState() {
     super.initState();
@@ -164,20 +165,18 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 UIHelper.verticalSpace(32.h),
                 isLoading
-                ?
-                const Center(
-                  child: SpinKitCircle(
-                    color: AppColors.primaryColor2,
-                  ),
-                )
-                :
-                CustomButton(
-                  name: 'Update',
-                  onCallBack: () {
-                    submitForm();
-                  },
-                  context: context,
-                ),
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.primaryColor2,
+                        ),
+                      )
+                    : customButton(
+                        name: 'Update',
+                        onCallBack: () {
+                          submitForm();
+                        },
+                        context: context,
+                      ),
               ],
             ),
           ),

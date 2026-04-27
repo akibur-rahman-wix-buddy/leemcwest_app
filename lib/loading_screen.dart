@@ -20,7 +20,7 @@ final class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  bool _isLoading = true;
+  final bool _isLoading = true;
   bool isFirstTime = false;
 
   @override

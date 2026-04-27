@@ -31,10 +31,8 @@ class ConfirmDialogueWidget extends StatelessWidget {
             UIHelper.verticalSpace(24.h),
             Text(
               'Account Create Successful',
-              style: TextFontStyle.textStyle16w500c6A7282.copyWith(
-                color: AppColors.c134074,
-                fontSize: 18.sp
-              ),
+              style: TextFontStyle.textStyle16w500c6A7282
+                  .copyWith(color: AppColors.c134074, fontSize: 18.sp),
               textAlign: TextAlign.center,
             ),
             UIHelper.verticalSpace(24.h),
@@ -46,7 +44,7 @@ class ConfirmDialogueWidget extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             UIHelper.verticalSpace(24.h),
-            CustomButton(
+            customButton(
               name: 'Login Now',
               onCallBack: () {
                 NavigationService.navigateTo(Routes.signIn);

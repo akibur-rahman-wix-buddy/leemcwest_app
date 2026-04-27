@@ -50,9 +50,9 @@ class DeletionWidget extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             UIHelper.verticalSpace(24.h),
-            CustomButton(
+            customButton(
               name: 'Login Now',
-              onCallBack: (){
+              onCallBack: () {
                 NavigationService.navigateTo(Routes.signIn);
               },
               context: context,

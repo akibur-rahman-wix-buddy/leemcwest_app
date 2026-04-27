@@ -72,7 +72,7 @@ class _EarTrainingExerciseScreenState extends State<EarTrainingExerciseScreen> {
                     onTap: widget.onBack ?? () => Navigator.maybePop(context),
                     child: const Icon(Icons.arrow_back, color: AppColors.textMuted, size: 22),
                   ),
-                  Text(ex.level.toUpperCase(), style: TextStyle(
+                  Text(ex.level.toUpperCase(), style: const TextStyle(
                     fontFamily: AppTypography.fontDisplay, fontSize: 12,
                     color: AppColors.textMuted, fontWeight: FontWeight.w500, letterSpacing: 1.0,
                   )),
@@ -99,8 +99,11 @@ class _EarTrainingExerciseScreenState extends State<EarTrainingExerciseScreen> {
               child: Row(
                 children: List.generate(ex.totalQuestions, (i) {
                   Color dotColor = AppColors.border;
-                  if (i < ex.score) dotColor = AppColors.success;
-                  else if (i < ex.questionNumber - 1) dotColor = AppColors.error;
+                  if (i < ex.score) {
+                    dotColor = AppColors.success;
+                  // ignore: curly_braces_in_flow_control_structures
+                  } else if (i < ex.questionNumber - 1) dotColor = AppColors.error;
+                  // ignore: curly_braces_in_flow_control_structures
                   else if (i == ex.questionNumber - 1) dotColor = AppColors.accent;
                   return Expanded(
                     child: Container(
@@ -110,7 +113,7 @@ class _EarTrainingExerciseScreenState extends State<EarTrainingExerciseScreen> {
                         color: dotColor,
                         borderRadius: BorderRadius.circular(1.5),
                         boxShadow: i == ex.questionNumber - 1
-                            ? [BoxShadow(color: AppColors.accentGlow, blurRadius: 6)]
+                            ? [const BoxShadow(color: AppColors.accentGlow, blurRadius: 6)]
                             : null,
                       ),
                     ),
@@ -134,8 +137,10 @@ class _EarTrainingExerciseScreenState extends State<EarTrainingExerciseScreen> {
                     PlayButton(
                       isPlaying: _phase == ExercisePhase.playing,
                       onTap: () {
-                        if (_phase == ExercisePhase.ready) setState(() => _phase = ExercisePhase.playing);
-                        else if (_phase == ExercisePhase.playing) setState(() => _phase = ExercisePhase.ready);
+                        if (_phase == ExercisePhase.ready) {
+                          setState(() => _phase = ExercisePhase.playing);
+                        // ignore: curly_braces_in_flow_control_structures
+                        } else if (_phase == ExercisePhase.playing) setState(() => _phase = ExercisePhase.ready);
                       },
                     ),
 
@@ -188,9 +193,9 @@ class _EarTrainingExerciseScreenState extends State<EarTrainingExerciseScreen> {
                         margin: const EdgeInsets.only(top: 18),
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: AppColors.success.withOpacity(0.1),
+                          color: AppColors.success.withValues(alpha: .1),
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: AppColors.success.withOpacity(0.2)),
+                          border: Border.all(color: AppColors.success.withValues(alpha: .2)),
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -259,11 +264,11 @@ class _EarTrainingExerciseScreenState extends State<EarTrainingExerciseScreen> {
                         decoration: BoxDecoration(
                           color: AppColors.accentSoft,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: AppColors.accent.withOpacity(0.2)),
+                          border: Border.all(color: AppColors.accent.withValues(alpha: .2)),
                         ),
                         child: Column(
                           children: [
-                            Text('TONIC ROOT', style: TextStyle(
+                            const Text('TONIC ROOT', style: TextStyle(
                               fontSize: 12, color: AppColors.textMuted,
                               fontWeight: FontWeight.w600, letterSpacing: 1.0,
                             )),
@@ -271,7 +276,7 @@ class _EarTrainingExerciseScreenState extends State<EarTrainingExerciseScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.volume_up, size: 18, color: AppColors.fnT),
+                                const Icon(Icons.volume_up, size: 18, color: AppColors.fnT),
                                 const SizedBox(width: 10),
                                 Text('1 (Tonic)', style: AppTypography.mono(size: 16, color: AppColors.fnT)),
                               ],

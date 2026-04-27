@@ -68,7 +68,7 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
           ),
           foregroundDecoration: isPast && !isCurrent
               ? BoxDecoration(
-                  color: Colors.black.withOpacity(0.55),
+                  color: Colors.black.withValues(alpha: .55),
                   borderRadius: BorderRadius.circular(3))
               : null,
         ),
@@ -130,7 +130,7 @@ class _StudyViewScreenState extends State<StudyViewScreen> {
                                 color: AppColors.accentSoft,
                                 borderRadius: BorderRadius.circular(6),
                                 border: Border.all(
-                                    color: AppColors.accent.withOpacity(0.3)),
+                                    color: AppColors.accent.withValues(alpha: .3)),
                               ),
                               child: Text('KEY MAP',
                                   style: AppTypography.mono(

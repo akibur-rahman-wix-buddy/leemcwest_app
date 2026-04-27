@@ -222,7 +222,7 @@ Widget _menuItem(String icon, String title) {
   return Row(
     children: [
       SvgPicture.asset(icon),
-      SizedBox(width: 12),
+      const SizedBox(width: 12),
       Text(
         title,
         style: TextFontStyle.textStyle14w400c0A2340,

@@ -7,7 +7,7 @@ import 'package:leemcwest/assets_helper/app_image.dart';
 class CustomHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final void Function()? onTap;
-   CustomHomeAppbar({
+   const CustomHomeAppbar({
     super.key,
     required this.title,
     this.onTap

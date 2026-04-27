@@ -34,10 +34,10 @@ class HtmlToWidgetRenderer extends StatelessWidget {
         // Custom widget builder based on attributes
         customWidgetBuilder: (element) {
           if (element.attributes['foo'] == 'bar') {
-            return FooBarWidget(); // Custom block widget
+            return const FooBarWidget(); // Custom block widget
           }
           if (element.attributes['fizz'] == 'buzz') {
-            return InlineCustomWidget(
+            return const InlineCustomWidget(
               child: FizzBuzzWidget(), // Inline custom widget
             );
           }
@@ -65,11 +65,13 @@ class HtmlToWidgetRenderer extends StatelessWidget {
 
 // Custom widget for 'foo' attribute
 class FooBarWidget extends StatelessWidget {
+  const FooBarWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.blue,
-      child: Center(
+      child: const Center(
           child: Text('Custom FooBar Widget',
               style: TextStyle(color: Colors.white))),
     );
@@ -85,13 +87,15 @@ class InlineCustomWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [child, Text('Inline Custom Widget')],
+      children: [child, const Text('Inline Custom Widget')],
     );
   }
 }
 
 // Another custom widget for 'fizzbuzz' functionality
 class FizzBuzzWidget extends StatelessWidget {
+  const FizzBuzzWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(

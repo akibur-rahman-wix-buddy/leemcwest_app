@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:leemcwest/assets_helper/app_colors.dart';
@@ -10,7 +9,7 @@ import 'package:leemcwest/helpers/ui_helpers.dart';
 class DialogueWidget extends StatelessWidget {
   final VoidCallback onTapDelete;
   const DialogueWidget({
-    super.key, 
+    super.key,
     required this.onTapDelete,
   });
 
@@ -47,7 +46,7 @@ class DialogueWidget extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: CustomButton(
+                  child: customButton(
                     name: 'Cancel',
                     onCallBack: () {
                       NavigationService.goBack;
@@ -57,11 +56,11 @@ class DialogueWidget extends StatelessWidget {
                 ),
                 UIHelper.horizontalSpace(4.w),
                 Expanded(
-                  child: CustomButton(
+                  child: customButton(
                     name: 'Delete',
                     color: AppColors.cE7000B,
                     borderColor: AppColors.cE7000B,
-                    onCallBack:onTapDelete,
+                    onCallBack: onTapDelete,
                     context: context,
                   ),
                 ),

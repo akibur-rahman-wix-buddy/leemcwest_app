@@ -2,7 +2,7 @@ import 'package:auto_animated/auto_animated.dart';
 import 'package:flutter/material.dart';
 
 
-final options = LiveOptions(
+const options = LiveOptions(
   // Start animation after (default zero)
   delay: Duration(seconds: 1),
 
@@ -42,7 +42,7 @@ Widget Function(
           ).animate(animation),
           child: SlideTransition(
             position: Tween<Offset>(
-              begin: Offset(0, -0.1),
+              begin: const Offset(0, -0.1),
               end: Offset.zero,
             ).animate(animation),
             child: Padding(

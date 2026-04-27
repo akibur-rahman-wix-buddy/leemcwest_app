@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,7 +7,7 @@ import '../assets_helper/app_colors.dart';
 
 class BorderedTextFormField extends StatefulWidget {
   final String hintText;
-  final String? IconUrl;
+  final String? iconUrl;
   final String? prefixIconUrl;
   final int maxLine;
   final bool isIcon;
@@ -31,7 +32,7 @@ class BorderedTextFormField extends StatefulWidget {
   const BorderedTextFormField({
     super.key,
     required this.hintText,
-    this.IconUrl,
+    this.iconUrl,
     required this.isIcon,
     this.textEditingController,
     this.onCallback,
@@ -63,7 +64,7 @@ class _BorderedTextFormFieldState extends State<BorderedTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.width,
       //height: 60.h,
       /*  decoration: BoxDecoration(
@@ -109,7 +110,7 @@ class _BorderedTextFormFieldState extends State<BorderedTextFormField> {
               child: widget.isIcon == true
                   ? GestureDetector(
                       onTap: widget.onCallback,
-                      child: SvgPicture.asset(widget.IconUrl!))
+                      child: SvgPicture.asset(widget.iconUrl!))
                   : widget.isPassword == true
                       ? GestureDetector(
                           onTap: () {
@@ -125,7 +126,7 @@ class _BorderedTextFormFieldState extends State<BorderedTextFormField> {
                             color: AppColors.c0D1E40,
                           ),
                         )
-                      : Text('')),
+                      : const Text('')),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),

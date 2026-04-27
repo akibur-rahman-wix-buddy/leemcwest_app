@@ -12,14 +12,14 @@ class ShimmerBanner extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemCount: 1,
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return CardLoading(
             height: 171.h,
             width: 364.h,
             borderRadius:
-            BorderRadius.all(Radius.circular(10)),
-            margin: EdgeInsets.only(bottom: 12),
+            const BorderRadius.all(Radius.circular(10)),
+            margin: const EdgeInsets.only(bottom: 12),
           );
         }
     );

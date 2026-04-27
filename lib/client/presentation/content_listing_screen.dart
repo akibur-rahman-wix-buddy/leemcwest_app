@@ -190,7 +190,7 @@ class TopicCard extends StatelessWidget {
               Container(
                 width: 36, height: 36,
                 decoration: BoxDecoration(
-                  color: accentColor.withOpacity(0.08),
+                  color: accentColor.withValues(alpha: .08),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 alignment: Alignment.center,

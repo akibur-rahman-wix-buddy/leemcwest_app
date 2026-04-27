@@ -9,18 +9,18 @@ class TestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final elements = [
-      StudyElement(
+      const StudyElement(
         type: StudyElementType.text,
         text: "This is a text block",
       ),
 
-      StudyElement(
+      const StudyElement(
         type: StudyElementType.keyPoint,
         title: "Key Idea",
         text: "Practice with metronome",
       ),
 
-      StudyElement(
+      const StudyElement(
         type: StudyElementType.audioPlay,
         label: "Play groove example",
       ),

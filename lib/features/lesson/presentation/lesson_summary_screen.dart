@@ -138,7 +138,7 @@ class _LessonSummaryScreenState extends State<LessonSummaryScreen> {
                     //     text:
                     //         'Melodic movement often expands or contracts around the tonic area.'),
                     UIHelper.verticalSpace(52.h),
-                    CustomButton(
+                    customButton(
                       name: 'Continue',
                       onCallBack: () {
                         nextLessonMethod();

@@ -40,7 +40,7 @@ class CommonNavigationAppbar extends StatelessWidget {
                 },
                 child: SvgPicture.asset(
                   AppIcons.iconBack,
-                  color: AppColors.cFFFFFF,
+                  //color: AppColors.cFFFFFF,
                 ),
               ),
               Column(

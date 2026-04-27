@@ -18,12 +18,12 @@ class BuilderScreen extends StatefulWidget {
 
 class _BuilderScreenState extends State<BuilderScreen> {
   String _activeBeat = ''; // "sentIdx-beat"
-  List<NoteEntry> _selectedNotes = [];
+  final List<NoteEntry> _selectedNotes = [];
   int _currentOctave = 0;
-  String _selectedRoot = 'C#';
+  final String _selectedRoot = 'C#';
   String _activeFunc = 'S#';
   String _inputMode = 'Notes'; // Notes, Functions, Library
-  String _hierarchyMode = 'TSDT';
+  final String _hierarchyMode = 'TSDT';
   bool _showEnergyLane = false;
 
   // Mock sentence data
@@ -33,46 +33,46 @@ class _BuilderScreenState extends State<BuilderScreen> {
   void initState() {
     super.initState();
     _sentences = [
-      SentenceData(num: 1, beatCount: 8, chords: {
-        1: const ChordData(
+      const SentenceData(num: 1, beatCount: 8, chords: {
+        1: ChordData(
             world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
-        5: const ChordData(
+        5: ChordData(
             world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
-        7: const ChordData(
+        7: ChordData(
             world: 'D', notes: ['5', '7#', '2'], leadingCore: '2'),
       }),
-      SentenceData(num: 2, beatCount: 8, chords: {
-        1: const ChordData(
+      const SentenceData(num: 2, beatCount: 8, chords: {
+        1: ChordData(
             world: 'T#',
             notes: ['1', '3#', '5'],
             leadingCore: '3#',
             duration: 2),
-        5: const ChordData(
+        5: ChordData(
             world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
-        7: const ChordData(
+        7: ChordData(
             world: 'D', notes: ['5', '7#', '2'], leadingCore: '2', duration: 2),
       }),
-      SentenceData(num: 3, beatCount: 8, chords: {
-        1: const ChordData(
+      const SentenceData(num: 3, beatCount: 8, chords: {
+        1: ChordData(
             world: 'Db',
             notes: ['2b', '4', '6'],
             leadingCore: '2b',
             hasReframe: true),
-        7: const ChordData(
+        7: ChordData(
             world: 'Db', notes: ['4#', '2b', '7'], leadingCore: '2b'),
       }),
-      SentenceData(num: 4, beatCount: 12, chords: {
-        1: const ChordData(
+      const SentenceData(num: 4, beatCount: 12, chords: {
+        1: ChordData(
             world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
-        3: const ChordData(
+        3: ChordData(
             world: 'S#', notes: ['4', '6#', '1'], leadingCore: '6#'),
-        5: const ChordData(
+        5: ChordData(
             world: 'D', notes: ['5', '7#', '2'], leadingCore: '2'),
-        7: const ChordData(
+        7: ChordData(
             world: 'D#', notes: ['4#', '7', '2'], leadingCore: '4#'),
-        9: const ChordData(
+        9: ChordData(
             world: 'Db', notes: ['2b', '4', '6'], leadingCore: '2b'),
-        11: const ChordData(
+        11: ChordData(
             world: 'T#', notes: ['1', '3#', '5'], leadingCore: '3#'),
       }),
     ];
@@ -166,7 +166,7 @@ class _BuilderScreenState extends State<BuilderScreen> {
                       decoration: BoxDecoration(
                           color: BuilderColors.card,
                           borderRadius: BorderRadius.circular(8)),
-                      child: Text('TSDT ▾',
+                      child: const Text('TSDT ▾',
                           style: TextStyle(
                               fontSize: 11,
                               color: BuilderColors.accent,
@@ -182,12 +182,12 @@ class _BuilderScreenState extends State<BuilderScreen> {
                           horizontal: 10, vertical: 4),
                       decoration: BoxDecoration(
                         color: _showEnergyLane
-                            ? BuilderColors.accent.withOpacity(0.13)
+                            ? BuilderColors.accent.withValues(alpha: 0.13)
                             : BuilderColors.card,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
                             color: _showEnergyLane
-                                ? BuilderColors.accent.withOpacity(0.27)
+                                ? BuilderColors.accent.withValues(alpha: 0.27)
                                 : Colors.transparent),
                       ),
                       child: Text('∿',
@@ -336,7 +336,7 @@ class _BuilderScreenState extends State<BuilderScreen> {
                             '3# 6# 1|Tonic overlap'
                           ].map((c) {
                             final parts = c.split('|');
-                            final w = WorldColors.forWorld(_activeFunc);
+                          //  final w = WorldColors.forWorld(_activeFunc);
                             return Container(
                               margin: const EdgeInsets.only(bottom: 6),
                               padding: const EdgeInsets.symmetric(
@@ -447,7 +447,7 @@ class _BuilderScreenState extends State<BuilderScreen> {
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                              color: BuilderColors.accent.withOpacity(0.27),
+                              color: BuilderColors.accent.withValues(alpha: 0.27),
                               blurRadius: 12)
                         ]),
                     alignment: Alignment.center,
@@ -496,8 +496,9 @@ class _BuilderScreenState extends State<BuilderScreen> {
     final isExtended = bc > 8;
     final coveredBeats = <int>{};
     for (final entry in sent.chords.entries) {
-      for (var i = 1; i < entry.value.duration; i++)
+      for (var i = 1; i < entry.value.duration; i++) {
         coveredBeats.add(entry.key + i);
+      }
     }
 
     return Container(

@@ -12,14 +12,14 @@ class ShimmerWorkoutTab extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemCount: 8,
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: EdgeInsets.only(left: 16.0.h, right: 16.0.h, top: 16.0.h),
             child: CardLoading(
               height: 65.h,
               borderRadius:
-              BorderRadius.all(Radius.circular(10)),
+              const BorderRadius.all(Radius.circular(10)),
               // margin: EdgeInsets.only(bottom: 12),
             ),
           );

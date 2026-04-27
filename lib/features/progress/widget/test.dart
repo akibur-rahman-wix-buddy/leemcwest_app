@@ -69,7 +69,7 @@ class _HeightPickerWidgetState extends State<HeightPickerWidget> {
 
                   return Container(
                     margin: EdgeInsets.all(8.sp),
-                    padding: EdgeInsets.symmetric(horizontal: 26).w,
+                    padding: const EdgeInsets.symmetric(horizontal: 26).w,
                     color: isSelected ? Colors.tealAccent : Colors.transparent,
                     child: Text(
                       cmToFeetInches(height),
@@ -89,7 +89,7 @@ class _HeightPickerWidgetState extends State<HeightPickerWidget> {
             IgnorePointer(
               child: Container(
                 height: 50,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   border: Border.symmetric(
                     horizontal: BorderSide(
                       color: Colors.pink,

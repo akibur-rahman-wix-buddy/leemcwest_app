@@ -11,10 +11,11 @@ class DragDropQuestionWidget extends StatefulWidget {
   final Function(int questionId, List<int> answer) onAnswer;
 
   const DragDropQuestionWidget({
-    Key? key,
+    super.key,
     required this.question,
-    required this.onAnswer, required this.checkOntap,
-  }) : super(key: key);
+    required this.onAnswer,
+    required this.checkOntap,
+  });
 
   @override
   State<DragDropQuestionWidget> createState() => _DragDropQuestionWidgetState();
@@ -95,10 +96,10 @@ class _DragDropQuestionWidgetState extends State<DragDropQuestionWidget> {
         Column(
           children: List.generate(slots.length, (slotIndex) {
             return DragTarget<String>(
-              onAccept: (data) {
-                setState(() {
-                  dragAnswers[slotIndex] = data;
-                });
+              onAcceptWithDetails: (data) {
+                // setState(() {
+                //   dragAnswers[slotIndex] = data;
+                // });
 
                 /// ✅ Update parent after every drop
                 _updateParentAnswer();
@@ -122,11 +123,11 @@ class _DragDropQuestionWidgetState extends State<DragDropQuestionWidget> {
           }),
         ),
         UIHelper.verticalSpace(16.h),
-        CustomButton(
-  name: "Check Answer",
-  onCallBack: widget.checkOntap,
-  context: context,
-)
+        customButton(
+          name: "Check Answer",
+          onCallBack: widget.checkOntap,
+          context: context,
+        )
       ],
     );
   }

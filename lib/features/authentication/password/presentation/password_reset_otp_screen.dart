@@ -28,7 +28,7 @@ class PasswordResetOtpScreen extends StatefulWidget {
 class _PasswordResetOtpScreenState extends State<PasswordResetOtpScreen> {
   final _formkey = GlobalKey<FormState>();
   bool isLoading = false;
-   TextEditingController otpController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
 
   // Future<void> submitForm() async {
   //   if (!_formkey.currentState!.validate()) return;
@@ -56,18 +56,18 @@ class _PasswordResetOtpScreenState extends State<PasswordResetOtpScreen> {
   //   }
   // }
 
-   Future<bool> submitForm() async {
+  Future<bool> submitForm() async {
     final auth = Provider.of<AuthProvider>(context, listen: false);
     try {
       if (_formkey.currentState!.validate()) {
         setState(() {
           isLoading = true;
         });
-        await resetPassOtpRxObj.resetPassOtpRx(
-      email: auth.email ?? '',
-
-      otp: otpController.text,
-    )
+        await resetPassOtpRxObj
+            .resetPassOtpRx(
+          email: auth.email ?? '',
+          otp: otpController.text,
+        )
             .then(
           (value) {
             if (value) {
@@ -91,6 +91,7 @@ class _PasswordResetOtpScreenState extends State<PasswordResetOtpScreen> {
     }
     return true;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,7 +159,7 @@ class _PasswordResetOtpScreenState extends State<PasswordResetOtpScreen> {
                           color: AppColors.onboardingButtonColor,
                         ),
                       )
-                    : CustomButton(
+                    : customButton(
                         name: 'Verify',
                         onCallBack: () {
                           submitForm();

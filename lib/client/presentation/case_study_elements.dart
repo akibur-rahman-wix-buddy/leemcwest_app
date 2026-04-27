@@ -380,7 +380,7 @@ class _FnhKeyMapWidgetState extends State<FnhKeyMapWidget> {
                               child: Container(
                                 padding: const EdgeInsets.symmetric(vertical: 7),
                                 decoration: BoxDecoration(
-                                  color: isCore ? AppColors.accent.withOpacity(0.06) : AppColors.gridBg,
+                                  color: isCore ? AppColors.accent.withValues(alpha: .06) : AppColors.gridBg,
                                   border: i < 11 ? const Border(right: BorderSide(color: AppColors.gridBorder)) : null,
                                 ),
                                 alignment: Alignment.center,
@@ -404,7 +404,7 @@ class _FnhKeyMapWidgetState extends State<FnhKeyMapWidget> {
                   child: Center(
                     child: Container(
                       width: 22, height: 22,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.accent, shape: BoxShape.circle,
                         boxShadow: [BoxShadow(color: AppColors.accentGlow, blurRadius: 8)],
                       ),
@@ -551,7 +551,7 @@ class _BeatGridWidgetState extends State<BeatGridWidget> {
                   child: Center(
                     child: Container(
                       width: 22, height: 22,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.accent, shape: BoxShape.circle,
                         boxShadow: [BoxShadow(color: AppColors.accentGlow, blurRadius: 8)],
                       ),

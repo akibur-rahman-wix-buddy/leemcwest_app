@@ -14,16 +14,16 @@ class ShimmerGuidance extends StatelessWidget {
         Expanded(
           child: CardLoading(
             height: 107.h,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            margin: EdgeInsets.only(bottom: 10),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            margin: const EdgeInsets.only(bottom: 10),
           ),
         ),
         UIHelper.horizontalSpace(16),
         Expanded(
           child: CardLoading(
             height: 107.h,
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            margin: EdgeInsets.only(bottom: 10),
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            margin: const EdgeInsets.only(bottom: 10),
           ),
         ),
       ],

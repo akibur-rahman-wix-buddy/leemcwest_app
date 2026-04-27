@@ -13,8 +13,8 @@ class ShimmerUserProfile extends StatelessWidget {
       children: [
         CircleAvatar(
           radius: 30,
-          backgroundColor: Color(0xffE8E8E8),
-          child: noData!= null? Text(noData!, style: TextStyle(fontSize: 11),): SizedBox(),
+          backgroundColor: const Color(0xffE8E8E8),
+          child: noData!= null? Text(noData!, style: const TextStyle(fontSize: 11),): const SizedBox(),
         ),
         UIHelper.horizontalSpace(12),
         Column(

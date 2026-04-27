@@ -44,7 +44,7 @@ class CongratulationsDialogue extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             UIHelper.verticalSpace(12.h),
-            CustomButton(
+            customButton(
               name: 'Lesson Summary',
               onCallBack: () {
                 NavigationService.navigateTo(Routes.lessonSummary);

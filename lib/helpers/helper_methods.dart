@@ -11,14 +11,11 @@ import '/helpers/di.dart';
 import '../common_widgets/custom_button.dart';
 import '../constants/app_constants.dart';
 
-
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 final GlobalKey<PopupMenuButtonState<String>> popUpGlobalkey =
     GlobalKey<PopupMenuButtonState<String>>();
 
 enum StatusType { order, delivery }
-
-
 
 String language(String languageKey) {
   late String language;
@@ -82,7 +79,6 @@ Future<void> setInitValue() async {
   // }
   await Future.delayed(const Duration(seconds: 2));
 }
-
 
 // Future<void> initiInternetChecker() async {
 //   InternetConnectionChecker.createInstance(
@@ -188,7 +184,7 @@ void showMaterialDialog(
               style: TextFontStyle.textStyle14w500c242424,
             ),
             actions: <Widget>[
-              CustomButton(
+              customButton(
                   name: "No".tr,
                   onCallBack: () {
                     Navigator.of(context).pop(false);
@@ -202,7 +198,7 @@ void showMaterialDialog(
                       color: AppColors.primaryColor,
                       fontWeight: FontWeight.w700),
                   context: context),
-              CustomButton(
+              customButton(
                   name: "Yes".tr,
                   onCallBack: () {
                     if (Platform.isAndroid) {
@@ -239,7 +235,7 @@ void showExitDialog(
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  CustomButton(
+                  customButton(
                       name: "No",
                       onCallBack: () {
                         Navigator.of(context).pop(false);
@@ -253,7 +249,7 @@ void showExitDialog(
                           color: AppColors.cFFFFFF,
                           fontWeight: FontWeight.w700),
                       context: context),
-                  CustomButton(
+                  customButton(
                       name: "Yes",
                       onCallBack: () {
                         if (Platform.isAndroid) {

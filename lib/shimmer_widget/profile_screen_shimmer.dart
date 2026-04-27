@@ -10,7 +10,7 @@ class ShimmerProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 60,
           backgroundColor: Color(0xffE8E8E8),
         ),

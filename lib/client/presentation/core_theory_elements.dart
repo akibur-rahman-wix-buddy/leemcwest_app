@@ -225,9 +225,9 @@ class _KeyPointBlock extends StatelessWidget {
             top: -4, left: 16,
             child: Row(
               children: [
-                Container(width: 4, height: 4, decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.calloutBorder)),
+                Container(width: 4, height: 4, decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.calloutBorder)),
                 const SizedBox(width: 4),
-                Container(width: 4, height: 4, decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.calloutBorder)),
+                Container(width: 4, height: 4, decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.calloutBorder)),
               ],
             ),
           ),
@@ -421,7 +421,7 @@ class _TheorySentenceGridState extends State<TheorySentenceGrid> {
                   child: Center(
                     child: Container(
                       width: 22, height: 22,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.accent, shape: BoxShape.circle,
                         boxShadow: [BoxShadow(color: AppColors.accentGlow, blurRadius: 8)],
                       ),
@@ -559,7 +559,7 @@ class _ChecklistBlockState extends State<_ChecklistBlock> {
                           color: done ? AppColors.success : const Color(0xFF3A3A4D),
                           width: 2,
                         ),
-                        color: done ? AppColors.success.withOpacity(0.1) : Colors.transparent,
+                        color: done ? AppColors.success.withValues(alpha: .1) : Colors.transparent,
                       ),
                       child: done
                           ? const Icon(Icons.check, size: 14, color: AppColors.success)

@@ -9,31 +9,31 @@ import 'app_colors.dart';
 class TextFontStyle {
   TextFontStyle._();
 
-  static final textStyle20w600primaryColor2JosefinSans = TextStyle(
-    color: const Color(0xFF888E9C) /* Neutral-N90 */,
+  static const textStyle20w600primaryColor2JosefinSans = TextStyle(
+    color: Color(0xFF888E9C) /* Neutral-N90 */,
     fontSize: 20,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w600,
     height: 1.50,
   );
 
-  static final textStyle16w700primaryColor2JosefinSans = TextStyle(
-    color: const Color(0xFF888E9C) /* Neutral-N90 */,
+  static const textStyle16w700primaryColor2JosefinSans = TextStyle(
+    color: Color(0xFF888E9C) /* Neutral-N90 */,
     fontSize: 16,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w700,
     height: 1.50,
   );
-  static final textStyle14w500SecondaryColorJosefinSans = TextStyle(
-    color: const Color(0xFF888E9C) /* Neutral-N90 */,
+  static const textStyle14w500SecondaryColorJosefinSans = TextStyle(
+    color: Color(0xFF888E9C) /* Neutral-N90 */,
     fontSize: 14,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w500,
     height: 1.50,
   );
 
-  static final textStyle20w600c000A15ColorJosefinSans = TextStyle(
-    color: const Color(0xFF888E9C) /* Neutral-N90 */,
+  static const textStyle20w600c000A15ColorJosefinSans = TextStyle(
+    color: Color(0xFF888E9C) /* Neutral-N90 */,
     fontSize: 20,
     fontFamily: 'Josefin Sans',
     fontWeight: FontWeight.w600,
@@ -41,7 +41,7 @@ class TextFontStyle {
   );
 
   ///>>>>>>>>>>>>>>>>>>>> Rozha one >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  static final textStyle40w600c000A15ColorRozhaOne = TextStyle(
+  static const textStyle40w600c000A15ColorRozhaOne = TextStyle(
     color: AppColors.cFFFFFF /* Neutral-N90 */,
     fontSize: 40,
     fontFamily: 'RozhaOne',
@@ -57,7 +57,7 @@ class TextFontStyle {
       letterSpacing: -0.55);
 
   ///>>>>>>>>>>>>>>>>>>>> Pretendard >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  static final textStyle20w600c000A15ColorPretendard = TextStyle(
+  static const textStyle20w600c000A15ColorPretendard = TextStyle(
     color: AppColors.cFFFFFF /* Neutral-N90 */,
     fontSize: 20,
     fontFamily: 'Pretendard',
@@ -92,7 +92,7 @@ class TextFontStyle {
     fontWeight: FontWeight.w700,
     letterSpacing: -0.66,
   );
-  static final textStyle16w600c000A15ColorPretendard = TextStyle(
+  static const textStyle16w600c000A15ColorPretendard = TextStyle(
     color: AppColors.cFFFFFF /* Neutral-N90 */,
     fontSize: 16,
     fontFamily: 'Pretendard',

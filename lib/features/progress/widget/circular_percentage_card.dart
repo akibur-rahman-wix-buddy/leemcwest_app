@@ -8,12 +8,12 @@ class DonutPercentageCard extends StatelessWidget {
   final Color progressColor;
 
   const DonutPercentageCard({
-    Key? key,
+    super.key,
     required this.percentage,
     this.size = 120,
     this.backgroundColor = Colors.white,
     this.progressColor = const Color(0xFF1E3A8A),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +41,7 @@ class DonutPercentageCard extends StatelessWidget {
                 style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
               Text(
-                "${percentage}%",
+                "$percentage%",
                 style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,

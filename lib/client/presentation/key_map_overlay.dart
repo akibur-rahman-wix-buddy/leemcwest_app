@@ -16,7 +16,7 @@ class KeyMapOverlay extends StatelessWidget {
     return GestureDetector(
       onTap: onClose,
       child: Container(
-        color: Colors.black.withOpacity(0.6),
+        color: Colors.black.withValues(alpha: .6),
         child: Align(
           alignment: Alignment.bottomCenter,
           child: GestureDetector(

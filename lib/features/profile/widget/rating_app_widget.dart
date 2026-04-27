@@ -91,7 +91,7 @@ class _RatingAppWidgetState extends State<RatingAppWidget> {
                     }),
                   ),
                   UIHelper.verticalSpace(16.h),
-                  CustomButton(
+                  customButton(
                     name: 'Submit',
                     context: context,
                     onCallBack: () {

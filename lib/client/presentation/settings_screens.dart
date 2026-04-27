@@ -18,7 +18,7 @@ class ProfileScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            AppHeader(title: 'Profile'),
+            const AppHeader(title: 'Profile'),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -34,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         Text('Upgrade to Premium', style: AppTypography.heading(size: 16, weight: FontWeight.w700, color: Colors.white)),
                         const SizedBox(height: 4),
-                        Text('Unlock full access to all lessons, tools, and creative features', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 13, color: Colors.white.withOpacity(0.75))),
+                        Text('Unlock full access to all lessons, tools, and creative features', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 13, color: Colors.white.withValues(alpha: .75))),
                       ]),
                     ),
                     // User info
@@ -57,7 +57,7 @@ class ProfileScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                        Text('APPLICATION', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.textMuted, letterSpacing: 1.2)),
+                        const Text('APPLICATION', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 11, fontWeight: FontWeight.w600, color: AppColors.textMuted, letterSpacing: 1.2)),
                         const SizedBox(height: 8),
                         MenuRow(label: 'Home', icon: '⌂', onTap: () => onNavigate?.call('home')),
                         MenuRow(label: 'Saved Work', icon: '☷', onTap: () => onNavigate?.call('saved-work')),
@@ -78,7 +78,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
             ),
-            BottomTabBar(activeTab: 'Profile'),
+            const BottomTabBar(activeTab: 'Profile'),
           ],
         ),
       ),
@@ -106,14 +106,14 @@ class EditProfileScreen extends StatelessWidget {
             Column(children: [
               Container(width: 80, height: 80, decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.card, border: Border.all(color: AppColors.accent, width: 3)), child: const Center(child: Text('☺', style: TextStyle(fontSize: 32)))),
               const SizedBox(height: 10),
-              Text('Change Picture', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 13, color: AppColors.accent, fontWeight: FontWeight.w500)),
+              const Text('Change Picture', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 13, color: AppColors.accent, fontWeight: FontWeight.w500)),
             ]),
             const SizedBox(height: 28),
-            Padding(padding: const EdgeInsets.symmetric(horizontal: 24), child: Column(children: [
-              const InputField(label: 'Your Name', value: 'Alex Sadia'),
-              const InputField(label: 'Your Email', value: 'youremail@gmail.com'),
-              const InputField(label: 'Phone Number', value: '+880 1234567891'),
-              const SizedBox(height: 20),
+            const Padding(padding: EdgeInsets.symmetric(horizontal: 24), child: Column(children: [
+              InputField(label: 'Your Name', value: 'Alex Sadia'),
+              InputField(label: 'Your Email', value: 'youremail@gmail.com'),
+              InputField(label: 'Phone Number', value: '+880 1234567891'),
+              SizedBox(height: 20),
               PrimaryButton(label: 'Update'),
             ])),
             const SizedBox(height: 40),
@@ -171,20 +171,20 @@ class _ManageAccountScreenState extends State<ManageAccountScreen> {
               Container(
                 padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
-                  color: AppColors.error.withOpacity(0.08),
+                  color: AppColors.error.withValues(alpha: .08),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.error.withOpacity(0.3)),
+                  border: Border.all(color: AppColors.error.withValues(alpha: .3)),
                 ),
                 child: Column(children: [
-                  Text('Danger Zone', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.error)),
+                  const Text('Danger Zone', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 14, fontWeight: FontWeight.w700, color: AppColors.error)),
                   const SizedBox(height: 12),
                   GestureDetector(
                     onTap: () => setState(() => _showDelete = true),
                     child: Container(
                       width: double.infinity, padding: const EdgeInsets.symmetric(vertical: 12),
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: AppColors.error.withOpacity(0.5))),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: AppColors.error.withValues(alpha: .5))),
                       alignment: Alignment.center,
-                      child: Text('Delete Account', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.error)),
+                      child: const Text('Delete Account', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.error)),
                     ),
                   ),
                 ]),
@@ -200,7 +200,7 @@ class _ManageAccountScreenState extends State<ManageAccountScreen> {
                 width: 300, padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(color: AppColors.card, borderRadius: BorderRadius.circular(16), border: Border.all(color: AppColors.border)),
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  Text('Delete Account?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.error)),
+                  const Text('Delete Account?', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: AppColors.error)),
                   const SizedBox(height: 8),
                   Text('This action cannot be undone.', textAlign: TextAlign.center, style: AppTypography.body(size: 13, color: AppColors.textMuted)),
                   const SizedBox(height: 20),
@@ -277,11 +277,11 @@ class ContactSupportScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: AppColors.bg, body: SafeArea(child: SingleChildScrollView(child: Column(children: [
       AppHeader(title: 'Contact Support', onBack: onBack),
-      Padding(padding: const EdgeInsets.fromLTRB(24, 12, 24, 40), child: Column(children: [
-        const InputField(label: 'Name', value: 'Leamcwest'),
-        const InputField(label: 'Email', placeholder: 'Enter your email'),
-        const InputField(label: 'Messages', placeholder: 'Hello, Feel free to ask me anything', multiline: true),
-        const SizedBox(height: 12),
+      const Padding(padding: EdgeInsets.fromLTRB(24, 12, 24, 40), child: Column(children: [
+        InputField(label: 'Name', value: 'Leamcwest'),
+        InputField(label: 'Email', placeholder: 'Enter your email'),
+        InputField(label: 'Messages', placeholder: 'Hello, Feel free to ask me anything', multiline: true),
+        SizedBox(height: 12),
         PrimaryButton(label: 'Submit'),
       ])),
     ]))));
@@ -314,7 +314,7 @@ class ReportBugScreen extends StatelessWidget {
             Text('(Optional)', style: AppTypography.label(size: 12, color: AppColors.textMuted)),
           ]),
         ])),
-        PrimaryButton(label: 'Submit Report'),
+        const PrimaryButton(label: 'Submit Report'),
       ])),
     ]))));
   }
@@ -333,12 +333,12 @@ class SuggestFeatureScreen extends StatelessWidget {
     return Scaffold(backgroundColor: AppColors.bg, body: SafeArea(child: SingleChildScrollView(child: Column(children: [
       AppHeader(title: 'Suggest a Feature', onBack: onBack),
       Padding(padding: const EdgeInsets.fromLTRB(24, 0, 24, 8), child: Text('Help us make our app even better', style: AppTypography.body(size: 14))),
-      Padding(padding: const EdgeInsets.fromLTRB(24, 12, 24, 40), child: Column(children: [
-        const InputField(label: 'Feature Title', placeholder: 'Feature Title'),
-        const InputField(label: 'Description', placeholder: 'Description of the suggest feature', multiline: true),
-        const InputField(label: 'Improve', placeholder: 'How would this improve the app?', multiline: true),
-        const InputField(label: 'Email', placeholder: 'Your Email (Optional)'),
-        const SizedBox(height: 4),
+      const Padding(padding: EdgeInsets.fromLTRB(24, 12, 24, 40), child: Column(children: [
+        InputField(label: 'Feature Title', placeholder: 'Feature Title'),
+        InputField(label: 'Description', placeholder: 'Description of the suggest feature', multiline: true),
+        InputField(label: 'Improve', placeholder: 'How would this improve the app?', multiline: true),
+        InputField(label: 'Email', placeholder: 'Your Email (Optional)'),
+        SizedBox(height: 4),
         PrimaryButton(label: 'Send Suggestion'),
       ])),
     ]))));
@@ -416,14 +416,14 @@ class MembershipScreen extends StatelessWidget {
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [AppColors.accent.withOpacity(0.09), AppColors.card],
+                          colors: [AppColors.accent.withValues(alpha: .09), AppColors.card],
                         ),
-                        border: Border.all(color: AppColors.accent.withOpacity(0.25), width: 1.5),
+                        border: Border.all(color: AppColors.accent.withValues(alpha: .25), width: 1.5),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('YOUR PLAN', style: TextStyle(
+                          const Text('YOUR PLAN', style: TextStyle(
                             fontFamily: AppTypography.fontDisplay, fontSize: 10,
                             fontWeight: FontWeight.w700, color: AppColors.accent,
                             letterSpacing: 1.2,
@@ -453,7 +453,7 @@ class MembershipScreen extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('ACCESS INCLUDES', style: TextStyle(
+                          const Text('ACCESS INCLUDES', style: TextStyle(
                             fontFamily: AppTypography.fontDisplay, fontSize: 10,
                             fontWeight: FontWeight.w700, color: AppColors.textMuted,
                             letterSpacing: 1.2,
@@ -483,7 +483,7 @@ class MembershipScreen extends StatelessWidget {
                                     width: 20, height: 20,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: AppColors.success.withOpacity(0.1),
+                                      color: AppColors.success.withValues(alpha: .1),
                                     ),
                                     child: const Icon(Icons.check, size: 12, color: AppColors.success),
                                   ),
@@ -540,7 +540,7 @@ class MembershipScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: AppColors.accent,
                           borderRadius: BorderRadius.circular(10),
-                          boxShadow: [BoxShadow(color: AppColors.accentGlow, blurRadius: 16, offset: const Offset(0, 4))],
+                          boxShadow: const [BoxShadow(color: AppColors.accentGlow, blurRadius: 16, offset: Offset(0, 4))],
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

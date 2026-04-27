@@ -39,15 +39,13 @@ void customPopup1(
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style:
-                    TextFontStyle.textStyle20w600primaryColor2JosefinSans,
+                style: TextFontStyle.textStyle20w600primaryColor2JosefinSans,
               ),
               UIHelper.verticalSpace(8.h),
               Text(
                 buttonName,
                 textAlign: TextAlign.center,
-                style: TextFontStyle
-                    .textStyle14w500SecondaryColorJosefinSans
+                style: TextFontStyle.textStyle14w500SecondaryColorJosefinSans
                     .copyWith(
                   color: AppColors.c797979,
                 ),
@@ -57,22 +55,22 @@ void customPopup1(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomButton(
+                    customButton(
                       minWidth: 130.w,
                       height: 50.h,
                       color: AppColors.cEEF2FA,
                       borderColor: AppColors.cEEF2FA,
                       borderRadius: 12.r,
                       name: 'Cancel',
-                      textStyle: TextFontStyle
-                          .textStyle16w700primaryColor2JosefinSans,
+                      textStyle:
+                          TextFontStyle.textStyle16w700primaryColor2JosefinSans,
                       onCallBack: () {
                         Navigator.pop(context);
                       },
                       context: context,
                     ),
                     UIHelper.verticalSpaceSmall,
-                    CustomButton(
+                    customButton(
                       minWidth: 130.w,
                       height: 50.h,
                       borderRadius: 12.r,

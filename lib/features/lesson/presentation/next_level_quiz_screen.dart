@@ -188,7 +188,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                     ),
                   ),
                   UIHelper.horizontalSpace(12.w),
-                  CustomButton(
+                  customButton(
                     name: 'Check Answer',
                     onCallBack: () {},
                     context: context,
@@ -219,7 +219,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () => handleChromaticOptionTap('4'),
-                            child: ChromaticOptionWidget(
+                            child: const ChromaticOptionWidget(
                               option: '4',
                             ),
                           ),
@@ -228,7 +228,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () => handleChromaticOptionTap('8'),
-                            child: ChromaticOptionWidget(
+                            child: const ChromaticOptionWidget(
                               option: '8',
                             ),
                           ),
@@ -237,7 +237,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () => handleChromaticOptionTap('7'),
-                            child: ChromaticOptionWidget(
+                            child: const ChromaticOptionWidget(
                               option: '7',
                             ),
                           ),
@@ -246,7 +246,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () => handleChromaticOptionTap('9'),
-                            child: ChromaticOptionWidget(
+                            child: const ChromaticOptionWidget(
                               option: '9',
                             ),
                           ),
@@ -255,7 +255,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                         Expanded(
                           child: GestureDetector(
                             onTap: () => handleChromaticOptionTap('6'),
-                            child: ChromaticOptionWidget(
+                            child: const ChromaticOptionWidget(
                               option: '6',
                             ),
                           ),
@@ -263,7 +263,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                         UIHelper.horizontalSpace(8.w),
                         GestureDetector(
                           onTap: () => handleChromaticOptionTap('11'),
-                          child: ChromaticOptionWidget(
+                          child: const ChromaticOptionWidget(
                             option: '11',
                           ),
                         ),
@@ -358,7 +358,7 @@ class _NextLevelQuizScreenState extends State<NextLevelQuizScreen> {
                     ),
                   ),
                   UIHelper.horizontalSpace(12.w),
-                  CustomButton(
+                  customButton(
                     name: 'Check Answer',
                     onCallBack: () {},
                     context: context,

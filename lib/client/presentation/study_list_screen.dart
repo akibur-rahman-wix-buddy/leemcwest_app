@@ -98,7 +98,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                             borderRadius: BorderRadius.circular(12),
                             border: Border.all(
                               color: isExpanded
-                                  ? tier.color.withOpacity(0.33)
+                                  ? tier.color.withValues(alpha: .33)
                                   : AppColors.border,
                             ),
                           ),
@@ -107,9 +107,9 @@ class _StudyListScreenState extends State<StudyListScreen> {
                               Container(
                                 width: 36, height: 36,
                                 decoration: BoxDecoration(
-                                  color: tier.color.withOpacity(0.09),
+                                  color: tier.color.withValues(alpha: .09),
                                   borderRadius: BorderRadius.circular(10),
-                                  border: Border.all(color: tier.color.withOpacity(0.25), width: 1.5),
+                                  border: Border.all(color: tier.color.withValues(alpha: .25), width: 1.5),
                                 ),
                                 alignment: Alignment.center,
                                 child: Text('${tier.num}',
@@ -157,7 +157,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                                       Container(
                                         width: 28, height: 28,
                                         decoration: BoxDecoration(
-                                          color: tier.color.withOpacity(0.08),
+                                          color: tier.color.withValues(alpha: .08),
                                           borderRadius: BorderRadius.circular(7),
                                         ),
                                         alignment: Alignment.center,
@@ -178,7 +178,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                                       Container(
                                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                                         decoration: BoxDecoration(
-                                          color: centreColor.withOpacity(0.08),
+                                          color: centreColor.withValues(alpha: .08),
                                           borderRadius: BorderRadius.circular(4),
                                         ),
                                         child: Text(study.centre,

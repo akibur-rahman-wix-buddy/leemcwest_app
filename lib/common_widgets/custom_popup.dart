@@ -39,22 +39,20 @@ void customPopup(
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style:
-                    TextFontStyle.textStyle20w600primaryColor2JosefinSans,
+                style: TextFontStyle.textStyle20w600primaryColor2JosefinSans,
               ),
               UIHelper.verticalSpace(8.h),
               Text(
                 buttonName,
                 textAlign: TextAlign.center,
-                style: TextFontStyle
-                    .textStyle14w500SecondaryColorJosefinSans
+                style: TextFontStyle.textStyle14w500SecondaryColorJosefinSans
                     .copyWith(
                   color: AppColors.c797979,
                 ),
               ),
               UIHelper.verticalSpace(14.h),
               Center(
-                child: CustomButton(
+                child: customButton(
                   minWidth: double.infinity,
                   borderRadius: 12.r,
                   name: 'Go To Home',
@@ -64,7 +62,7 @@ void customPopup(
                       .copyWith(
                     color: AppColors.primaryColor,
                   ),
-                  onCallBack:ontap,
+                  onCallBack: ontap,
                   context: context,
                 ),
               ),

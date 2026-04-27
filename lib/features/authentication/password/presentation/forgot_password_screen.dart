@@ -27,7 +27,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final emailController = TextEditingController();
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
-  
+
   Future<void> submitForm() async {
     final auth = Provider.of<AuthProvider>(context, listen: false);
     setState(() {
@@ -54,6 +54,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,20 +120,18 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 ),
                 UIHelper.verticalSpace(24.h),
                 isLoading
-                ?
-                const Center(
-                  child: SpinKitCircle(
-                    color: AppColors.primaryColor2,
-                  ),
-                )
-                :
-                CustomButton(
-                  name: 'Resend Code',
-                  onCallBack: (){
-                    submitForm();
-                  },
-                  context: context,
-                ),
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.primaryColor2,
+                        ),
+                      )
+                    : customButton(
+                        name: 'Resend Code',
+                        onCallBack: () {
+                          submitForm();
+                        },
+                        context: context,
+                      ),
               ],
             ),
           ),

@@ -13,7 +13,7 @@ class ShimmerWorkoutPlan extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 30,
                 backgroundColor: Color(0xffE8E8E8),
               ),
@@ -32,7 +32,7 @@ class ShimmerWorkoutPlan extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 30,
                 backgroundColor: Color(0xffE8E8E8),
               ),
@@ -51,7 +51,7 @@ class ShimmerWorkoutPlan extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 30,
                 backgroundColor: Color(0xffE8E8E8),
               ),
@@ -70,7 +70,7 @@ class ShimmerWorkoutPlan extends StatelessWidget {
         Expanded(
           child: Column(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 30,
                 backgroundColor: Color(0xffE8E8E8),
               ),

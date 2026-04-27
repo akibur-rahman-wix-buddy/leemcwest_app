@@ -23,7 +23,7 @@ class _SuggestAFeatureScreenState extends State<SuggestAFeatureScreen> {
   final descriptionController = TextEditingController();
   final improveController = TextEditingController();
   final emailController = TextEditingController();
-   bool isLoading = false;
+  bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
   Future<void> submitForm() async {
     setState(() {
@@ -31,15 +31,16 @@ class _SuggestAFeatureScreenState extends State<SuggestAFeatureScreen> {
     });
     try {
       if (_formKey.currentState!.validate()) {
-        final success = await postFeatureSuggestionRxObj.postFeatureSuggestionRx(
-          description: descriptionController.text, 
+        final success =
+            await postFeatureSuggestionRxObj.postFeatureSuggestionRx(
+          description: descriptionController.text,
           email: emailController.text,
           title: titleController.text,
           improvement: improveController.text,
         );
 
         if (success == true) {
-           NavigationService.goBack;
+          NavigationService.goBack;
         } else {
           ToastUtil.showShortToast("Error");
         }
@@ -138,25 +139,23 @@ class _SuggestAFeatureScreenState extends State<SuggestAFeatureScreen> {
                       controller: emailController,
                       fillColor: AppColors.cF3F4F6,
                       borderRadius: 8.r,
-                      hintText: 'Your Email ( Optional)',                    
+                      hintText: 'Your Email ( Optional)',
                       inputAction: TextInputAction.done,
                     ),
                     UIHelper.verticalSpace(32.h),
                     isLoading
-                    ?
-                    const Center(
-                      child: SpinKitCircle(
-                        color: AppColors.primaryColor2,
-                      ),
-                    )
-                    :
-                    CustomButton(
-                      name: 'Send Suggestion',
-                      onCallBack: () {
-                        submitForm();
-                      },
-                      context: context,
-                    ),
+                        ? const Center(
+                            child: SpinKitCircle(
+                              color: AppColors.primaryColor2,
+                            ),
+                          )
+                        : customButton(
+                            name: 'Send Suggestion',
+                            onCallBack: () {
+                              submitForm();
+                            },
+                            context: context,
+                          ),
                   ],
                 ),
               )

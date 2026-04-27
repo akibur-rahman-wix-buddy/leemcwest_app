@@ -139,7 +139,7 @@ class ChordCell extends StatelessWidget {
             height: 60,
             padding: const EdgeInsets.fromLTRB(5, 4, 3, 8),
             decoration: BoxDecoration(
-              color: w.withOpacity(0.12),
+              color: w.withValues(alpha: .12),
               borderRadius: BorderRadius.circular(6),
               border: Border(
                 left: BorderSide(color: w, width: 3),
@@ -156,7 +156,7 @@ class ChordCell extends StatelessWidget {
                 Wrap(
                   spacing: 3,
                   children: c.notes.asMap().entries.map((entry) {
-                    final i = entry.key;
+                  //  final i = entry.key;
                     final n = entry.value;
                     final isCore = n == c.leadingCore;
                     return Text(
@@ -202,7 +202,7 @@ class ChordCell extends StatelessWidget {
                     width: 6,
                     height: 24,
                     decoration: BoxDecoration(
-                      color: w.withOpacity(0.8),
+                      color: w.withValues(alpha: .8),
                       borderRadius: BorderRadius.circular(3),
                     ),
                   ),
@@ -390,10 +390,10 @@ class PianoKey extends StatelessWidget {
             bottomRight: Radius.circular(6),
           ),
           boxShadow: isSelected && coreColor != null
-              ? [BoxShadow(color: coreColor.withOpacity(0.27), blurRadius: 12)]
+              ? [BoxShadow(color: coreColor.withValues(alpha: .27), blurRadius: 12)]
               : isBlack
                   ? null
-                  : [BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 4, offset: const Offset(0, 2))],
+                  : [BoxShadow(color: Colors.black.withValues(alpha: .2), blurRadius: 4, offset: const Offset(0, 2))],
         ),
         alignment: Alignment.bottomCenter,
         padding: const EdgeInsets.only(bottom: 6),
@@ -429,10 +429,10 @@ class FuncBtn extends StatelessWidget {
         width: 44,
         height: 44,
         decoration: BoxDecoration(
-          color: isActive ? w : w.withOpacity(0.08),
+          color: isActive ? w : w.withValues(alpha: .08),
           borderRadius: BorderRadius.circular(10),
-          border: isActive ? null : Border.all(color: w.withOpacity(0.27), width: 2),
-          boxShadow: isActive ? [BoxShadow(color: w.withOpacity(0.27), blurRadius: 16)] : null,
+          border: isActive ? null : Border.all(color: w.withValues(alpha: .27), width: 2),
+          boxShadow: isActive ? [BoxShadow(color: w.withValues(alpha: .27), blurRadius: 16)] : null,
         ),
         alignment: Alignment.center,
         child: Text(
@@ -466,7 +466,7 @@ class LibraryChip extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
         decoration: BoxDecoration(
-          color: w.withOpacity(0.1),
+          color: w.withValues(alpha: .1),
           borderRadius: BorderRadius.circular(8),
           border: Border(left: BorderSide(color: w, width: 3)),
         ),
@@ -547,7 +547,7 @@ class BuilderToast extends StatelessWidget {
         ),
         child: Text(
           message,
-          style: TextStyle(
+          style: const TextStyle(
             color: BuilderColors.textPrimary,
             fontSize: 12,
             fontWeight: FontWeight.w600,
@@ -591,7 +591,7 @@ class SentenceHeader extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
                   decoration: BoxDecoration(
-                    color: BuilderColors.accent.withOpacity(0.08),
+                    color: BuilderColors.accent.withValues(alpha: .08),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
@@ -643,7 +643,7 @@ class EnergyLane extends StatelessWidget {
               child: Container(
                 height: (v / 10).clamp(0.1, 1.0) * 16,
                 decoration: BoxDecoration(
-                  color: _tensionColor(v).withOpacity(0.8),
+                  color: _tensionColor(v).withValues(alpha: .8),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(2),
                     topRight: Radius.circular(2),

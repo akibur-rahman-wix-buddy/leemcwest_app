@@ -5,7 +5,7 @@ import '../assets_helper/app_fonts.dart';
 
 
 class ContainerRadio extends StatelessWidget {
-  ContainerRadio({
+  const ContainerRadio({
     super.key,
 
     required this.value,
@@ -26,7 +26,7 @@ class ContainerRadio extends StatelessWidget {
         border: Border.all(
           color: AppColors.cBDBDBD,
         ),
-        borderRadius: BorderRadius.all(Radius.circular(16)),
+        borderRadius: const BorderRadius.all(Radius.circular(16)),
         color: AppColors.cE8E8E8,
       ),
       child: Row(
@@ -43,7 +43,7 @@ class ContainerRadio extends StatelessWidget {
           //   },
           // ),
           Text(
-            "$value",
+            value,
             style: TextFontStyle
                 .textStyle14w400c6B6B6B
                 .copyWith(fontSize: 13.sp),

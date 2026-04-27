@@ -29,7 +29,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final _formkey = GlobalKey<FormState>();
   bool isLoading = false;
   bool isLoading2 = false;
-   TextEditingController otpController = TextEditingController();
+  TextEditingController otpController = TextEditingController();
 
   Future<void> submitOtp() async {
     setState(() {
@@ -56,16 +56,17 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     }
   }
 
-   Future<bool> submitForm() async {
+  Future<bool> submitForm() async {
     try {
       if (_formkey.currentState!.validate()) {
         setState(() {
           isLoading = true;
         });
-        await verifyEmailRxObj.verifyEmailRX(
-      email: widget.email,
-      otp: otpController.text,
-    )
+        await verifyEmailRxObj
+            .verifyEmailRX(
+          email: widget.email,
+          otp: otpController.text,
+        )
             .then(
           (value) {
             if (value) {
@@ -73,10 +74,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 isLoading = false;
               });
               showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (_) => const ConfirmDialogueWidget(),
-      );
+                context: context,
+                barrierDismissible: false,
+                builder: (_) => const ConfirmDialogueWidget(),
+              );
             } else {
               setState(() {
                 isLoading = false;
@@ -93,6 +94,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     }
     return true;
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -160,7 +162,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                           color: AppColors.onboardingButtonColor,
                         ),
                       )
-                    : CustomButton(
+                    : customButton(
                         name: 'Verify',
                         onCallBack: () {
                           submitForm();
@@ -180,25 +182,24 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     ),
                     UIHelper.horizontalSpace(4.w),
                     isLoading2
-                    ?
-                    const Center(
-                      child: SpinKitCircle(
-                        color: AppColors.primaryColor2,
-                      ),
-                    )
-                    :
-                    GestureDetector(
-                      onTap: () {
-                        submitOtp();
-                      },
-                      child: Text(
-                        'Resend Code',
-                        style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                          color: AppColors.onboardingButtonColor,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
+                        ? const Center(
+                            child: SpinKitCircle(
+                              color: AppColors.primaryColor2,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              submitOtp();
+                            },
+                            child: Text(
+                              'Resend Code',
+                              style:
+                                  TextFontStyle.textStyle14w400c6A7282.copyWith(
+                                color: AppColors.onboardingButtonColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
                   ],
                 )
               ],

@@ -75,7 +75,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                           DonutPercentageCard(
                             percentage: data?.totalProgress!.toDouble() ?? 0,
                             size: 108,
-                            progressColor: Color(0xFF0D3B66),
+                            progressColor: const Color(0xFF0D3B66),
                             backgroundColor: Colors.white,
                           ),
                           UIHelper.horizontalSpace(12.w),
@@ -112,7 +112,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                           color: AppColors.cFFFFFF,
                           borderRadius: BorderRadius.circular(12.r),
                           border: Border.all(
-                            color: AppColors.CEDBFF,
+                            color: AppColors.cEDBFF,
                           ),
                         ),
                         child: Column(
@@ -176,7 +176,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                           color: AppColors.cFFFFFF,
                           borderRadius: BorderRadius.circular(12.r),
                           border: Border.all(
-                            color: AppColors.CEDBFF,
+                            color: AppColors.cEDBFF,
                           ),
                         ),
                         child: Column(

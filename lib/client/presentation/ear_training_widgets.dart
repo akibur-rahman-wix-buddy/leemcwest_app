@@ -33,8 +33,8 @@ class FlowLabel extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: parts.map((part) {
         if (part == '→') {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2),
+          return const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 2),
             child: Text('→', style: TextStyle(color: AppColors.textMuted, fontSize: 13)),
           );
         }
@@ -76,7 +76,7 @@ class PlayButton extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: AppColors.accent),
-          boxShadow: [BoxShadow(color: AppColors.accentGlow, blurRadius: 20, offset: const Offset(0, 4))],
+          boxShadow: const [BoxShadow(color: AppColors.accentGlow, blurRadius: 20, offset: Offset(0, 4))],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -118,11 +118,11 @@ class AnswerOption extends StatelessWidget {
         borderColor = AppColors.accent;
         bgColor = AppColors.accentSoft;
       case OptionState.correct:
-        borderColor = AppColors.success.withOpacity(0.25);
-        bgColor = AppColors.success.withOpacity(0.1);
+        borderColor = AppColors.success.withValues(alpha: .25);
+        bgColor = AppColors.success.withValues(alpha: .1);
       case OptionState.incorrect:
-        borderColor = AppColors.error.withOpacity(0.25);
-        bgColor = AppColors.error.withOpacity(0.1);
+        borderColor = AppColors.error.withValues(alpha: .25);
+        bgColor = AppColors.error.withValues(alpha: .1);
       default:
         borderColor = AppColors.border;
         bgColor = AppColors.card;
@@ -185,7 +185,7 @@ class EarTrainingProgressBar extends StatelessWidget {
           decoration: BoxDecoration(
             color: color,
             borderRadius: BorderRadius.circular(height / 2),
-            boxShadow: value > 0 ? [BoxShadow(color: color.withOpacity(0.27), blurRadius: 8)] : null,
+            boxShadow: value > 0 ? [BoxShadow(color: color.withValues(alpha: .27), blurRadius: 8)] : null,
           ),
         ),
       ),
@@ -211,13 +211,13 @@ class StatusBadge extends StatelessWidget {
     switch (status) {
       case LevelStatus.inProgress:
         label = 'Continue'; color = AppColors.success;
-        bg = AppColors.success.withOpacity(0.15); border = AppColors.success.withOpacity(0.3);
+        bg = AppColors.success.withValues(alpha: .15); border = AppColors.success.withValues(alpha: .3);
       case LevelStatus.completed:
         label = 'Complete'; color = AppColors.accent;
-        bg = AppColors.accent.withOpacity(0.15); border = AppColors.accent.withOpacity(0.3);
+        bg = AppColors.accent.withValues(alpha: .15); border = AppColors.accent.withValues(alpha: .3);
       case LevelStatus.locked:
         label = 'Locked'; color = AppColors.textMuted;
-        bg = const Color(0xFF3A3A4A).withOpacity(0.3); border = AppColors.border;
+        bg = const Color(0xFF3A3A4A).withValues(alpha: .3); border = AppColors.border;
     }
 
     return Container(
@@ -262,7 +262,7 @@ class StatPill extends StatelessWidget {
               fontWeight: FontWeight.w700, color: color ?? AppColors.textPrimary,
             )),
             const SizedBox(height: 4),
-            Text(label.toUpperCase(), style: TextStyle(
+            Text(label.toUpperCase(), style: const TextStyle(
               fontFamily: AppTypography.fontDisplay, fontSize: 11,
               color: AppColors.textMuted, fontWeight: FontWeight.w500, letterSpacing: 1.0,
             )),
@@ -304,7 +304,7 @@ class LevelCard extends StatelessWidget {
                 child: Container(
                   width: 3,
                   decoration: BoxDecoration(
-                    color: level.accentColor.withOpacity(isLocked ? 0.3 : 0.8),
+                    color: level.accentColor.withValues(alpha: isLocked ? 0.3 : 0.8),
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(14),
                       bottomLeft: Radius.circular(14),
@@ -349,10 +349,10 @@ class LevelCard extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text('Accuracy: ', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
+                          const Text('Accuracy: ', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
                           Text('${level.accuracy}%', style: TextStyle(fontSize: 12.5, color: level.accuracy > 70 ? AppColors.success : level.accuracy > 0 ? const Color(0xFFFACC15) : AppColors.textMuted)),
                           const SizedBox(width: 20),
-                          Text('Exercises: ', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
+                          const Text('Exercises: ', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
                           Text('${level.completed}/${level.exercises}', style: const TextStyle(fontSize: 12.5, color: AppColors.textSecondary)),
                         ],
                       ),

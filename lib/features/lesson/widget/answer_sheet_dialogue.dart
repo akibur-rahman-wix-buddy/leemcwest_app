@@ -73,16 +73,16 @@ class AnswerSheetDialogue extends StatelessWidget {
             UIHelper.verticalSpace(22.h),
             const QuizOption(),
             UIHelper.verticalSpace(22.h),
-            CustomButton(
+            customButton(
               name: 'Next',
-              onCallBack: (){
+              onCallBack: () {
                 showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) {
-                      return const CongratulationsDialogue();
-                    },
-                  );
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) {
+                    return const CongratulationsDialogue();
+                  },
+                );
               },
               context: context,
             ),

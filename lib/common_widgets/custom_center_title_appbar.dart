@@ -39,7 +39,7 @@ class CustomCenterTitleAppbar extends StatelessWidget implements PreferredSizeWi
           ),
           SvgPicture.asset(
             AppIcons.iconBack,
-            color: Colors.transparent,
+           // color: Colors.transparent,
           ),
         ],
       ),

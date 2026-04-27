@@ -82,7 +82,7 @@ class LessonAudioPlayer extends StatelessWidget {
               Container(
                 height: 60.w,
                 width: 60.w,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.onboardingButtonColor,
                 ),

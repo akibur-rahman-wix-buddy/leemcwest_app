@@ -22,7 +22,7 @@ class LessonGradeWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.r),
         border: Border.all(
-          color: AppColors.CEDBFF,
+          color: AppColors.cEDBFF,
         ),
       ),
       child: Column(

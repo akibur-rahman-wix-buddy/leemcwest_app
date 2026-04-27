@@ -123,8 +123,8 @@ class ReviewScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: correct
-                              ? AppColors.success.withOpacity(0.3)
-                              : AppColors.error.withOpacity(0.3),
+                              ? AppColors.success.withValues(alpha: .3)
+                              : AppColors.error.withValues(alpha: .3),
                         ),
                       ),
                       child: Column(
@@ -140,8 +140,8 @@ class ReviewScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   color: correct
-                                      ? AppColors.success.withOpacity(0.15)
-                                      : AppColors.error.withOpacity(0.15),
+                                      ? AppColors.success.withValues(alpha: .15)
+                                      : AppColors.error.withValues(alpha: .15),
                                 ),
                                 alignment: Alignment.center,
                                 child: Text(
@@ -170,8 +170,8 @@ class ReviewScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               color: correct
-                                  ? AppColors.success.withOpacity(0.06)
-                                  : AppColors.error.withOpacity(0.06),
+                                  ? AppColors.success.withValues(alpha: .06)
+                                  : AppColors.error.withValues(alpha: .06),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: RichText(

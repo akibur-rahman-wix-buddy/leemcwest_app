@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leemcwest/client/presentation/app_screens.dart';
 import 'package:leemcwest/client/presentation/builder_screen.dart';
-import 'package:leemcwest/client/presentation/case_study_elements.dart';
 import 'package:leemcwest/client/presentation/intro_onboarding_screen.dart';
 import 'package:leemcwest/client/presentation/lesson_intro_screen.dart';
 import 'package:leemcwest/client/presentation/menu_screens.dart';
@@ -67,10 +66,10 @@ class _MultiScreenPageState extends State<MultiScreenPage> {
               children: [
                 IconButton(
                     onPressed: index == 0 ? null : previousPage,
-                    icon: Icon(Icons.skip_previous)),
+                    icon: const Icon(Icons.skip_previous)),
                 IconButton(
                     onPressed: index == _pageList.length - 1 ? null : nextPage,
-                    icon: Icon(Icons.skip_next)),
+                    icon: const Icon(Icons.skip_next)),
                 // ElevatedButton(
                 //   onPressed: index == 0 ? null : previousPage,
                 //   child: const Text("Previous"),

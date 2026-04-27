@@ -60,11 +60,11 @@ class _UserGuideScreenState extends State<UserGuideScreen> {
                     UIHelper.verticalSpace(20.h),
 
                     /// Your Contents
-                    Expanded(
+                    const Expanded(
                       child: TabBarView(
                         children: [
                           SingleChildScrollView(
-                            physics: const BouncingScrollPhysics(),
+                            physics: BouncingScrollPhysics(),
                             child: WelcomeFhtWidget(),
                           ),
                           Center(child: Text("Tier 2 Composition Content")),

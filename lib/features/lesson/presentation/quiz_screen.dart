@@ -210,7 +210,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             size: 60.h,
                           ),
                         )
-                      : CustomButton(
+                      : customButton(
                           name: "Submit Answer",
                           onCallBack: () async {
                             final apiResponse = await submitAnswerMethod();
@@ -249,7 +249,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                                 .copyWith(
                                                     color: AppColors.c6A7282)),
                                         UIHelper.verticalSpace(12.h),
-                                        CustomButton(
+                                        customButton(
                                           name: "Lesson Summary",
                                           onCallBack: () {
                                             NavigationService
@@ -422,7 +422,7 @@ class _QuizScreenState extends State<QuizScreen> {
           }),
         ),
         UIHelper.verticalSpace(16.h),
-        CustomButton(
+        customButton(
           name: "Check Answer",
           onCallBack: () {
             List<int> selected = selectedAnswers[question.id] ?? [];

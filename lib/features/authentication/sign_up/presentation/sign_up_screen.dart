@@ -185,7 +185,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           color: AppColors.onboardingButtonColor,
                         ),
                       )
-                    : CustomButton(
+                    : customButton(
                         name: 'Sign up',
                         onCallBack: () {
                           registerMethod();

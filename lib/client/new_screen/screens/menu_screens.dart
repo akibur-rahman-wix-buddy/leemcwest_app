@@ -24,7 +24,7 @@ class BurgerMenuOverlay extends StatelessWidget {
 
     return Stack(
       children: [
-        GestureDetector(onTap: onClose, child: Container(color: Colors.black.withOpacity(0.6))),
+        GestureDetector(onTap: onClose, child: Container(color: Colors.black.withValues(alpha: 0.6))),
         Container(
           width: 280,
           color: AppColors.surface,
@@ -100,7 +100,7 @@ class AboutScreen extends StatelessWidget {
           const SizedBox(height: 12),
           ...['AI Harmonic Analyser', 'Songwriting Lab', 'Expanded Lesson Series', 'Advanced Case Studies'].map((f) =>
             Padding(padding: const EdgeInsets.only(bottom: 8), child: Row(children: [
-              Container(width: 6, height: 6, decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.accent)),
+              Container(width: 6, height: 6, decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.accent)),
               const SizedBox(width: 12),
               Text(f, style: AppTypography.label(size: 14, color: AppColors.textSecondary)),
             ])),
@@ -222,7 +222,7 @@ class GlossaryScreen extends StatelessWidget {
               width: double.infinity, padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: AppColors.accent)),
               alignment: Alignment.center,
-              child: Text('View Complete Glossary', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.accent)),
+              child: const Text('View Complete Glossary', style: TextStyle(fontFamily: AppTypography.fontDisplay, fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.accent)),
             ),
           ),
           const SizedBox(height: 40),
@@ -318,7 +318,7 @@ class LessonSummaryScreen extends StatelessWidget {
         AppHeader(title: 'Lesson Summary', onBack: onBack),
         Expanded(child: Padding(padding: const EdgeInsets.symmetric(horizontal: 24), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           ...points.map((p) => Padding(padding: const EdgeInsets.only(bottom: 12), child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Container(width: 6, height: 6, margin: const EdgeInsets.only(top: 6), decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.accent)),
+            Container(width: 6, height: 6, margin: const EdgeInsets.only(top: 6), decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.accent)),
             const SizedBox(width: 12),
             Expanded(child: Text(p, style: AppTypography.body(size: 14.5, height: 1.65))),
           ]))),

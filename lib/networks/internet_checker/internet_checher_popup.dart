@@ -29,7 +29,7 @@ void InternetConnectionPopup(BuildContext context, VoidCallback onRetry) {
                 color: Colors.red,
                 size: 40.sp,
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 'No Internet Connection found. \nCheck your connection & try again.',
                 style: TextFontStyle.textStyle14w400c333333,

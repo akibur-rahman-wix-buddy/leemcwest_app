@@ -4,7 +4,6 @@ import 'dart:math' as math;
 import 'package:leemcwest/client/presentation/app_theme.dart';
 import 'package:leemcwest/client/presentation/fnh_color_resolver.dart';
 
-
 // ─────────────────────────────────────────────
 // Data models
 // ─────────────────────────────────────────────
@@ -14,8 +13,10 @@ enum QuizQuestionType { multipleChoice, dragOrder }
 class QuizQuestion {
   final QuizQuestionType type;
   final String question;
-  final List<String> options; // For MC: answer options. For drag: items to order.
-  final dynamic correctAnswer; // MC: int index. Drag: List<String> correct order.
+  final List<String>
+      options; // For MC: answer options. For drag: items to order.
+  final dynamic
+      correctAnswer; // MC: int index. Drag: List<String> correct order.
   final Map<int, String>? explanations; // MC: wrong option index → explanation
   final String? explanation; // Drag: single explanation for wrong answer
 
@@ -127,7 +128,8 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 14),
                       child: Row(
                         children: [
                           GestureDetector(
@@ -242,7 +244,8 @@ class _QuizScreenState extends State<QuizScreen> {
                         onPressed: _reset,
                         style: OutlinedButton.styleFrom(
                           foregroundColor: AppColors.textSecondary,
-                          side: const BorderSide(color: AppColors.border, width: 1.5),
+                          side: const BorderSide(
+                              color: AppColors.border, width: 1.5),
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
@@ -256,8 +259,9 @@ class _QuizScreenState extends State<QuizScreen> {
                       child: ElevatedButton(
                         onPressed: _submitted ? null : _submit,
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              _submitted ? AppColors.textMuted : AppColors.accent,
+                          backgroundColor: _submitted
+                              ? AppColors.textMuted
+                              : AppColors.accent,
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           shape: RoundedRectangleBorder(
@@ -294,12 +298,12 @@ class _QuizScreenState extends State<QuizScreen> {
           final correct = oi == (q.correctAnswer as int);
           borderColor = correct ? AppColors.success : AppColors.error;
           bgColor = correct
-              ? AppColors.success.withOpacity(0.08)
-              : AppColors.error.withOpacity(0.08);
+              ? AppColors.success.withValues(alpha: .08)
+              : AppColors.error.withValues(alpha: .08);
           icon = correct ? '✓' : '✗';
         } else if (_submitted && oi == (q.correctAnswer as int)) {
           borderColor = AppColors.success;
-          bgColor = AppColors.success.withOpacity(0.05);
+          bgColor = AppColors.success.withValues(alpha: .05);
         }
 
         return Padding(
@@ -345,10 +349,10 @@ class _QuizScreenState extends State<QuizScreen> {
                     width: double.infinity,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: AppColors.error.withOpacity(0.06),
+                      color: AppColors.error.withValues(alpha: .06),
                       borderRadius: BorderRadius.circular(8),
-                      border:
-                          Border.all(color: AppColors.error.withOpacity(0.15)),
+                      border: Border.all(
+                          color: AppColors.error.withValues(alpha: .15)),
                     ),
                     child: Text(q.explanations![oi]!,
                         style: AppTypography.body(size: 13, height: 1.55)),
@@ -367,7 +371,7 @@ class _QuizScreenState extends State<QuizScreen> {
     final correctOrder = q.correctAnswer as List<String>;
     final isCorrect = _isCorrect(qi);
     final itemCount = q.options.length;
-    final crossAxisCount = itemCount > 6 ? 4 : itemCount;
+  //  final crossAxisCount = itemCount > 6 ? 4 : itemCount;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -378,7 +382,7 @@ class _QuizScreenState extends State<QuizScreen> {
           runSpacing: 8,
           children: q.options.asMap().entries.map((entry) {
             final item = entry.value;
-            final idx = entry.key;
+           // final idx = entry.key;
             final isPlaced = placed.contains(item);
             return GestureDetector(
               onTap: () => _toggleDragItem(qi, item),
@@ -392,14 +396,16 @@ class _QuizScreenState extends State<QuizScreen> {
                     color: isPlaced ? AppColors.surface : AppColors.accentSoft,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(
-                        color: isPlaced ? AppColors.textMuted : AppColors.accent,
+                        color:
+                            isPlaced ? AppColors.textMuted : AppColors.accent,
                         width: 1.5),
                   ),
                   child: Text(item,
                       style: AppTypography.mono(
                           size: 14,
-                          color:
-                              isPlaced ? AppColors.textMuted : AppColors.accent)),
+                          color: isPlaced
+                              ? AppColors.textMuted
+                              : AppColors.accent)),
                 ),
               ),
             );
@@ -426,8 +432,8 @@ class _QuizScreenState extends State<QuizScreen> {
               final ok = item == correctOrder[slot];
               borderColor = ok ? AppColors.success : AppColors.error;
               bgColor = ok
-                  ? AppColors.success.withOpacity(0.08)
-                  : AppColors.error.withOpacity(0.08);
+                  ? AppColors.success.withValues(alpha: .08)
+                  : AppColors.error.withValues(alpha: .08);
             } else if (item != null) {
               borderColor = AppColors.accent;
               bgColor = AppColors.accentSoft;
@@ -435,7 +441,9 @@ class _QuizScreenState extends State<QuizScreen> {
 
             final slotWidth = itemCount > 6
                 ? (MediaQuery.of(context).size.width - 48 - 18) / 4
-                : (MediaQuery.of(context).size.width - 48 - (itemCount - 1) * 6) /
+                : (MediaQuery.of(context).size.width -
+                        48 -
+                        (itemCount - 1) * 6) /
                     itemCount;
 
             return GestureDetector(
@@ -472,7 +480,8 @@ class _QuizScreenState extends State<QuizScreen> {
                 ? '✓ Correct!'
                 : '✗ Correct order: ${correctOrder.join(' → ')}',
             style: AppTypography.label(
-                size: 12, color: isCorrect ? AppColors.success : AppColors.error),
+                size: 12,
+                color: isCorrect ? AppColors.success : AppColors.error),
           ),
           if (!isCorrect && q.explanation != null)
             Padding(
@@ -481,9 +490,10 @@ class _QuizScreenState extends State<QuizScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppColors.error.withOpacity(0.06),
+                  color: AppColors.error.withValues(alpha: .06),
                   borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: AppColors.error.withOpacity(0.15)),
+                  border:
+                      Border.all(color: AppColors.error.withValues(alpha: .15)),
                 ),
                 child: Text(q.explanation!,
                     style: AppTypography.body(size: 13, height: 1.55)),
@@ -502,7 +512,7 @@ class _QuizScreenState extends State<QuizScreen> {
     return GestureDetector(
       onTap: () => setState(() => _showResult = false),
       child: Container(
-        color: Colors.black.withOpacity(0.7),
+        color: Colors.black.withValues(alpha: .7),
         alignment: Alignment.center,
         child: GestureDetector(
           onTap: () {}, // absorb taps
@@ -631,7 +641,12 @@ class _ScoreRingPainter extends CustomPainter {
 
     // Background ring
     canvas.drawCircle(
-        center, radius, Paint()..color = AppColors.border..style = PaintingStyle.stroke..strokeWidth = 5);
+        center,
+        radius,
+        Paint()
+          ..color = AppColors.border
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 5);
 
     // Progress arc
     final progressPaint = Paint()

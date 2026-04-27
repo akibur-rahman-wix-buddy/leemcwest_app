@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leemcwest/client/presentation/builder_models.dart';
 import 'package:leemcwest/client/presentation/builder_theme.dart';
-import 'builder_widgets.dart';
 
 // ─────────────────────────────────────────────
 // PopupMenu — reusable menu overlay
@@ -274,7 +273,7 @@ class HierarchyPicker extends StatelessWidget {
               margin: const EdgeInsets.only(bottom: 8),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: isActive ? BuilderColors.accent.withOpacity(0.12) : BuilderColors.surface,
+                color: isActive ? BuilderColors.accent.withValues(alpha: .12) : BuilderColors.surface,
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: isActive ? BuilderColors.accent : BuilderColors.borderLight),
               ),
@@ -445,7 +444,7 @@ Widget _solidBtn(String label, Color color, VoidCallback onTap) {
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(8)),
       alignment: Alignment.center,
-      child: Text(label, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Colors.white)),
+      child: Text(label, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Colors.white)),
     ),
   );
 }
@@ -458,7 +457,7 @@ Widget _outlineBtn(String label, VoidCallback onTap, {Color? color}) {
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: color?.withOpacity(0.27) ?? BuilderColors.borderLight),
+        border: Border.all(color: color?.withValues(alpha: .27) ?? BuilderColors.borderLight),
       ),
       alignment: Alignment.center,
       child: Text(label, style: TextStyle(fontSize: 13, color: color ?? BuilderColors.textMuted)),

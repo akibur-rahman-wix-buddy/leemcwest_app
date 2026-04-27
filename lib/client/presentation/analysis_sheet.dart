@@ -80,7 +80,7 @@ class AnalysisSheet extends StatelessWidget {
                                 return Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 1),
                                   decoration: BoxDecoration(
-                                    color: highlighted ? c.withOpacity(0.2) : Colors.transparent,
+                                    color: highlighted ? c.withValues(alpha: .2) : Colors.transparent,
                                     borderRadius: BorderRadius.circular(3),
                                   ),
                                   child: Text(sw, style: BuilderTypography.mono(size: 10, weight: FontWeight.w700, color: c)),
@@ -188,12 +188,12 @@ class AnalysisSheet extends StatelessWidget {
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.end,
                                             children: [
-                                              if (isActive) Container(width: 4, height: 4, decoration: BoxDecoration(color: Colors.white, shape: BoxShape.circle)),
+                                              if (isActive) Container(width: 4, height: 4, decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle)),
                                               const SizedBox(height: 2),
                                               Container(
                                                 height: (n * 32).clamp(3, 32),
                                                 decoration: BoxDecoration(
-                                                  color: col.withOpacity(isActive ? 1 : 0.6),
+                                                  color: col.withValues(alpha: isActive ? 1 : 0.6),
                                                   borderRadius: const BorderRadius.vertical(top: Radius.circular(2)),
                                                   border: isActive ? Border.all(color: col) : null,
                                                 ),
@@ -317,9 +317,9 @@ class AnalysisSheet extends StatelessWidget {
         Expanded(child: Container(
           padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
-            color: w.withOpacity(0.15),
+            color: w.withValues(alpha: .15),
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: w.withOpacity(0.27)),
+            border: Border.all(color: w.withValues(alpha: .27)),
           ),
           child: Column(children: [
             WorldBadge(world: chord.world),
@@ -345,6 +345,6 @@ class AnalysisSheet extends StatelessWidget {
 }
 
 extension on BuilderColors {
-  static const Color borderDark = Color(0xFF444444);
-  static const Color borderSubtle = Color(0xFF252525);
+  // static const Color borderDark = Color(0xFF444444);
+  // static const Color borderSubtle = Color(0xFF252525);
 }

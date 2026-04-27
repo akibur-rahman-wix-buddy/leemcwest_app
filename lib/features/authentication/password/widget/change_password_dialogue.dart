@@ -50,10 +50,10 @@ class ChangePasswordDialogue extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             UIHelper.verticalSpace(24.h),
-            CustomButton(
+            customButton(
               name: 'Back to Login',
               borderRadius: 8.r,
-              onCallBack: (){
+              onCallBack: () {
                 NavigationService.navigateTo(Routes.signIn);
               },
               context: context,

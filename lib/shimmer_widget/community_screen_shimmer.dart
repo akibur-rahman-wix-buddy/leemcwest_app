@@ -13,7 +13,7 @@ class ShimmerCommunityScreen extends StatelessWidget {
           padding: EdgeInsets.zero,
           itemCount: 3,
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.all(16),
@@ -21,7 +21,7 @@ class ShimmerCommunityScreen extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: 30,
                         backgroundColor: Color(0xffE8E8E8),
                       ),
@@ -46,21 +46,21 @@ class ShimmerCommunityScreen extends StatelessWidget {
                   UIHelper.verticalSpace(20),
                   CardLoading(
                     height: 180.h,
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    margin: EdgeInsets.only(bottom: 12),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
+                    margin: const EdgeInsets.only(bottom: 12),
                   ),
                   UIHelper.verticalSpace(5),
                   CardLoading(
                     height: 10.h,
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                   ),
                   CardLoading(
                     height: 10.h,
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                   ),
                   CardLoading(
                     height: 10.h,
-                    margin: EdgeInsets.only(bottom: 7),
+                    margin: const EdgeInsets.only(bottom: 7),
                   ),
                   UIHelper.verticalSpace(8),
                   Row(
@@ -68,22 +68,22 @@ class ShimmerCommunityScreen extends StatelessWidget {
                       CardLoading(
                         height: 40.h,
                         width: 40.w,
-                        borderRadius: BorderRadius.all(Radius.circular(32)),
-                        margin: EdgeInsets.only(bottom: 12),
+                        borderRadius: const BorderRadius.all(Radius.circular(32)),
+                        margin: const EdgeInsets.only(bottom: 12),
                       ),
                       UIHelper.horizontalSpace(8),
                       CardLoading(
                         height: 40.h,
                         width: 40.w,
-                        borderRadius: BorderRadius.all(Radius.circular(32)),
-                        margin: EdgeInsets.only(bottom: 12),
+                        borderRadius: const BorderRadius.all(Radius.circular(32)),
+                        margin: const EdgeInsets.only(bottom: 12),
                       ),
                       UIHelper.horizontalSpace(8),
                       CardLoading(
                         height: 40.h,
                         width: 40.w,
-                        borderRadius: BorderRadius.all(Radius.circular(32)),
-                        margin: EdgeInsets.only(bottom: 12),
+                        borderRadius: const BorderRadius.all(Radius.circular(32)),
+                        margin: const EdgeInsets.only(bottom: 12),
                       ),
                     ],
                   ),

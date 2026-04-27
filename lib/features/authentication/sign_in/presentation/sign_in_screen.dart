@@ -139,7 +139,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           color: AppColors.primaryColor2,
                         ),
                       )
-                    : CustomButton(
+                    : customButton(
                         name: 'Login',
                         onCallBack: () {
                           submitForm();

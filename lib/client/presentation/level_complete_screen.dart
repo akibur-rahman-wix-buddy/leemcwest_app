@@ -39,11 +39,11 @@ class EarTrainingLevelCompleteScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: AppColors.accentSoft,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: AppColors.accent.withOpacity(0.25)),
+                  border: Border.all(color: AppColors.accent.withValues(alpha: .25)),
                 ),
                 child: Text(
                   '${data.title} Complete'.toUpperCase(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: AppTypography.fontDisplay, fontSize: 12,
                     fontWeight: FontWeight.w600, color: AppColors.accent, letterSpacing: 0.8,
                   ),
@@ -105,19 +105,19 @@ class EarTrainingLevelCompleteScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
                   margin: const EdgeInsets.only(bottom: 24),
                   decoration: BoxDecoration(
-                    color: AppColors.success.withOpacity(0.08),
+                    color: AppColors.success.withValues(alpha: .08),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: AppColors.success.withOpacity(0.2)),
+                    border: Border.all(color: AppColors.success.withValues(alpha: .2)),
                   ),
                   child: Row(
                     children: [
-                      Icon(Icons.lock_open, size: 20, color: AppColors.success),
+                      const Icon(Icons.lock_open, size: 20, color: AppColors.success),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('${data.nextLevel} unlocked', style: TextStyle(
+                            Text('${data.nextLevel} unlocked', style: const TextStyle(
                               fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.success,
                             )),
                             const SizedBox(height: 2),
@@ -144,11 +144,11 @@ class EarTrainingLevelCompleteScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: AppColors.border),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Icon(Icons.refresh, size: 16, color: AppColors.textSecondary),
-                            const SizedBox(width: 8),
+                            Icon(Icons.refresh, size: 16, color: AppColors.textSecondary),
+                            SizedBox(width: 8),
                             Text('Repeat Level', style: TextStyle(
                               fontFamily: AppTypography.fontDisplay, fontSize: 14,
                               fontWeight: FontWeight.w600, color: AppColors.textSecondary,
@@ -169,7 +169,7 @@ class EarTrainingLevelCompleteScreen extends StatelessWidget {
                           gradient: const LinearGradient(colors: [AppColors.accent, Color(0xFF5A4BD6)]),
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(color: AppColors.accent),
-                          boxShadow: [BoxShadow(color: AppColors.accentGlow, blurRadius: 20, offset: const Offset(0, 4))],
+                          boxShadow: const [BoxShadow(color: AppColors.accentGlow, blurRadius: 20, offset: Offset(0, 4))],
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -227,13 +227,13 @@ class _TrefoilPainter extends CustomPainter {
     // Outer glow
     final glowPaint = Paint()
       ..shader = RadialGradient(
-        colors: [AppColors.accent.withOpacity(0.15), AppColors.accent.withOpacity(0)],
+        colors: [AppColors.accent.withValues(alpha: .15), AppColors.accent.withValues(alpha: 0)],
       ).createShader(Rect.fromCircle(center: center, radius: 58));
     canvas.drawCircle(center, 58, glowPaint);
 
     // Decorative rings
-    canvas.drawCircle(center, 48, Paint()..color = AppColors.accent.withOpacity(0.12)..style = PaintingStyle.stroke..strokeWidth = 0.5);
-    canvas.drawCircle(center, 55, Paint()..color = AppColors.accent.withOpacity(0.08)..style = PaintingStyle.stroke..strokeWidth = 0.3);
+    canvas.drawCircle(center, 48, Paint()..color = AppColors.accent.withValues(alpha: .12)..style = PaintingStyle.stroke..strokeWidth = 0.5);
+    canvas.drawCircle(center, 55, Paint()..color = AppColors.accent.withValues(alpha: .08)..style = PaintingStyle.stroke..strokeWidth = 0.3);
 
     // Three interlocking ellipses
     final knotPaint = Paint()
@@ -244,25 +244,25 @@ class _TrefoilPainter extends CustomPainter {
     // Top ellipse
     canvas.save();
     canvas.translate(center.dx, center.dy - 18);
-    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 44, height: 36), knotPaint..color = AppColors.accent.withOpacity(0.9));
+    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 44, height: 36), knotPaint..color = AppColors.accent.withValues(alpha: .9));
     canvas.restore();
 
     // Bottom-left ellipse
     canvas.save();
     canvas.translate(center.dx - 18, center.dy + 10);
     canvas.rotate(-0.52);
-    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 44, height: 36), knotPaint..color = AppColors.accent.withOpacity(0.7));
+    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 44, height: 36), knotPaint..color = AppColors.accent.withValues(alpha: .7));
     canvas.restore();
 
     // Bottom-right ellipse
     canvas.save();
     canvas.translate(center.dx + 18, center.dy + 10);
     canvas.rotate(0.52);
-    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 44, height: 36), knotPaint..color = AppColors.accent.withOpacity(0.7));
+    canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 44, height: 36), knotPaint..color = AppColors.accent.withValues(alpha: .7));
     canvas.restore();
 
     // Centre dot
-    canvas.drawCircle(Offset(center.dx, center.dy - 2), 4, Paint()..color = AppColors.accent.withOpacity(0.6));
+    canvas.drawCircle(Offset(center.dx, center.dy - 2), 4, Paint()..color = AppColors.accent.withValues(alpha: .6));
   }
 
   @override

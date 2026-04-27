@@ -8,7 +8,7 @@ class OnboardingProvider extends ChangeNotifier {
 
  // constructor
   OnboardingProvider() {
-    loadOnboardingStatus();;
+    loadOnboardingStatus();
   }
 
   Future<void> loadOnboardingStatus() async{

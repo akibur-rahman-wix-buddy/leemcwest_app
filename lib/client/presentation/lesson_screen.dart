@@ -80,7 +80,7 @@ class _LessonScreenState extends State<LessonScreen> {
           // Dim completed dots
           foregroundDecoration: isPast && !isCurrent
               ? BoxDecoration(
-                  color: Colors.black.withOpacity(0.55),
+                  color: Colors.black.withValues(alpha: .55),
                   borderRadius: BorderRadius.circular(3),
                 )
               : null,

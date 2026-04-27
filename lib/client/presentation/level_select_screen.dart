@@ -72,7 +72,7 @@ class EarTrainingLevelSelectScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('OVERALL PROGRESS', style: TextStyle(
+                      const Text('OVERALL PROGRESS', style: TextStyle(
                         fontFamily: AppTypography.fontDisplay, fontSize: 12,
                         fontWeight: FontWeight.w600, color: AppColors.textSecondary,
                         letterSpacing: 1.0,

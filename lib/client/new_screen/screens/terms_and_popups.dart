@@ -207,7 +207,8 @@ class _RateExperiencePopupState extends State<RateExperiencePopup> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        GestureDetector(onTap: widget.onClose, child: Container(color: Colors.black.withOpacity(0.6))),
+        GestureDetector(onTap: widget.onClose, child: Container(color: Colors.black.
+        withValues(alpha: .6))),
         Align(
           alignment: Alignment.bottomCenter,
           child: Container(
@@ -322,7 +323,8 @@ class _ShareAppPopupState extends State<ShareAppPopup> {
 
     return Stack(
       children: [
-        GestureDetector(onTap: widget.onClose, child: Container(color: Colors.black.withOpacity(0.6))),
+        GestureDetector(onTap: widget.onClose, child: Container(color: Colors.black.
+        withValues(alpha: .6))),
         Center(
           child: Container(
             width: MediaQuery.of(context).size.width - 48,
@@ -347,7 +349,7 @@ class _ShareAppPopupState extends State<ShareAppPopup> {
               const SizedBox(height: 10),
               Text('NumoniX', style: AppTypography.heading(size: 14, weight: FontWeight.w700)),
               const SizedBox(height: 2),
-              Text('EXPERIENCE HARMONY IN MOTION', style: TextStyle(
+              const Text('EXPERIENCE HARMONY IN MOTION', style: TextStyle(
                 fontFamily: AppTypography.fontDisplay, fontSize: 10,
                 color: AppColors.textMuted, letterSpacing: 1.2,
               )),

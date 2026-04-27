@@ -22,9 +22,10 @@ class BeatChordWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DragTarget<String>(
-      onWillAccept: (data) => data != null,
-      onAccept: (value) {
-        onDrop(value);
+      // ignore: unnecessary_null_comparison
+      onWillAcceptWithDetails: (data) => data != null,
+      onAcceptWithDetails: (value) {
+        //onDrop(value);
       },
       builder: (context, candidateData, rejectedData) {
         final bool isDragOver = candidateData.isNotEmpty;
@@ -40,14 +41,14 @@ class BeatChordWidget extends StatelessWidget {
                       actions: [
                         TextButton(
                           onPressed: () => Navigator.pop(context),
-                          child: Text('Cancel'),
+                          child: const Text('Cancel'),
                         ),
                         TextButton(
                           onPressed: () {
                             onRemove();
                             Navigator.pop(context);
                           },
-                          child: Text('Remove', style: TextStyle(color: Colors.red)),
+                          child: const Text('Remove', style: TextStyle(color: Colors.red)),
                         ),
                       ],
                     ),
@@ -69,7 +70,7 @@ class BeatChordWidget extends StatelessWidget {
                 vertical: 12.h,
               ),
               decoration: BoxDecoration(
-                color: isDragOver ? Colors.green.withOpacity(0.1) : AppColors.cE7ECF1,
+                color: isDragOver ? Colors.green.withValues(alpha: .1) : AppColors.cE7ECF1,
                 borderRadius: BorderRadius.circular(10.r),
               ),
               alignment: Alignment.center,

@@ -64,15 +64,16 @@ class _ReportABugScreenState extends State<ReportABugScreen> {
       ToastUtil.showShortToast(e.toString());
     }
   }
+
   Future<void> _pickImage() async {
-    final XFile? image =
-        await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
       setState(() {
         _selectedImage = File(image.path);
       });
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -146,34 +147,33 @@ class _ReportABugScreenState extends State<ReportABugScreen> {
                 UIHelper.verticalSpace(20.h),
                 Row(
                   children: [
-                   GestureDetector(
-          onTap: _pickImage,
-          child: Container(
-            width: 68.w,
-            height: 68.w,
-            decoration: BoxDecoration(
-        color: AppColors.cF3F4F6,
-        borderRadius: BorderRadius.circular(8.r),
-        border: Border.all(color: AppColors.c6A7282),
-            ),
-            child: _selectedImage == null
-          ? Center(
-              child: SvgPicture.asset(
-                AppIcons.upload,
-                width: 24.w,
-                height: 24.w,
-              ),
-            )
-          : ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: Image.file(
-                _selectedImage!,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        
+                    GestureDetector(
+                      onTap: _pickImage,
+                      child: Container(
+                        width: 68.w,
+                        height: 68.w,
+                        decoration: BoxDecoration(
+                          color: AppColors.cF3F4F6,
+                          borderRadius: BorderRadius.circular(8.r),
+                          border: Border.all(color: AppColors.c6A7282),
+                        ),
+                        child: _selectedImage == null
+                            ? Center(
+                                child: SvgPicture.asset(
+                                  AppIcons.upload,
+                                  width: 24.w,
+                                  height: 24.w,
+                                ),
+                              )
+                            : ClipRRect(
+                                borderRadius: BorderRadius.circular(8.r),
+                                child: Image.file(
+                                  _selectedImage!,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                      ),
+                    ),
                     UIHelper.horizontalSpace(20.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,20 +196,18 @@ class _ReportABugScreenState extends State<ReportABugScreen> {
                 ),
                 UIHelper.verticalSpace(32.h),
                 isLoading
-                ?
-                const Center(
-                  child: SpinKitCircle(
-                    color: AppColors.primaryColor2,
-                  ),
-                )
-                :
-                CustomButton(
-                  name: 'Submit Report',
-                  onCallBack: () {
-                    submitForm();
-                  },
-                  context: context,
-                ),
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.primaryColor2,
+                        ),
+                      )
+                    : customButton(
+                        name: 'Submit Report',
+                        onCallBack: () {
+                          submitForm();
+                        },
+                        context: context,
+                      ),
               ],
             ),
           ),

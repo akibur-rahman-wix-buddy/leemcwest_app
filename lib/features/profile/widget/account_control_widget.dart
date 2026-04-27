@@ -8,7 +8,7 @@ import 'package:leemcwest/helpers/ui_helpers.dart';
 class AccountControlWidget extends StatelessWidget {
   final void Function() onTap;
   const AccountControlWidget({
-    super.key, 
+    super.key,
     required this.onTap,
   });
 
@@ -56,7 +56,7 @@ class AccountControlWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           UIHelper.verticalSpace(24.h),
-          CustomButton(
+          customButton(
             name: 'Delete Account',
             onCallBack: onTap,
             context: context,

@@ -30,7 +30,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
   final confirmPasswordController = TextEditingController();
   bool isLoading = false;
   final _formKey = GlobalKey<FormState>();
-  
+
   Future<void> submitForm() async {
     final auth = Provider.of<AuthProvider>(context, listen: false);
     setState(() {
@@ -45,14 +45,14 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           token: appData.read(kKeyAccessToken) ?? '',
         );
 
-        if (success == true) {
-           showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) {
-                      return const ChangePasswordDialogue();
-                    },
-                  );
+        if (success == true)  {
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (context) {
+              return const ChangePasswordDialogue();
+            },
+          );
         } else {
           ToastUtil.showShortToast("Error");
         }
@@ -65,7 +65,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
       });
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -144,19 +144,18 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                 ),
                 UIHelper.verticalSpace(24.h),
                 isLoading
-                ? const Center(
-                  child: SpinKitCircle(
-                    color: AppColors.primaryColor2,
-                  ),
-                )
-                :
-                CustomButton(
-                  name: 'Reset Password',
-                  onCallBack: (){
-                   submitForm();
-                  },
-                  context: context,
-                ),
+                    ? const Center(
+                        child: SpinKitCircle(
+                          color: AppColors.primaryColor2,
+                        ),
+                      )
+                    : customButton(
+                        name: 'Reset Password',
+                        onCallBack: () {
+                          submitForm();
+                        },
+                        context: context,
+                      ),
               ],
             ),
           ),

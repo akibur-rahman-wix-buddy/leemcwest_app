@@ -12,7 +12,7 @@ class QuizContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSelected = false;
+   // bool isSelected = false;
     return Container(
       padding: EdgeInsets.all(16.sp),
       decoration: BoxDecoration(
@@ -31,38 +31,39 @@ class QuizContainer extends StatelessWidget {
           ),
           UIHelper.verticalSpace(20.h),
           GestureDetector(
-      onTap: () {
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.all(20.sp),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.sp),
+                color: AppColors.cF3F4F6,
+              ),
+              child: Row(
+                children: [
+                  // isSelected
 
-      },
-      child: Container(
-        padding: EdgeInsets.all(20.sp),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.sp),
-          color: AppColors.cF3F4F6,
-        ),
-        child: Row(
-          children: [
-            isSelected
-                ? Image.asset(
-                    AppImages.selected,
-                    width: 20.w,
-                  )
-                : Image.asset(
+                  //     ? Image.asset(
+                  //         AppImages.selected,
+                  //         width: 20.w,
+                  //       )
+                  //     :
+
+                  Image.asset(
                     AppImages.unselected,
                     width: 20.w,
                   ),
-            UIHelper.horizontalSpace(8.w),
-            Text(
-              'Retry Quiz',
-              style: TextFontStyle.textStyle14w400c6A7282.copyWith(
-                color: AppColors.c061426,
+
+                  UIHelper.horizontalSpace(8.w),
+                  Text(
+                    'Retry Quiz',
+                    style: TextFontStyle.textStyle14w400c6A7282.copyWith(
+                      color: AppColors.c061426,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    ),
-         
+          ),
         ],
       ),
     );

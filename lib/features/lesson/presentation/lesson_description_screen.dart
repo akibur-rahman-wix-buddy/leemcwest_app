@@ -188,12 +188,12 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.47,
                       child: SingleChildScrollView(
-                        physics: BouncingScrollPhysics(),
+                        physics: const BouncingScrollPhysics(),
                         child: Column(
                           children: [
                             ListView.builder(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: data?.lesson?.contents?.length ?? 0,
                                 itemBuilder: (context, index) {
                                   final text = data?.lesson?.contents?[index];
@@ -233,7 +233,7 @@ class _LessonDescriptionScreenState extends State<LessonDescriptionScreen> {
                                       ),
                                     ),
                                   )
-                                : CustomButton(
+                                : customButton(
                                     name: 'Mark as complete',
                                     color: AppColors.c3DC699,
                                     borderColor: AppColors.c3DC699,
